@@ -9,6 +9,9 @@ class ShoppingList(models.Model):
     total_amount = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"Shopping list for {self.buyer}"
+
 
 class OrderList(models.Model):
     buyer = models.ForeignKey(
@@ -19,3 +22,6 @@ class OrderList(models.Model):
         ShoppingList, on_delete=models.CASCADE)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     ordered_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Order list between {self.buyer} and {self.seller}"
