@@ -19,41 +19,45 @@
 {% endcomment %}
 {% block content %}
   <!-- Section 1: Introduction / Hero Section -->
-  <section class="homesect container d-flex justify-content-center align-items-center">
+  <section class="homesect container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
     <div class="text-center">
-      <h2 class="page-name">Local Supply Hub</h2>
-      <hr class="w-50 text-center mx-auto"/>
-      <p>Your one-stop platform to connect restaurants with local suppliers. Find the best deals and streamline your procurement process.</p>
+      <h1 class="display-4 fw-bold">Local Supply Hub</h1>
+      <hr class="w-25 mx-auto mb-4" />
+      <p class="lead">Your one-stop platform to connect restaurants with local suppliers. Find the best deals and streamline your procurement process.</p>
+      <a href="#featured-services" class="btn btn-primary btn-lg mt-3">Explore Services</a>
     </div>
   </section>
 
-  <!-- Section 2: Featured Services / Categories -->
-  <section class="homesect container d-flex justify-content-center">
+  <!-- Section 2: Product Categories / Services -->
+  <section id="featured-services" class="homesect container py-5">
     <div class="text-center">
-      <h2>Product Categories</h2>
-      <hr class="w-50 mx-auto"/>
-      <div class="row">
+      <h2 class="fw-bold">Product Categories</h2>
+      <hr class="w-50 mx-auto mb-4"/>
+      <div class="row g-4">
+        <!-- Category 1: Fresh Produce -->
         <div class="col-sm-6 col-md-4">
-          <div class="card">
-            <div class="card-body">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
               <h3 class="card-title">Fresh Produce</h3>
               <p class="card-text">Find local suppliers for fresh fruits, vegetables, and herbs at competitive prices.</p>
             </div>
           </div>
         </div>
+        <!-- Category 2: Meat & Poultry -->
         <div class="col-sm-6 col-md-4">
-          <div class="card">
-            <div class="card-body">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
               <h3 class="card-title">Meat & Poultry</h3>
               <p class="card-text">Access high-quality meat and poultry suppliers in your region.</p>
             </div>
           </div>
         </div>
+        <!-- Category 3: Kitchen Supplies -->
         <div class="col-sm-6 col-md-4">
-          <div class="card">
-            <div class="card-body">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
               <h3 class="card-title">Kitchen Supplies</h3>
-              <p class="card-text">From utensils to equipment, source all your kitchen needs from trusted vendors.</p>
+              <p class="card-text">Source all your kitchen needs from trusted vendors, from utensils to equipment.</p>
             </div>
           </div>
         </div>
@@ -62,57 +66,93 @@
   </section>
 
   <!-- Section 3: Featured Suppliers -->
-  <section class="homesect container-fluid text-center">
-    <h2>Featured Suppliers</h2>
-    <div class="container d-flex flex-wrap justify-content-center">
-      <div class="card m-2 p-3" style="width: 18rem;">
-        <img src="supplier1.jpg" class="card-img-top" alt="Supplier 1">
-        <div class="card-body">
-          <h5 class="card-title">John's Organic Farm</h5>
-          <p class="card-text">Supplying fresh, organic produce to local restaurants.</p>
-          <a href="#" class="btn btn-primary">View Products</a>
+  <section class="homesect container-fluid py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="fw-bold">Featured Suppliers</h2>
+      <hr class="w-50 mx-auto mb-4" />
+      <div class="row g-4 justify-content-center">
+        <!-- Supplier 1 -->
+        <div class="col-sm-6 col-md-4">
+          <div class="card shadow-sm h-100">
+            <img src="supplier1.jpg" class="card-img-top" alt="Supplier 1">
+            <div class="card-body">
+              <h5 class="card-title">John's Organic Farm</h5>
+              <p class="card-text">Supplying fresh, organic produce to local restaurants.</p>
+              <a href="#" class="btn btn-primary">View Products</a>
+            </div>
+          </div>
+        </div>
+        <!-- Supplier 2 -->
+        <div class="col-sm-6 col-md-4">
+          <div class="card shadow-sm h-100">
+            <img src="supplier2.jpg" class="card-img-top" alt="Supplier 2">
+            <div class="card-body">
+              <h5 class="card-title">Green Valley Poultry</h5>
+              <p class="card-text">Specializing in free-range poultry and eggs.</p>
+              <a href="#" class="btn btn-primary">View Products</a>
+            </div>
+          </div>
+        </div>
+        <!-- Supplier 3 -->
+        <div class="col-sm-6 col-md-4">
+          <div class="card shadow-sm h-100">
+            <img src="supplier3.jpg" class="card-img-top" alt="Supplier 3">
+            <div class="card-body">
+              <h5 class="card-title">Steel Kitchen Solutions</h5>
+              <p class="card-text">Providing durable kitchen equipment and utensils.</p>
+              <a href="#" class="btn btn-primary">View Products</a>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card m-2 p-3" style="width: 18rem;">
-        <img src="supplier2.jpg" class="card-img-top" alt="Supplier 2">
-        <div class="card-body">
-          <h5 class="card-title">Green Valley Poultry</h5>
-          <p class="card-text">Specializing in free-range poultry and eggs.</p>
-          <a href="#" class="btn btn-primary">View Products</a>
-        </div>
-      </div>
-      <div class="card m-2 p-3" style="width: 18rem;">
-        <img src="supplier3.jpg" class="card-img-top" alt="Supplier 3">
-        <div class="card-body">
-          <h5 class="card-title">Steel Kitchen Solutions</h5>
-          <p class="card-text">Providing durable kitchen equipment and utensils.</p>
-          <a href="#" class="btn btn-primary">View Products</a>
-        </div>
-      </div>
-      <!-- Add more suppliers as needed -->
     </div>
   </section>
 
   <!-- Section 4: How It Works -->
-  <section class="homesect container text-center">
-    <h2>How It Works</h2>
-    <hr class="w-50 mx-auto"/>
-    <div class="row">
+  <section class="homesect container py-5">
+    <div class="text-center">
+      <h2 class="fw-bold">How It Works</h2>
+      <hr class="w-50 mx-auto mb-4" />
+    </div>
+    <div class="row text-center">
+      <!-- Step 1 -->
       <div class="col-md-4">
+        <div class="icon mb-3">
+          <i class="bi bi-search fs-1"></i>
+        </div>
         <h4>Step 1: Browse Products</h4>
-        <p>Explore the wide range of products from local suppliers, filtered by category or location.</p>
+        <p>Explore a wide range of products from local suppliers, filtered by category or location.</p>
       </div>
+      <!-- Step 2 -->
       <div class="col-md-4">
+        <div class="icon mb-3">
+          <i class="bi bi-cart fs-1"></i>
+        </div>
         <h4>Step 2: Place an Order</h4>
         <p>Select your preferred suppliers and place an order directly through the platform.</p>
       </div>
+      <!-- Step 3 -->
       <div class="col-md-4">
+        <div class="icon mb-3">
+          <i class="bi bi-truck fs-1"></i>
+        </div>
         <h4>Step 3: Delivery or Pickup</h4>
         <p>Choose delivery or arrange pickup directly from the supplier for your convenience.</p>
       </div>
     </div>
   </section>
+
+  <!-- Section 5: Call to Action -->
+  <section class="homesect call-to-action container-fluid text-center ">
+    <div class="container">
+      <h2 class="display-6">Ready to Streamline Your Supply Chain?</h2>
+      <p>Join hundreds of restaurants and suppliers already benefiting from our platform.</p>
+      <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
+    </div>
+  </section>
+
 {% endblock %}
+
 
 {% comment %}
 # Append JS files here for the page

@@ -6,7 +6,7 @@
             <div class="navbar-header order-md-0">
                 <h1 class="d-none">Red-Bazaar.com</h1>
                 <a class="navbar-brand" href="{% url 'main:home' %}">
-                    <img src="{% static 'imgs/logo-01.webp' %}" width="90" height="90" alt="Main LOGO">
+                    <img src="{% static 'imgs/logo-01.webp' %}" width="auto" height="90" alt="Main LOGO">
                 </a> 
             </div>
             <!-- Toggle Button -->
@@ -17,7 +17,7 @@
             <!-- Search Bar for Desktop -->
             <div class="d-flex justify-content-end d-none d-md-block order-md-2">
                 <form class="form-inline d-flex flex-row-reverse" action="{% url 'main:home' %}" method="GET">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <button class="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 </form>
             </div>
@@ -44,11 +44,11 @@
                     
                     {% if user.is_authenticated %}           
                     <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
+                            <a class="nav-link" href="#">Dashboard</a>
                         </li>
                         <hr class="w-50 text-center mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:profile' %}">Profile</a>
+                            <a class="nav-link" href="#">Profile</a>
                         </li>
                         <hr class="w-50 text-center mx-auto">
                         
