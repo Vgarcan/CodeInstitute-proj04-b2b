@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # Project's APPs:
     'main',
     'users',
+    'products',
 
 
 ]
