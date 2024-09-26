@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% comment %} 
+# Set the Title for the page 
+{% endcomment %}
+{% block head_title %}
+    Privacy Policy Information
+{% endblock head_title %}
+
+{% comment %} 
+# Set the CSS file and Other for the page 
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+{% comment %}
+# Appends the content in the BODY tag
+{% endcomment %}
+{% block content %}
+    <div class="container my-5">
+        <section class="text-center">
+            <h2>Privacy Policy</h2>
+            <p>At <strong>Local Supply Hub</strong>, accessible from <strong>localsupplyhub.com</strong>, one of our main priorities is the privacy of our users. This Privacy Policy document contains types of information that is collected and recorded by <strong>Local Supply Hub</strong> and how we use it.</p>
+        </section>
+
+        <section>
+            <h3>Information We Collect</h3>
+            <p>We collect several types of information for various purposes to provide and improve our service to you:</p>
+            <ul>
+                <li><strong>Personal Data:</strong> We may ask you to provide certain personally identifiable information, such as your name, email address, and phone number when you sign up, place orders, or contact us.</li>
+                <li><strong>Usage Data:</strong> We may collect information on how the site is accessed and used, including your IP address, browser type, browser version, and the pages you visit on our site.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>How We Use Your Information</h3>
+            <p>We use the information we collect in the following ways:</p>
+            <ul>
+                <li>To provide, maintain, and improve our services.</li>
+                <li>To process transactions and facilitate communication between suppliers and buyers.</li>
+                <li>To communicate with you about orders, updates, or support inquiries.</li>
+                <li>To ensure compliance with applicable laws and regulations.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Cookies</h3>
+            <p>We use cookies to enhance user experience, analyze website traffic, and improve the functionality of our platform. You can choose to disable cookies through your browser settings, but this may affect the usability of certain features of the site.</p>
+        </section>
+
+        <section>
+            <h3>Data Security</h3>
+            <p>We are committed to securing your personal data. We have implemented security measures to prevent unauthorized access or disclosure of your information. However, no method of transmission over the internet is 100% secure.</p>
+        </section>
+
+        <section>
+            <h3>Sharing Your Information</h3>
+            <p>Your information is shared only with our trusted partners who assist in providing our services (such as payment processors). These third parties are obligated to keep your data confidential and secure. We do not sell or trade your information with outside parties.</p>
+        </section>
+
+        <section>
+            <h3>Your Data Protection Rights</h3>
+            <p>If you are a resident of the European Economic Area (EEA), you have certain rights under data protection laws, including:</p>
+            <ul>
+                <li>The right to access your personal data.</li>
+                <li>The right to request correction of inaccurate data.</li>
+                <li>The right to request the deletion of your data.</li>
+                <li>The right to restrict or object to the processing of your data.</li>
+                <li>The right to data portability.</li>
+            </ul>
+            <p>To exercise these rights, please contact us using the information provided below.</p>
+        </section>
+
+        <section>
+            <h3>Third-Party Links</h3>
+            <p>Our site may contain links to third-party websites or services. These external sites have their own privacy policies, and we are not responsible for their content or privacy practices.</p>
+        </section>
+
+        <section>
+            <h3>Changes to This Privacy Policy</h3>
+            <p>We may update our Privacy Policy from time to time. You are encouraged to review this page periodically for any changes. Updates are effective immediately upon posting on this page.</p>
+        </section>
+
+        <section>
+            <h3>Contact Information</h3>
+            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+            <ul>
+                <li>By email: <a href="mailto:info@localsupplyhub.com">info@localsupplyhub.com</a></li>
+                <li>By visiting our <a href="{% url 'main:contact' %}">Contact Page</a></li>
+            </ul>
+        </section>
+    </div>
+{% endblock content %}
+
+
+{% comment %}
+# Append JS files here for the page
+{% endcomment %}
+{% block extra_body %}
+{% endblock extra_body %}
+

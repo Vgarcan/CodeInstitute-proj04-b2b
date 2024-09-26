@@ -1,0 +1,6 @@
+__pycache__
+.env
+.venv
+XEMIDOCS
+notReady
+db.sqlite3

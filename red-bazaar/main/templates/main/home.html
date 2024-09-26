@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %}
+# Set the Title for the page
+{% endcomment %}
+{% block head_title %}
+  Welcome to my place
+{% endblock %}
+
+{% comment %}
+# Set the CSS file and Other for the page
+{% endcomment %}
+{% block extra_head %}
+{% endblock %}
+
+{% comment %}
+# Appends the content in the BODY tag
+{% endcomment %}
+{% block content %}
+  <!-- Section 1: Introduction / Hero Section -->
+  <section class="homesect container d-flex justify-content-center align-items-center">
+    <div class="text-center">
+      <h2 class="page-name">Local Supply Hub</h2>
+      <hr class="w-50 text-center mx-auto"/>
+      <p>Your one-stop platform to connect restaurants with local suppliers. Find the best deals and streamline your procurement process.</p>
+    </div>
+  </section>
+
+  <!-- Section 2: Featured Services / Categories -->
+  <section class="homesect container d-flex justify-content-center">
+    <div class="text-center">
+      <h2>Product Categories</h2>
+      <hr class="w-50 mx-auto"/>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Fresh Produce</h3>
+              <p class="card-text">Find local suppliers for fresh fruits, vegetables, and herbs at competitive prices.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Meat & Poultry</h3>
+              <p class="card-text">Access high-quality meat and poultry suppliers in your region.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h3 class="card-title">Kitchen Supplies</h3>
+              <p class="card-text">From utensils to equipment, source all your kitchen needs from trusted vendors.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Featured Suppliers -->
+  <section class="homesect container-fluid text-center">
+    <h2>Featured Suppliers</h2>
+    <div class="container d-flex flex-wrap justify-content-center">
+      <div class="card m-2 p-3" style="width: 18rem;">
+        <img src="supplier1.jpg" class="card-img-top" alt="Supplier 1">
+        <div class="card-body">
+          <h5 class="card-title">John's Organic Farm</h5>
+          <p class="card-text">Supplying fresh, organic produce to local restaurants.</p>
+          <a href="#" class="btn btn-primary">View Products</a>
+        </div>
+      </div>
+      <div class="card m-2 p-3" style="width: 18rem;">
+        <img src="supplier2.jpg" class="card-img-top" alt="Supplier 2">
+        <div class="card-body">
+          <h5 class="card-title">Green Valley Poultry</h5>
+          <p class="card-text">Specializing in free-range poultry and eggs.</p>
+          <a href="#" class="btn btn-primary">View Products</a>
+        </div>
+      </div>
+      <div class="card m-2 p-3" style="width: 18rem;">
+        <img src="supplier3.jpg" class="card-img-top" alt="Supplier 3">
+        <div class="card-body">
+          <h5 class="card-title">Steel Kitchen Solutions</h5>
+          <p class="card-text">Providing durable kitchen equipment and utensils.</p>
+          <a href="#" class="btn btn-primary">View Products</a>
+        </div>
+      </div>
+      <!-- Add more suppliers as needed -->
+    </div>
+  </section>
+
+  <!-- Section 4: How It Works -->
+  <section class="homesect container text-center">
+    <h2>How It Works</h2>
+    <hr class="w-50 mx-auto"/>
+    <div class="row">
+      <div class="col-md-4">
+        <h4>Step 1: Browse Products</h4>
+        <p>Explore the wide range of products from local suppliers, filtered by category or location.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Step 2: Place an Order</h4>
+        <p>Select your preferred suppliers and place an order directly through the platform.</p>
+      </div>
+      <div class="col-md-4">
+        <h4>Step 3: Delivery or Pickup</h4>
+        <p>Choose delivery or arrange pickup directly from the supplier for your convenience.</p>
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% comment %}
+# Append JS files here for the page
+{% endcomment %}
+{% block extra_body %}
+{% endblock %}
