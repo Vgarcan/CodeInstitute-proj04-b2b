@@ -47,3 +47,35 @@ class CustomUser(AbstractUser):
         str: A string in the format 'username, role'.
         """
         return f'{self.username}, {self.role}'
+
+
+class Profile(models.Model):
+    """
+    A model to store additional user-specific information.
+    """
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+    user_name = models.CharField(max_length=255, blank=True, null=True)
+    country = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    postal_code = models.CharField(max_length=10, blank=True, null=True)
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    profile_picture = models.ImageField(
+        upload_to='profile_pictures/', blank=True, null=True)
+    bio = models.TextField(blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    facebook_url = models.URLField(blank=True, null=True)
+    twitter_url = models.URLField(blank=True, null=True)
+    instagram_url = models.URLField(blank=True, null=True)
+    linkedin_url = models.URLField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    is_verified = models.BooleanField(default=False)
+
+    def __str__(self):
+        """
+        Returns a string representation of the Profile object.
+        """
+        return f'{self.user.username} - {self.user.role}'

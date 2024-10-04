@@ -33,6 +33,14 @@ DEBUG = os.environ.get(('DJANGO_DEBUG'), False)
 ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1',
                  'localhost', '192.168.1.163', '192.168.2.116']
 
+# MEDIA SETTINGS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+# # STATIC SETTINGS
+# STATIC_URL = '/static/'
+# STATIC_ROOT = BASE_DIR / 'static'
+
 
 # Application definition
 
@@ -144,7 +152,7 @@ ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 # Specifies that email verification is optional. Other options are 'mandatory' or 'none'.
 # 'mandatory' means users must verify their email to use the account.
-ACCOUNT_EMAIL_VERIFICATION = 'optional'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 # Prefix added to the subject of all outgoing emails from the application, such as verification or password reset emails.
 ACCOUNT_EMAIL_SUBJECT_PREFIX = 'XemiDevs'
 # Sets the number of days before an email confirmation link expires.
