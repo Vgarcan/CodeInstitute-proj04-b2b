@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+Product Creation for {{ user.username}}
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+
+{% comment %}
+ CSS tag injection 
+{% endcomment %}
+{% block css_inpage %}
+{% endblock css_inpage %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+
+  <h2>Product Creation for {{ user.username }}</h2>
+  <form method="post" action="{% url 'products:create' %}">
+    {% csrf_token %}
+    {{ prod_form.as_p }}
+    <button type="submit">Create Product</button>
+  </form>
+{% endblock content %}
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extrabody %}
+{% endblock extrabody %}
+
+
+{% comment %}
+ JS tag injection 
+{% endcomment %}
+{% block js_inpage %}
+{% endblock js_inpage %}
