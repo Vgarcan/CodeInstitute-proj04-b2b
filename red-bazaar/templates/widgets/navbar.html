@@ -48,9 +48,12 @@
                         </li>
                         <hr class="w-50 text-center mx-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Profile</a>
+                            <a class="nav-link" href="{% url 'users:user_profile' %}">Profile</a>
                         </li>
                         <hr class="w-50 text-center mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                        </li>
                         
                        
                     {% else %}
@@ -86,3 +89,6 @@
         </div>
     </div>
 </nav>
+
+<!-- INFO messages -->
+{% include "widgets/alert.html" %}

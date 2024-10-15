@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 
+
 def home(request):
     return render(request, 'main/home.html')
 
@@ -24,6 +25,7 @@ def pricing(request):
 
 def terms(request):
     return render(request, 'main/tnc.html')
+
 
 def priv_pol(request):
     return render(request, 'main/priv-pol.html')

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% comment %}
+# Set the Title for the page
+{% endcomment %}
+{% block head_title %}
+  My profile
+{% endblock %}
+
+{% comment %}
+# Set the CSS file and Other for the page
+{% endcomment %}
+{% block extra_head %}
+{% endblock %}
+
+{% comment %}
+# Appends the content in the BODY tag
+{% endcomment %}
+{% block content %}
+    <h1>Profile of {{ user.username }} - {{ user.role }}</h1>
+    <hr>
+
+    <h2>Edit Profile Information</h2>
+
+    <!-- User form (username and email) -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}  <!-- Form for username and email -->
+
+        <!-- Profile form (other fields like address, city, etc.) -->
+        {{ profile_form.as_p }}  <!-- Form to edit profile details -->
+
+        <button type="submit">Save Changes</button>
+    </form>
+
+{% endblock %}
+{% comment %}
+# Append JS files here for the page
+{% endcomment %}
+{% block extra_body %}
+{% endblock %}

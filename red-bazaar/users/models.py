@@ -55,7 +55,7 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
-    user_name = models.CharField(max_length=255, blank=True, null=True)
+    full_name = models.CharField(max_length=255, blank=True, null=True)
     country = models.CharField(max_length=255, blank=True, null=True)
     city = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)

@@ -166,7 +166,7 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # URL to redirect users after they log out. In this case, it's set to the homepage ('/').
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 # URL to redirect users after they successfully log in.
-LOGIN_REDIRECT_URL = '/login-success'
+LOGIN_REDIRECT_URL = '/'
 # Automatically log in users immediately after they confirm their email address, skipping the login step.
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 
