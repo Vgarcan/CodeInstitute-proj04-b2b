@@ -22,17 +22,30 @@ class CustomUser(AbstractUser):
 
     BUYER = "BUY"
     SUPPLIER = "SUP"
+    STAFF = "STAFF"
     ROLES = {
         BUYER: "Buyer",
         SUPPLIER: "Supplier",
     }
 
-    role = models.CharField(max_length=3, choices=ROLES.items(), default=BUYER)
+    role = models.CharField(max_length=5, choices=ROLES.items())
 
     groups = models.ManyToManyField(Group, related_name='user_set_group')
     user_permissions = models.ManyToManyField(
         Permission, related_name='user_set_permissions'
     )
+
+    def save(self, *args, **kwargs):
+        """
+        Overriding the save method to automatically set the username to lowercase.
+        """
+        self.username = self.username.lower()
+        print(self.is_superuser, '----', self.is_staff)
+        #! NOT WORKING
+        if self.is_superuser or self.is_staff:
+            self.role = self.STAFF
+        #!############
+        super().save(*args, **kwargs)
 
     def __str__(self):
         """
@@ -46,7 +59,7 @@ class CustomUser(AbstractUser):
         Returns:
         str: A string in the format 'username, role'.
         """
-        return f'{self.username}, {self.role}'
+        return f'{self.username}'
 
 
 class Profile(models.Model):

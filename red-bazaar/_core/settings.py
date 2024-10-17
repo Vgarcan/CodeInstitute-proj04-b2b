@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     'allauth.account',
     # ... include the providers you want to enable:
     'allauth.socialaccount.providers.google',
+    # Extra Apps:
+    # Utilities for implementing Modified Preorder Tree Traversal with your Django Models and working with trees of Model instances.
+    'mptt',
     # Project's APPs:
     'main',
     'users',

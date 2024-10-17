@@ -1,6 +1,6 @@
 from allauth.account.forms import SignupForm
 from django import forms
-from .models import Product
+from .models import Product, Category
 
 # Define the custom form for user signup
 
@@ -14,6 +14,14 @@ class ProductForm(forms.ModelForm):
     """
 
     class Meta:
+        """ Modify thr Product Form behavior. """
         model = Product
         fields = ['name', 'description', 'price', 'quantity', 'category_id',
-                  'subcategory_id', 'image']  # Fields that will appear in the form
+                  'image']  # Fields that will appear in the form
+
+    def __init__(self, *args, **kwargs):
+        super(ProductForm, self).__init__(*args, **kwargs)
+        # Filter categories that are not parent categories (i.e., subcategories only)
+        # self.fields['category_id'].queryset = Category.objects.filter(
+        #     parent__isnull=False).order_by('name')
+        self.fields['category_id'].queryset = Category.objects.all()
