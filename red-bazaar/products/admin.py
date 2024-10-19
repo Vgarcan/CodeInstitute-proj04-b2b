@@ -18,4 +18,14 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Product, ProductAdmin)
 
-admin.site.register(Category, MPTTModelAdmin)
+
+# Customize the admin interface for the Category model
+
+class CategoryAdmin(MPTTModelAdmin):
+    mptt_level_indent = 30
+    list_display = ('name',)
+    list_display_links = ('name',)
+    search_fields = ('name',)
+
+
+admin.site.register(Category, CategoryAdmin)

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
 from .models import Product
+from users.models import CustomUser
 from django.contrib import messages
 from users.decorators import role_required
 
@@ -74,3 +75,95 @@ def create_edit_product(request, prd_id=None):
     return render(request, 'products/prod-creation.html', {
         'prod_form': product_form  # Pass the product form to the template.
     })
+
+
+def view_products(request, provider_id=None):
+    """
+    Retrieve and display products from the database based on the provided provider ID.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object.
+    provider_id (int, optional): The ID of the seller. If not provided, all products will be retrieved.
+
+    Returns:
+    HttpResponse: Rendered template with the products. If an error occurs, an error message will be displayed.
+    """
+
+    if provider_id is None:
+        # Fetch all products from the database.
+        products = Product.objects.all()
+    else:
+        # Fetch products from the database where the seller's ID matches the provided ID.
+        try:
+            # Check if the provided provider ID exists. If not, display an error message and redirect to the product list page.
+            if CustomUser.objects.get(id=provider_id).role != 'SUP':
+                messages.error(request, 'Invalid provider ID')
+                products = {}  # Creates an EMPTY value
+                return redirect('products:list')
+
+            else:
+                products = Product.objects.filter(seller_id=provider_id)
+        except Exception as e:
+            # Recognise the error and return the response as a message
+            messages.error(request, 'No product found')
+            messages.warning(request, f'ERROR: "{e.__class__.__name__}": {e}')
+            products = {}  # Creates an EMPTY value
+
+    # Render the template with the products.
+    return render(request, 'products/product-list.html', {'products': products})
+
+
+def delete_product(request, prd_id):
+    """
+    Deletes a product from the database based on the provided product ID.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object.
+    prd_id (int): The ID of the product to be deleted.
+
+    Returns:
+    HttpResponseRedirect: Redirects to the product list page after successful deletion.
+                        Displays an error message if the user does not have permission to delete the product.
+    """
+    # Retrieve the product by ID or return 404.
+    product = get_object_or_404(Product, pk=prd_id)
+    # Check if the current user is the seller of the product. If not, display an error message and redirect to the product list page.
+    if product.seller_id != request.user:
+        messages.error(
+            request, 'You do not have permission to delete this product.')
+        return redirect('products:list')
+    # Delete the product from the database.
+    product.delete()
+    # Show a success message to the user.
+    messages.success(request, 'Product deleted successfully')
+    # Redirect to the product list page.
+    return redirect('products:list')
+
+
+def view_product_detail(request, prd_id):
+    """
+    Retrieve and display the details of a product from the database based on the provided product ID.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object.
+    prd_id (int): The ID of the product to retrieve.
+
+    Returns:
+    HttpResponse: Rendered template with the product details. If the product with the given ID is not found, a 404 error page will be displayed.
+    """
+    # Retrieve the product by ID or return 404.
+    product = get_object_or_404(Product, pk=prd_id)
+    # Render the template with the product details.
+    return render(request, 'products/product-detail.html', {'product': product})
+
+
+def search_products(request):
+    """
+    This function retrieves products from the database based on the provided search query and renders them in a template.
+    """
+    # Retrieve the search query from the request.
+    query = request.GET.get('search')
+    # Filter the products based on the search query.
+    products = Product.objects.filter(name__icontains=query)
+    # Render the template with the filtered products.
+    return render(request, 'products/product-list.html', {'products': products})

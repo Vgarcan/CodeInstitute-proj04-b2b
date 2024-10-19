@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+{{ product.name}}
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+
+{% comment %}
+ CSS tag injection 
+{% endcomment %}
+{% block css_inpage %}
+{% endblock css_inpage %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+  <div class="container mt-4">
+      <h1 class="text-center">{{ product.name }}</h1>
+      <div class="row">
+          {% comment %} <div class="col-md-6">
+              <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
+          </div> {% endcomment %}
+          <div class="col-md-6">
+              <h2>Details</h2>
+              <p><strong>Price:</strong> ${{ product.price }}</p>
+              <p><strong>Quantity:</strong> {{ product.quantity }}</p>
+              <p><strong>Description:</strong> {{ product.description }}</p>
+              <p><strong>Rating:</strong> {{ product.rating }}</p>
+              <a href="{% url 'products:all' %}" class="btn btn-secondary">Back to Product List</a>
+          </div>
+      </div>
+  </div>
+{% endblock %}
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extrabody %}
+{% endblock extrabody %}
+
+
+{% comment %}
+ JS tag injection 
+{% endcomment %}
+{% block js_inpage %}
+{% endblock js_inpage %}
