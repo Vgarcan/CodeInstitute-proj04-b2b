@@ -15,6 +15,57 @@
     --accent-color: #c5855dc4;
 }
 
+:root {
+    --primary: #2E2E2E;
+    --secondary: #383838;
+    --success: #4CAF50;
+    --info: #5DADE2;
+    --warning: #FFC300;
+    --danger: #C0392B;
+    --light: #F4F4F4;
+    --dark: #1B1B1B;
+    --body-bg: #111111;
+    --body-color: #EAEAEA;
+    --muted-color: #9E9E9E;
+    --footer-bg: #383838;
+    --nav-bg: #2E2E2E;
+    --accent-color: #FF6F61;
+}
+
+:root {
+    --primary: #1A1A1A;
+    --secondary: #333333;
+    --success: #28A745;
+    --info: #3498DB;
+    --warning: #FFB74D;
+    --danger: #E74C3C;
+    --light: #FDFDFD;
+    --dark: #121212;
+    --body-bg: #0E0E0E;
+    --body-color: #F1F1F1;
+    --muted-color: #A3A3A3;
+    --footer-bg: #333333;
+    --nav-bg: #1A1A1A;
+    --accent-color: #FF8C00;
+}
+
+:root {
+    --primary: #232323;
+    --secondary: #424242;
+    --success: #3DDC84;
+    --info: #42A5F5;
+    --warning: #FFD54F;
+    --danger: #FF5252;
+    --light: #F7F7F7;
+    --dark: #101010;
+    --body-bg: #161616;
+    --body-color: #ECECEC;
+    --muted-color: #B5B5B5;
+    --footer-bg: #424242;
+    --nav-bg: #232323;
+    --accent-color: #FF7043;
+}
+
 
 /* Body and Global Styles */
 
@@ -298,7 +349,7 @@ thead {
     min-height: 400px;
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
-    background-position: center;
+    background-position: top;
     background-repeat: no-repeat;
     background-size: cover;
 }

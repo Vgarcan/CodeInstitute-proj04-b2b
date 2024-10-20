@@ -4,7 +4,7 @@
  Set the name of the page 
 {% endcomment %}
 {% block page_title %}
-{{ product.name}}
+{{ product.name}} details
 {% endblock page_title %}
 
 {% comment %}
@@ -27,9 +27,9 @@
   <div class="container mt-4">
       <h1 class="text-center">{{ product.name }}</h1>
       <div class="row">
-          {% comment %} <div class="col-md-6">
-              <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
-          </div> {% endcomment %}
+          <div class="col-md-6">
+              <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
+          </div> 
           <div class="col-md-6">
               <h2>Details</h2>
               <p><strong>Price:</strong> ${{ product.price }}</p>
