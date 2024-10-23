@@ -254,53 +254,82 @@ def view_shopping_cart(request):
     # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
     products = Product.objects.filter(id__in=shopping_cart.keys())
 
-   # Prepare a list of product details along with quantities and subtotals
-    cart_items = []
+    # Prepare a dictionary to group products by seller_id
+    cart_items = {}
     for product in products:
         quantity = shopping_cart.get(str(product.id), 0)
         subtotal = product.price * quantity
-        print("========> " + str(quantity))
-        print("========> " + str(subtotal))
-        cart_items.append({
+        seller_id = product.seller_id
+
+        # Add the product to the corresponding seller's list in the dictionary
+        if seller_id not in cart_items:
+            cart_items[seller_id] = []
+
+        cart_items[seller_id].append({
             'product': product,
             'quantity': quantity,
             'subtotal': subtotal
         })
+
+    # ################# TESTING ####################################
+    print("=======>", cart_items)
+
+    for user, list in cart_items.items():
+        print("==>", user)
+        for product in list:
+            for item in product.values():
+                print(item)
+    ################################################################
 
     total_cost = request.session['cart_total']
 
     # Render the template with the shopping cart items.
     # Pass the products and total cost as context variables to the template.
     return render(request, 'products/shopping-cart.html', {
-        'products': cart_items,
+        'cart_items': cart_items,
         'total_cost': total_cost
     })
 
 
 @role_required('BUY')
-def remove_product(request, prd_id):
+def remove_product(request, prd_id, quantity):
     """
-    Remove a product from the user's shopping cart based on the provided product ID.
+    Remove a specific quantity of a product from the user's shopping cart based on the provided product ID.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object.
+    prd_id (int): The ID of the product to remove.
+    quantity (int): The quantity to remove from the cart.
+
+    Returns:
+    HttpResponseRedirect: Redirects to the shopping cart page after successful removal.
     """
     # Get the current user's shopping cart from the session.
     shopping_cart = request.session.get('shopping_cart', {})
-    print("in the shopping cart before delete: ", shopping_cart)
 
-    # Remove the product from the shopping cart if it exists.
+    # Check if the product exists in the cart
     if prd_id in shopping_cart:
-        print('Removing product from shopping cart')
-        del shopping_cart[prd_id]
+        current_quantity = shopping_cart[prd_id]
+
+        # If the selected quantity is greater than or equal to the current quantity, remove the product
+        if quantity >= current_quantity:
+            del shopping_cart[prd_id]
+            messages.success(
+                request,
+                f'Removed {current_quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.'
+            )
+        else:
+            # Otherwise, reduce the quantity
+            shopping_cart[prd_id] -= quantity
+            messages.success(
+                request,
+                f'Removed {quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.'
+            )
 
     # Update the shopping cart in the session
-        request.session['shopping_cart'] = shopping_cart
+    request.session['shopping_cart'] = shopping_cart
 
-    print("in the shopping cart after delete remains: ", shopping_cart)
-
-    # Show a success message to the user.
-    messages.success(request,
-                     f'Product removed from cart: {
-                         Product.objects.get(id=prd_id).name}'
-                     )
-
-    # Redirect to the shopping cart page.
+    # Redirect to the shopping cart page
     return redirect('products:view-cart')
