@@ -246,9 +246,7 @@ def view_shopping_cart(request):
     # Get the current user's shopping cart from the session.
     # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
     shopping_cart = request.session.get('shopping_cart', {})
-
-    print(shopping_cart)
-    print(request.session['cart_total'])
+    total_cost = request.session.get('cart_total', 0)
 
     # Retrieve the products from the shopping cart based on their IDs.
     # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
@@ -261,6 +259,9 @@ def view_shopping_cart(request):
         subtotal = product.price * quantity
         seller_id = product.seller_id
 
+        # Calculates the max quantity the user can add (product stock - current quantity in cart)
+        max_add_quantity = product.quantity - quantity
+
         # Add the product to the corresponding seller's list in the dictionary
         if seller_id not in cart_items:
             cart_items[seller_id] = []
@@ -268,7 +269,8 @@ def view_shopping_cart(request):
         cart_items[seller_id].append({
             'product': product,
             'quantity': quantity,
-            'subtotal': subtotal
+            'subtotal': subtotal,
+            'max_add_quantity': max_add_quantity
         })
 
     # ################# TESTING ####################################
@@ -281,7 +283,7 @@ def view_shopping_cart(request):
                 print(item)
     ################################################################
 
-    total_cost = request.session['cart_total']
+    # total_cost = request.session['cart_total']
 
     # Render the template with the shopping cart items.
     # Pass the products and total cost as context variables to the template.

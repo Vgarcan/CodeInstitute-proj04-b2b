@@ -28,35 +28,56 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'main:home' %}">Home</a>
                     </li>
-                    <hr class="w-50 text-center mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'main:about' %}">About</a>
-                    </li>
-                    <hr class="w-50 text-center mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'main:contact' %}">Contact</a>
-                    </li>
-                    <hr class="w-50 text-center mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{% url 'main:terms' %}">Terms & Conditions</a>
-                    </li>
-                    <hr class="w-50 text-center mx-auto">
+                    <hr class="w-50 text-center mx-auto d-block d-md-none">
+                    
                     
                     {% if user.is_authenticated %}           
                     <li class="nav-item">
                             <a class="nav-link" href="#">Dashboard</a>
                         </li>
-                        <hr class="w-50 text-center mx-auto">
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:user_profile' %}">Profile</a>
                         </li>
-                        <hr class="w-50 text-center mx-auto">
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
+                        {% if user.role == 'BUY' %}
+                        
+                            <!-- Buyer-specific links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'products:view-cart' %}">Cart</a>
+                            </li>
+                            <hr class="w-50 text-center mx-auto d-block d-md-none">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'products:all' %}">All Products</a>
+                            </li>
+                            <hr class="w-50 text-center mx-auto d-block d-md-none">
+                        
+                        {% elif user.role == 'SUP' %}
+                        
+                            <!-- Supplier-specific links -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'products:add-product' %}">Add Products</a>
+                            </li>
+                        {% endif %}
                         
                        
                     {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'main:about' %}">About</a>
+                        </li>
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'main:contact' %}">Contact</a>
+                        </li>
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'main:terms' %}">Terms & Conditions</a>
+                        </li>
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
                         <!-- User Login/Register Links -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Log In/Sign UP</a>
@@ -73,7 +94,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <hr class="w-50 text-center mx-auto">
+                        <hr class="w-50 text-center mx-auto d-block d-md-none">
                         
                     {% endif %}
                 </ul>

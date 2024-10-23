@@ -25,34 +25,61 @@
 {% endcomment %}
 {% block content %}
 <div class="container mt-4">
-    <h1 class="text-center">{{ product.name }}</h1>
+    <!-- Product Title -->
+    <h1 class="text-center mb-4">{{ product.name }}</h1>
+
+    <!-- Product Details Row -->
     <div class="row">
-        <div class="col-md-6">
-            <img src="{{ product.image }}" class="img-fluid" alt="{{ product.name }}">
-        </div> 
-        <div class="col-md-6">
-              <h2>Details</h2>
-              <p><strong>Supplier:</strong> {{ product.seller_id }}</p>
-              <p><strong>Price:</strong> ${{ product.price }}</p>
-              <p><strong>Quantity:</strong> {{ product.quantity }}</p>
-              <p><strong>Description:</strong> {{ product.description }}</p>
-              <p><strong>Rating:</strong> {{ product.rating }}</p>
-
-              <!-- Quantity Input -->
-              <label for="quantity">Select Quantity:</label>
-              <input type="number" name="quantity" id="quantity" min="1" max="{{ product.quantity }}" value="1">
-              
-              <!-- Add to basket -->
-              <a href="{% url 'products:add-cart' product.id 1 %}" id="addToCartBtn" class="btn btn-secondary">
-                  Add to basket
-              </a>
-
-            </div>
-            <!-- Botón para regresar a la lista de productos -->
-            <a href="{% url 'products:all' %}" class="btn btn-secondary">Back to Product List</a>
+        <!-- Product Image -->
+        <div class="col-md-6 mb-4">
+            <img src="{{ product.image }}" class="img-fluid border rounded shadow-sm" alt="{{ product.name }}">
         </div>
+
+        <!-- Product Information -->
+        <div class="col-md-6">
+            <div class="card p-4 border-light shadow-sm">
+                <h2 class="mb-3">Product Details</h2>
+
+                <!-- Supplier -->
+                <p class="mb-2"><strong>Supplier:</strong> {{ product.seller_id }}</p>
+
+                <!-- Price -->
+                <p class="mb-2"><strong>Price:</strong> <span class="text-success">${{ product.price }}</span></p>
+
+                <!-- Available Quantity -->
+                <p class="mb-2"><strong>Available Quantity:</strong> {{ product.quantity }}</p>
+
+                <!-- Description -->
+                <p class="mb-2"><strong>Description:</strong> {{ product.description }}</p>
+
+                <!-- Rating -->
+                <p class="mb-4"><strong>Rating:</strong> 
+                    <span class="badge badge-warning">{{ product.rating }} <i class="fas fa-star"></i></span>
+                </p>
+
+                <!-- Select Quantity -->
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Select Quantity:</label>
+                    <input type="number" name="quantity" id="quantity" class="form-control w-25 d-inline" min="1" max="{{ product.quantity }}" value="1">
+                </div>
+
+                <!-- Add to Basket Button -->
+                <div class="mb-3">
+                    <a href="{% url 'products:add-cart' product.id 1 %}" id="addToCartBtn" class="btn btn-primary btn-lg">
+                        <i class="fas fa-shopping-cart"></i> Add to basket
+                    </a>
+                </div>
+
+                <!-- Back to Product List Button -->
+                <a href="{% url 'products:all' %}" class="btn btn-outline-secondary btn-lg">
+                    <i class="fas fa-arrow-left"></i> Back to Product List
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
+
 
 {% comment %}
  To the bottom of the body tag 
