@@ -201,8 +201,19 @@ def add_product(request, prd_id, quantity):
         request.session["shopping_cart"] = {}
 
     # Update the shopping cart with the added product.
+    # If the product already exists in the shopping cart, increment the quantity.
     if prd_id in request.session["shopping_cart"]:
-        request.session["shopping_cart"][prd_id] += quantity
+        # Checks if the is enough to add the product
+        total_in_cart = request.session["shopping_cart"][prd_id]
+        to_add = total_in_cart + quantity
+        if to_add <= product_qnt:
+            request.session["shopping_cart"][prd_id] += quantity
+        else:
+            messages.error(request, "No more available products")
+            # Redirect to the product detail page.
+            return redirect("products:item-view", prd_id=prd_id)
+
+    # If product not in the shopping cart, creates a new one
     else:
         request.session["shopping_cart"][prd_id] = quantity
 
@@ -219,3 +230,77 @@ def add_product(request, prd_id, quantity):
 
     # Redirect to the product detail page.
     return redirect("products:item-view", prd_id=prd_id)
+
+
+@role_required('BUY')
+def view_shopping_cart(request):
+    """
+    Retrieve and display the items in the user's shopping cart.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object. This object contains information about the client's request, including session data.
+
+    Returns:
+    HttpResponse: Rendered template with the shopping cart items. The template displays the products in the user's cart along with their total cost.
+    """
+    # Get the current user's shopping cart from the session.
+    # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
+    shopping_cart = request.session.get('shopping_cart', {})
+
+    print(shopping_cart)
+    print(request.session['cart_total'])
+
+    # Retrieve the products from the shopping cart based on their IDs.
+    # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
+    products = Product.objects.filter(id__in=shopping_cart.keys())
+
+   # Prepare a list of product details along with quantities and subtotals
+    cart_items = []
+    for product in products:
+        quantity = shopping_cart.get(str(product.id), 0)
+        subtotal = product.price * quantity
+        print("========> " + str(quantity))
+        print("========> " + str(subtotal))
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'subtotal': subtotal
+        })
+
+    total_cost = request.session['cart_total']
+
+    # Render the template with the shopping cart items.
+    # Pass the products and total cost as context variables to the template.
+    return render(request, 'products/shopping-cart.html', {
+        'products': cart_items,
+        'total_cost': total_cost
+    })
+
+
+@role_required('BUY')
+def remove_product(request, prd_id):
+    """
+    Remove a product from the user's shopping cart based on the provided product ID.
+    """
+    # Get the current user's shopping cart from the session.
+    shopping_cart = request.session.get('shopping_cart', {})
+    print("in the shopping cart before delete: ", shopping_cart)
+
+    # Remove the product from the shopping cart if it exists.
+    if prd_id in shopping_cart:
+        print('Removing product from shopping cart')
+        del shopping_cart[prd_id]
+
+    # Update the shopping cart in the session
+        request.session['shopping_cart'] = shopping_cart
+
+    print("in the shopping cart after delete remains: ", shopping_cart)
+
+    # Show a success message to the user.
+    messages.success(request,
+                     f'Product removed from cart: {
+                         Product.objects.get(id=prd_id).name}'
+                     )
+
+    # Redirect to the shopping cart page.
+    return redirect('products:view-cart')
