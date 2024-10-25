@@ -66,6 +66,7 @@ def create_order(request):
     return redirect('orders:confirmation')  # Redirect to order confirmation
 
 
+@role_required('BUY')
 def confirm_order(request):
     """
     Displays the order confirmation page with the user's orders.
@@ -73,3 +74,25 @@ def confirm_order(request):
     messages.success(request, "Order confirmation!")
 
     return redirect('main:home')
+
+
+@role_required('BUY')
+def order_detail(request, order_id):
+    """
+    Displays the details of a specific order.
+    """
+    order = Order.objects.get(id=order_id)
+    order_items = OrderItem.objects.filter(order=order)
+    return render(request, 'orders/order_detail.html', {'order': order, 'order_items': order_items})
+
+
+@role_required('SUP')
+def update_order(request, order_id):
+    """
+    Allows a supplier to update the status of an order.
+    """
+    order = Order.objects.get(id=order_id)
+    order.status = request.POST.get('status')
+    order.save()
+    messages.success(request, "Order status updated!")
+    return redirect('orders:order-detail', order_id=order_id)
