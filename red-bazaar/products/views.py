@@ -4,6 +4,7 @@ from .models import Product
 from users.models import CustomUser
 from django.contrib import messages
 from users.decorators import role_required
+from utils import sup_dict
 
 # Create your views here.
 
@@ -253,37 +254,8 @@ def view_shopping_cart(request):
     products = Product.objects.filter(id__in=shopping_cart.keys())
 
     # Prepare a dictionary to group products by seller_id
-    cart_items = {}
-    for product in products:
-        quantity = shopping_cart.get(str(product.id), 0)
-        subtotal = product.price * quantity
-        seller_id = product.seller_id
-
-        # Calculates the max quantity the user can add (product stock - current quantity in cart)
-        max_add_quantity = product.quantity - quantity
-
-        # Add the product to the corresponding seller's list in the dictionary
-        if seller_id not in cart_items:
-            cart_items[seller_id] = []
-
-        cart_items[seller_id].append({
-            'product': product,
-            'quantity': quantity,
-            'subtotal': subtotal,
-            'max_add_quantity': max_add_quantity
-        })
-
-    # ################# TESTING ####################################
-    print("=======>", cart_items)
-
-    for user, list in cart_items.items():
-        print("==>", user)
-        for product in list:
-            for item in product.values():
-                print(item)
-    ################################################################
-
-    # total_cost = request.session['cart_total']
+    # imported from UTILS.PY
+    cart_items = sup_dict(shopping_cart, source="cart")
 
     # Render the template with the shopping cart items.
     # Pass the products and total cost as context variables to the template.

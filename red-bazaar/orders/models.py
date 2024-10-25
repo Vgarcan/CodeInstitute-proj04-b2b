@@ -33,7 +33,7 @@ class Order(models.Model):
         max_length=10, choices=STATUS_CHOICES, default='pending')
 
     def __str__(self):
-        return f"Order by {self.buyer} from {self.seller} on {self.ordered_on}"
+        return f"{str(self.buyer).upper()} from {str(self.seller).upper()} on {self.ordered_on}"
 
 
 class OrderItem(models.Model):
@@ -58,4 +58,4 @@ class OrderItem(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"{self.quantity} of {self.product.name} for {self.order}"
+        return f"{self.quantity} of {str(self.product.name).upper()} for {self.order}"
