@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from allauth.account.views import LoginView, SignupView
 from .forms import CustomUserForm, ProfileForm
+from products.models import Product
+from orders.models import Order, OrderItem
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -106,3 +108,32 @@ def edit_profile(request):
         'user_form': user_form,
         'profile_form': profile_form,
     })
+
+
+@login_required
+def dashboard(request):
+    """
+    View to display the user's dashboard.
+    This view allows authenticated users to view and manage their products, orders, etc.
+    """
+    user = request.user
+
+    # Data to pass to the template
+    context = {
+        'user': user,
+    }
+
+    if user.role == 'SUP':  # Supplier dashboard
+        products = Product.objects.filter(seller_id=user)
+        received_orders = Order.objects.filter(
+            seller=user)  # Orders for the supplier
+
+        context['products'] = products
+        context['received_orders'] = received_orders
+
+    elif user.role == 'BUY':  # Buyer dashboard
+        orders = Order.objects.filter(buyer=user)  # Orders placed by the buyer
+
+        context['orders'] = orders
+
+    return render(request, 'users/dashboard.html', context)

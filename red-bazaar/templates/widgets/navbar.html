@@ -33,7 +33,7 @@
                     
                     {% if user.is_authenticated %}           
                     <li class="nav-item">
-                            <a class="nav-link" href="#">Dashboard</a>
+                            <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
                         </li>
                         <hr class="w-50 text-center mx-auto d-block d-md-none">
                         <li class="nav-item">
@@ -60,7 +60,7 @@
                         
                             <!-- Supplier-specific links -->
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'products:add-product' %}">Add Products</a>
+                                <a class="nav-link" href="{% url 'products:create' %}">Add Products</a>
                             </li>
                         {% endif %}
                         

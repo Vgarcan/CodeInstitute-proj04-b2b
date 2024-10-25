@@ -4,5 +4,5 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(ShoppingList)
-admin.site.register(OrderList)
+admin.site.register(Order)
+admin.site.register(OrderItem)

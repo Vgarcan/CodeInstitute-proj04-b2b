@@ -335,3 +335,31 @@ def remove_product(request, prd_id, quantity):
 
     # Redirect to the shopping cart page
     return redirect('products:view-cart')
+
+
+@role_required('BUY')
+def checkout(request):
+    """
+    This function processes the user's checkout request and redirects them to the payment gateway.
+    Parameters:
+    request (HttpRequest): The HTTP request object. This object contains information about the client's request, including session data.
+    Returns:
+    HttpResponseRedirect: Redirects the user to the payment gateway.
+    """
+    # Get the current user's shopping cart from the session.
+    shopping_cart = request.session.get('shopping_cart', {})
+    total_cost = request.session.get('cart_total', 0)
+
+    # If the shopping cart is empty, redirect the user to the product list
+    if not shopping_cart:
+        messages.error(request, 'Your shopping cart is empty.')
+        return redirect('products:list')
+
+    # If the total cost is zero, redirect the user to the product list
+    if total_cost == 0:
+        messages.error(
+            request, 'Your shopping cart does not contain any items.')
+        return redirect('products:list')
+
+    # Redirect the user to the payment gateway
+    return redirect('payments:process-payment', total_cost)

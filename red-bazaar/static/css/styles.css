@@ -15,7 +15,8 @@
     --accent-color: #c5855dc4;
 }
 
-:root {
+
+/* :root {
     --primary: #2E2E2E;
     --secondary: #383838;
     --success: #4CAF50;
@@ -30,9 +31,10 @@
     --footer-bg: #383838;
     --nav-bg: #2E2E2E;
     --accent-color: #FF6F61;
-}
+} */
 
-:root {
+
+/* :root {
     --primary: #1A1A1A;
     --secondary: #333333;
     --success: #28A745;
@@ -47,9 +49,10 @@
     --footer-bg: #333333;
     --nav-bg: #1A1A1A;
     --accent-color: #FF8C00;
-}
+} */
 
-:root {
+
+/* :root {
     --primary: #232323;
     --secondary: #424242;
     --success: #3DDC84;
@@ -64,7 +67,7 @@
     --footer-bg: #424242;
     --nav-bg: #232323;
     --accent-color: #FF7043;
-}
+} */
 
 
 /* Body and Global Styles */
