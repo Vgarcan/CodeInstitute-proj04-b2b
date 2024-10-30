@@ -1,127 +1,142 @@
+/* First root - Base colour definitions */
+
 :root {
-    --primary: #BB917A;
-    --secondary: #606E83;
-    --success: #7C6669;
-    --info: #495C78;
-    --warning: #C3A08A;
-    --danger: #1D2742;
-    --light: #E9ECEF;
-    --dark: #584F63;
-    --body-bg: #F7F7F7;
-    --body-color: #1D2742;
-    --muted-color: #748A9D;
-    --footer-bg: #495C78;
-    --nav-bg: #495C78;
-    --accent-color: #c5855dc4;
+    --colour-primary-light: #f8d7da;
+    --colour-primary: #b71c1c;
+    --colour-primary-dark: #7f0000;
+    --colour-secondary-light: #f5f5f5;
+    --colour-secondary: #424242;
+    --colour-secondary-dark: #212121;
+    --colour-accent: #d32f2f;
+    --colour-accent-light: #ffcccc;
+    --colour-accent-dark: #8c1d1d;
+    --colour-background-light: #f7f7f7;
+    --colour-background: #ffffff;
+    --colour-background-dark: #e0e0e0;
+    --colour-text-light: #ffffff;
+    --colour-text-dark: #2e2e2e;
+    --colour-text-muted: #616161;
+}
+
+:root {
+    --colour-primary-light: #fde2e1;
+    --colour-primary: #e57373;
+    --colour-primary-dark: #c62828;
+    --colour-secondary-light: #f0f0f0;
+    --colour-secondary: #b0b0b0;
+    --colour-secondary-dark: #424242;
+    --colour-accent: #f48fb1;
+    --colour-accent-light: #ffd1dc;
+    --colour-accent-dark: #ad1457;
+    --colour-background-light: #fafafa;
+    --colour-background: #ffffff;
+    --colour-background-dark: #e6e6e6;
+    --colour-text-light: #ffffff;
+    --colour-text-dark: #424242;
+    --colour-text-muted: #757575;
 }
 
 
 /* :root {
-    --primary: #2E2E2E;
-    --secondary: #383838;
-    --success: #4CAF50;
-    --info: #5DADE2;
-    --warning: #FFC300;
-    --danger: #C0392B;
-    --light: #F4F4F4;
-    --dark: #1B1B1B;
-    --body-bg: #111111;
-    --body-color: #EAEAEA;
-    --muted-color: #9E9E9E;
-    --footer-bg: #383838;
-    --nav-bg: #2E2E2E;
-    --accent-color: #FF6F61;
+    --colour-primary-light: #d7f5f4;
+    --colour-primary: #00695c;
+    --colour-primary-dark: #004d40;
+    --colour-secondary-light: #e2f3fa;
+    --colour-secondary: #1565c0;
+    --colour-secondary-dark: #0d47a1;
+    --colour-accent: #388e3c;
+    --colour-accent-light: #a5d6a7;
+    --colour-accent-dark: #1b5e20;
+    --colour-background-light: #fafafa;
+    --colour-background: #ffffff;
+    --colour-background-dark: #cfd8dc;
+    --colour-text-light: #ffffff;
+    --colour-text-dark: #212121;
+    --colour-text-muted: #757575;
 } */
 
 
-/* :root {
-    --primary: #1A1A1A;
-    --secondary: #333333;
-    --success: #28A745;
-    --info: #3498DB;
-    --warning: #FFB74D;
-    --danger: #E74C3C;
-    --light: #FDFDFD;
-    --dark: #121212;
-    --body-bg: #0E0E0E;
-    --body-color: #F1F1F1;
-    --muted-color: #A3A3A3;
-    --footer-bg: #333333;
-    --nav-bg: #1A1A1A;
-    --accent-color: #FF8C00;
-} */
+/* Second root - Thematic assignment for Bootstrap overrides */
 
-
-/* :root {
-    --primary: #232323;
-    --secondary: #424242;
-    --success: #3DDC84;
-    --info: #42A5F5;
-    --warning: #FFD54F;
-    --danger: #FF5252;
-    --light: #F7F7F7;
-    --dark: #101010;
-    --body-bg: #161616;
-    --body-color: #ECECEC;
-    --muted-color: #B5B5B5;
-    --footer-bg: #424242;
-    --nav-bg: #232323;
-    --accent-color: #FF7043;
-} */
+:root {
+    /* Primary (Buttons, links, highlights) */
+    --bs-primary: var(--colour-primary);
+    --bs-primary-light: var(--colour-primary-light);
+    --bs-primary-dark: var(--colour-primary-dark);
+    /* Secondary (Complementary elements) */
+    --bs-secondary: var(--colour-secondary);
+    --bs-secondary-light: var(--colour-secondary-light);
+    --bs-secondary-dark: var(--colour-secondary-dark);
+    /* Accent (For calls-to-action or important notices) */
+    --bs-accent: var(--colour-accent);
+    --bs-accent-light: var(--colour-accent-light);
+    /* Background colours */
+    --bs-background: var(--colour-background);
+    --bs-background-light: var(--colour-background-light);
+    --bs-background-dark: var(--colour-background-dark);
+    /* Text colours */
+    --bs-text-light: var(--colour-text-light);
+    --bs-text-dark: var(--colour-text-dark);
+    --bs-text-muted: var(--colour-text-muted);
+}
 
 
 /* Body and Global Styles */
 
 body {
-    background-color: var(--body-bg);
-    color: var(--body-color);
+    background-color: var(--colour-background-light);
+    color: var(--colour-text-dark);
     font-family: 'Helvetica', sans-serif;
     line-height: 1.6;
 }
 
 li {
     list-style-type: none;
-    --bs-navbar-active-color: var(--warning)
 }
 
 
 /* Navigation Bar */
 
 nav {
-    background-color: var(--nav-bg);
-    color: var(--light);
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-brand,
 .nav-link {
-    color: var(--light);
-    font-size: 400;
+    color: var(--bs-primary-light);
+    font-weight: 400;
     transition: color 0.3s ease;
-    &:hover {
-        color: var(--primary);
-    }
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: var(--bs-secondary-dark);
 }
 
 .dropdown-menu {
-    background-color: var(--nav-bg);
+    background-color: var(--colour-primary-dark);
     border: none;
     text-align: center;
 }
 
+.sidebar .nav-link {
+    color: var(--bs-secondary);
+}
 
-/* .navbar-brand:hover,
-.nav-link:hover {
-    color: var(--primary);
-} */
+.sidebar .nav-link:hover {
+    background-color: var(--bs-background-dark);
+    color: var(--bs-accent);
+}
 
 
 /* Footer */
 
 footer {
-    background-color: var(--footer-bg);
-    color: var(--light);
+    background-color: var(--colour-secondary-dark);
+    color: var(--colour-text-light);
     padding-top: 2rem;
     padding-bottom: 2rem;
     text-align: center;
@@ -130,14 +145,15 @@ footer {
 }
 
 footer a {
-    color: var(--accent-color);
+    color: var(--colour-accent);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 400;
     font-size: 1.1rem;
-    &:hover {
-        color: var(--primary);
-    }
+}
+
+footer a:hover {
+    color: var(--colour-primary);
 }
 
 
@@ -147,9 +163,15 @@ section {
     margin-top: 3rem;
     margin-bottom: 3rem;
     padding: 1.5rem;
-    background-color: var(--light);
+    background-color: var(--colour-background);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.homesect h1,
+.homesect p {
+    background-color: rgba(249, 249, 249, 0.5);
+    border-radius: 20px;
 }
 
 
@@ -159,8 +181,8 @@ section {
     margin-top: 4rem;
     margin-bottom: 4rem;
     padding: 1.5rem;
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
     text-align: center;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
@@ -171,79 +193,69 @@ section {
 
 button,
 .btn-primary {
-    background-color: var(--accent-color);
-    color: var(--light);
+    background-color: var(--colour-accent);
+    color: var(--colour-text-light);
     border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    &:hover {
-        background-color: var(--primary);
-        cursor: pointer;
-    }
-    &:active {
-        background-color: var(--body-color);
-        color: var(--light);
-        --bs-btn-active-bg: var(--body-color)
-    }
 }
 
-.btn-success {
-    background-color: var(--muted-color);
-    color: var(--light);
-    border: none;
-    /* padding: 0.75rem 1.5rem; */
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    &:hover {
-        background-color: var(--primary);
-        cursor: pointer;
-    }
+button:hover,
+.btn-primary:hover {
+    background-color: var(--colour-primary);
+    cursor: pointer;
+}
+
+button:active,
+.btn-primary:active {
+    background-color: var(--colour-text-dark);
+    color: var(--colour-text-light);
 }
 
 
 /* Alerts */
 
 .alert-primary {
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
     border-radius: 4px;
     padding: 1rem;
 }
 
 .alert-success {
-    background-color: var(--success);
-    color: var(--light);
+    background-color: var(--colour-secondary);
+    color: var(--colour-text-light);
 }
 
 .alert-info {
-    background-color: var(--info);
-    color: var(--light);
+    background-color: var(--colour-accent-light);
+    color: var(--colour-text-dark);
 }
 
 .alert-warning {
-    background-color: var(--warning);
-    color: var(--dark);
+    background-color: var(--colour-primary-light);
+    color: var(--colour-primary-dark);
 }
 
 .alert-danger {
-    background-color: var(--danger);
-    color: var(--light);
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
 }
 
 
 /* Card Styles */
 
 .card {
-    background-color: var(--light);
-    border: 1px solid var(--muted-color);
+    background-color: var(--colour-background);
+    border: 1px solid var(--colour-secondary-light);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
 }
 
 .card-body {
@@ -257,8 +269,8 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 textarea {
-    background-color: var(--light);
-    border: 1px solid var(--muted-color);
+    background-color: var(--colour-background);
+    border: 1px solid var(--colour-secondary-light);
     padding: 0.75rem;
     border-radius: 4px;
     width: 100%;
@@ -270,12 +282,12 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="password"]:focus,
 textarea:focus {
-    border-color: var(--primary);
+    border-color: var(--colour-primary);
     outline: none;
 }
 
 label {
-    color: var(--body-color);
+    color: var(--colour-text-dark);
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
@@ -291,7 +303,7 @@ table {
 table,
 th,
 td {
-    border: 1px solid var(--muted-color);
+    border: 1px solid var(--colour-secondary-light);
 }
 
 th,
@@ -301,26 +313,26 @@ td {
 }
 
 thead {
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
 }
 
 
 /* Modals */
 
 .modal-content {
-    background-color: var(--light);
+    background-color: var(--colour-background);
     border-radius: 8px;
 }
 
 .modal-header {
-    background-color: var(--primary);
-    color: var(--light);
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
 }
 
 .modal-footer {
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
 }
 
 
@@ -331,26 +343,27 @@ thead {
 }
 
 .page-link {
-    color: var(--primary);
+    color: var(--colour-primary);
 }
 
 .page-link:hover {
-    color: var(--light);
-    background-color: var(--primary);
+    color: var(--colour-text-light);
+    background-color: var(--colour-primary);
 }
 
 .page-item.active .page-link {
-    background-color: var(--primary);
-    border-color: var(--primary);
+    background-color: var(--colour-primary);
+    border-color: var(--colour-primary);
 }
+
+
+/* Intro Section */
 
 #intro-section {
     background-image: url("../imgs/banner-1.webp");
     margin-top: 0;
     border-radius: 10% 30% 50% 70%;
-    /* Set a specific height */
     min-height: 400px;
-    /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: top;
     background-repeat: no-repeat;
