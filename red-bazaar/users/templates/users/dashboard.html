@@ -133,9 +133,24 @@
                                 <td>{{ order.status }}</td>
                                 <td>${{ order.total_price }}</td>
                                 {# Link to Update Order Status #}
-                                <td><a href="{% url 'orders:update_order' order.id %}" class="btn btn-success btn-sm">Update Status</a></td>
+                                <td>
+                                    <select name="status-update-for-{{ order.id }}" id="actions-status-for-{{ order.id }}" onchange="updateStatusURL({{ order.id }})" {% if order.status == "completed" or order.status == "cancelled" %}disabled{% endif %}>
+                                        <option value="pending" {% if order.status == "pending" %}selected{% endif %}>Pending</option>
+                                        <option value="processing" {% if order.status == "processing" %}selected{% endif %}>Processing</option>
+                                        <option value="shipped" {% if order.status == "shipped" %}selected{% endif %}>Shipped</option>
+                                        <option value="delivered" {% if order.status == "delivered" %}selected{% endif %}>Delivered</option>
+                                        <option value="cancelled" {% if order.status == "cancelled" %}selected{% endif %}>Cancelled</option>
+                                        <option value="completed" {% if order.status == "completed" %}selected{% endif %}>Completed</option>
+                                    </select>
+                                    {% if order.status != "completed" and order.status != "cancelled" %}
+                                        <a href="#" data-url="{% url 'orders:update_order' order.id 'NEWSTATUS' %}" id="update-button-{{ order.id }}" class="btn btn-success btn-sm update-status">Update Status</a>
+                                    {% endif %}
+                                </td>
                             </tr>
                             {% endfor %}
+
+
+
                         </tbody>
                     </table>
                 {% else %}
@@ -193,5 +208,17 @@
 {% comment %}
 # Append JS files here for the page
 {% endcomment %}
-{% block extra_body %}
+{% block js_inpage %}
+
+    // Update the URL in the update button
+    function updateStatusURL(orderId) {
+        // Get the selected status from the dropdown
+        const selectedStatus = document.getElementById(`actions-status-for-${orderId}`).value;
+        // Get the button and the base URL from its data attribute
+        const updateButton = document.getElementById(`update-button-${orderId}`);
+        const baseURL = updateButton.getAttribute('data-url');
+        // Update the button's href with the selected status
+        updateButton.href = baseURL.replace('NEWSTATUS', selectedStatus);
+    }
+ 
 {% endblock %}

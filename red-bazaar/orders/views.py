@@ -87,12 +87,12 @@ def order_detail(request, order_id):
 
 
 @role_required('SUP')
-def update_order(request, order_id):
+def update_order(request, order_id, order_status):
     """
     Allows a supplier to update the status of an order.
     """
     order = Order.objects.get(id=order_id)
-    order.status = request.POST.get('status')
+    order.status = order_status
     order.save()
     messages.success(request, "Order status updated!")
-    return redirect('orders:order-detail', order_id=order_id)
+    return redirect('users:dashboard')

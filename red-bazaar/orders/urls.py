@@ -9,7 +9,7 @@ urlpatterns = [
     path('order-details/<str:order_id>',
          views.order_detail, name='order_details'),
     path('order-confirmation', views.confirm_order, name='confirmation'),
-    path('update-order-status/<str:order_id>',
+    path('update-order-status/<str:order_id>/<str:order_status>',
          views.update_order, name='update_order'),
 
 ]
