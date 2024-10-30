@@ -86,6 +86,13 @@ Shopping Cart for {{ user.username }}
         <div class="text-right mt-4">
             <h3>Total: <span class="text-success">${{ total_cost }}</span></h3>
         </div>
+
+        <!-- Checkout Buttons -->
+        <div class="text-left mt-4 hstack gap-3">
+            <a href="{% url 'products:all' %}" class="btn btn-primary btn-lg p-2 ms-auto">Continue Shopping</a>
+            <div class="vr"></div>
+            <a href="{% url 'orders:place_order' %}" class="btn btn-primary btn-lg p-2">Checout</a>
+        </div>
     {% else %}
         <!-- Empty Cart Message -->
         <div class="alert alert-info text-center" role="alert">
