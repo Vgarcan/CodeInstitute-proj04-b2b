@@ -91,7 +91,7 @@ Shopping Cart for {{ user.username }}
         <div class="text-left mt-4 hstack gap-3">
             <a href="{% url 'products:all' %}" class="btn btn-primary btn-lg p-2 ms-auto">Continue Shopping</a>
             <div class="vr"></div>
-            <a href="{% url 'orders:place_order' %}" class="btn btn-primary btn-lg p-2">Checout</a>
+            <a href="{% url 'payment:user_information' %}" class="btn btn-primary btn-lg p-2">Checkout</a>
         </div>
     {% else %}
         <!-- Empty Cart Message -->
