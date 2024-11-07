@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+Payment accepted
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+<!-- Include Stripe.js -->
+<script src="https://js.stripe.com/v3/"></script>
+
+{% endblock extra_head %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+
+    <section>
+        <p>
+            We appreciate your business! If you have any questions, please email
+            <a href="mailto:orders@example.com">orders@example.com</a>.
+        </p>
+    </section>
+
+{% endblock content %}
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extra_body %}
+<script>
+    // Initialise Stripe with the public key
+    var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+    var elements = stripe.elements();
+
+    // Customise the appearance of the card Element
+    var style = {
+        base: {
+            color: '#32325d',
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#fa755a',
+            iconColor: '#fa755a'
+        }
+    };
+
+    // Create an instance of the card Element and mount it
+    var card = elements.create('card', { style: style });
+    card.mount('#card-element');
+
+    // Handle real-time validation errors from the card Element
+    card.on('change', function(event) {
+        var displayError = document.getElementById('card-errors');
+        displayError.textContent = event.error ? event.error.message : '';
+    });
+
+    // Function to confirm payment for the active form
+    function confirmPayment(activeForm, nameId, emailId) {
+        stripe.confirmCardPayment('{{ client_secret }}', {
+            payment_method: {
+                card: card,
+                billing_details: {
+                    name: document.getElementById(nameId).value,
+                    email: document.getElementById(emailId).value
+                }
+            }
+        }).then(function(result) {
+            if (result.error) {
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else if (result.paymentIntent.status === 'succeeded') {
+                activeForm.submit();
+                // Redirect to payment success page
+                window.location.href = "{% url 'payment:payment_success' %}";
+            }
+        });
+    }
+
+    // Event handler for the unified Pay button
+    document.getElementById('submit-button').addEventListener('click', function(event) {
+        event.preventDefault();
+        // Check which tab is active and set the respective form
+        var activeTab = document.querySelector('.tab-pane.active');
+        if (activeTab && activeTab.id === 'profile') {
+            confirmPayment(document.getElementById('payment-form'), 'full-name', 'email');
+        } else {
+            confirmPayment(document.getElementById('alt-payment-form'), 'alt-full-name', 'alt-email');
+        }
+    });
+</script>
+{% endblock extra_body %}
