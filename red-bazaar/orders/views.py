@@ -62,7 +62,6 @@ def create_order(request):
 
     print("------------------------------------------")
     # Redirect to an order confirmation page or dashboard
-    messages.success(request, "Your orders have been successfully created!")
     return redirect('orders:confirmation')  # Redirect to order confirmation
 
 
@@ -71,9 +70,9 @@ def confirm_order(request):
     """
     Displays the order confirmation page with the user's orders.
     """
-    messages.success(request, "Order confirmation!")
+    messages.success(request, "Your orders have been successfully created!")
 
-    return redirect('main:home')
+    return redirect('users:dashboard')
 
 
 @role_required('BUY')

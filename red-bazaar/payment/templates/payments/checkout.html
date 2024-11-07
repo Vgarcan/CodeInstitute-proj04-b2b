@@ -191,7 +191,7 @@ Checkout
             } else if (result.paymentIntent.status === 'succeeded') {
                 activeForm.submit();
                 // Redirect to payment success page
-                window.location.href = "{% url 'payment:payment_success' %}";
+                window.location.href = "{% url 'orders:place_order' %}";
             }
         });
     }
