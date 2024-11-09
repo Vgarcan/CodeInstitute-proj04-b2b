@@ -55,6 +55,9 @@ def create_order(request):
                 quantity=item['quantity'],
                 item_total=item['subtotal']
             )
+            # Remove the product quantity from database
+            item['product'].quantity -= item['quantity']
+            item['product'].save()
 
     # Clear the shopping cart session
     del request.session['shopping_cart']
