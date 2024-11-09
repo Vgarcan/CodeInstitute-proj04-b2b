@@ -56,6 +56,9 @@ class ShipAddr(models.Model):
     postal_code = models.CharField(max_length=10, default="NOT INCLUDED")
     phone_number = models.CharField(max_length=20, default="NOT INCLUDED")
 
+    def __str__(self):
+        return f"{self.username} - {self.address}, {self.city}, {self.country}"
+
 
 class OrderItem(models.Model):
     """

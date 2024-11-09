@@ -16,10 +16,25 @@ class OrderItemAdmin(admin.TabularInline):
     fields = ('product', 'quantity', 'item_total')
 
 
+class ShipAddrAdmin(admin.TabularInline):
+    model = ShipAddr
+    extra = 0  # No extra empty forms
+    max_num = 0  # Max number of items
+    can_add = False  # No ability to add new order items through admin interface
+    can_delete = False  # No ability to delete order items through admin interface
+
+    # READ ONLY fields
+    readonly_fields = ('username', 'email', 'address', 'city',
+                       'country', 'postal_code', 'phone_number')
+    # Display fields
+    fields = ('username', 'email', 'address', 'city',
+              'country', 'postal_code', 'phone_number')
+
+
 class OrderAdmin(admin.ModelAdmin):
     list_display = ('id', 'buyer', 'seller', 'status', 'ordered_on')
     list_display_links = ('id', )
-    inlines = [OrderItemAdmin]  # Adds OrderItem
+    inlines = [OrderItemAdmin, ShipAddrAdmin]  # Adds OrderItem
 
     # Navigation filters
     list_filter = ('status', 'ordered_on')
@@ -31,11 +46,3 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Order, OrderAdmin)
-
-
-class ShipAddrAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username')
-    list_display_links = ('id', 'username')
-
-
-admin.site.register(ShipAddr, ShipAddrAdmin)
