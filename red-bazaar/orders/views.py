@@ -86,6 +86,30 @@ def order_detail(request, order_id):
 
 
 @role_required('SUP')
+def supplier_order_detail(request, order_id):
+    """
+    Allows a supplier to view and update the status of a specific order.
+    """
+    order = Order.objects.get(
+        id=order_id, seller=request.user)  # Asegura que solo el Supplier ve sus órdenes
+    order_items = OrderItem.objects.filter(order=order)
+
+    if request.method == "POST":
+        new_status = request.POST.get("status")
+        if new_status in dict(Order.STATUS_CHOICES).keys():  # Validar el nuevo estado
+            order.status = new_status
+            order.save()
+            messages.success(request, "Order status updated successfully.")
+        else:
+            messages.error(request, "Invalid status selected.")
+
+    return render(request, 'orders/supplier_order_detail.html', {
+        'order': order,
+        'order_items': order_items
+    })
+
+
+@role_required('SUP')
 def update_order(request, order_id, order_status):
     """
     Allows a supplier to update the status of an order.
