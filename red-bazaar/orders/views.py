@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Order, OrderItem
+from .models import Order, OrderItem, ShipAddr
 from products.models import Product
 from django.contrib import messages
 
@@ -31,6 +31,18 @@ def create_order(request):
         # Redirect to product list if cart is empty
         return redirect('products:all')
 
+    # Extract address data based on the form submission
+    form_type = request.POST.get('form_type')
+    address_data = {
+        'username': request.POST.get('full-name') if form_type == 'profile' else request.POST.get('alt_full_name'),
+        'email': request.POST.get('email') if form_type == 'profile' else request.POST.get('alt_email'),
+        'address': request.POST.get('address') if form_type == 'profile' else request.POST.get('alt_address'),
+        'city': request.POST.get('city') if form_type == 'profile' else request.POST.get('alt_city'),
+        'country': request.POST.get('country') if form_type == 'profile' else request.POST.get('alt_country'),
+        'postal_code': request.POST.get('postal_code') if form_type == 'profile' else request.POST.get('alt_postal_code'),
+        'phone_number': request.POST.get('phone_number') if form_type == 'profile' else request.POST.get('alt_phone_number'),
+    }
+
     cart_items = sup_dict(shopping_cart, source="cart")
 
     print('ORDERS - VIEWS.PY - create_order | cart_items.items(): ',
@@ -44,8 +56,14 @@ def create_order(request):
         order = Order.objects.create(
             buyer=request.user,
             seller_id=seller_id.id,
-            total_price=total_price
+            total_price=total_price,
+
         )
+
+        # Create the shipping address and assign the instance directly
+        ship_address = ShipAddr.objects.create(order=order, **address_data)
+        order.ship_address = ship_address
+        order.save()
 
         # Create OrderItem instances for each product in the order
         for item in items:

@@ -44,6 +44,7 @@ def checkout(request):
             'city': profile.city,
             'country': profile.country,
             'postal_code': profile.postal_code,
+            'phone_number': profile.phone_number,
         }
     except Profile.DoesNotExist:
         initial_data = {}

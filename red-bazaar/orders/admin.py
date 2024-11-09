@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Order, OrderItem
+from .models import Order, OrderItem, ShipAddr
 
 
 class OrderItemAdmin(admin.TabularInline):
@@ -31,3 +31,11 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Order, OrderAdmin)
+
+
+class ShipAddrAdmin(admin.ModelAdmin):
+    list_display = ('id', 'username')
+    list_display_links = ('id', 'username')
+
+
+admin.site.register(ShipAddr, ShipAddrAdmin)

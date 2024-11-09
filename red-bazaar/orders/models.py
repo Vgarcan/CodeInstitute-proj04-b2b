@@ -15,6 +15,7 @@ class Order(models.Model):
         seller (ForeignKey): Reference to the seller from whom the buyer purchases products.
         total_price (Decimal): Total amount for this order.
         ordered_on (DateTimeField): Timestamp when the order was placed.
+        ship_address (ForeignKey): Recorded address for the shipment.
         status (str): The current status of the order.
     """
     buyer = models.ForeignKey(
@@ -22,6 +23,8 @@ class Order(models.Model):
     seller = models.ForeignKey(
         User, on_delete=models.PROTECT, related_name="orders_as_seller")
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
+    ship_address = models.ForeignKey(
+        "ShipAddr", on_delete=models.CASCADE, related_name="buyer_addr", blank=True, null=True)
     ordered_on = models.DateTimeField(default=timezone.now)
 
     STATUS_CHOICES = [
@@ -37,6 +40,21 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order #{self.id} | Buyer: {self.buyer.username} | Seller: {self.seller.username} | Status: {self.status} | Total: £{self.total_price}"
+
+
+class ShipAddr(models.Model):
+    """
+    Represents a shipping address for an order.
+    """
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, related_name="buyers_address")
+    username = models.CharField(max_length=255, default="NOT INCLUDED")
+    email = models.EmailField(max_length=255, default="NOT INCLUDED")
+    address = models.CharField(max_length=255, default="NOT INCLUDED")
+    city = models.CharField(max_length=255, default="NOT INCLUDED")
+    country = models.CharField(max_length=255, default="NOT INCLUDED")
+    postal_code = models.CharField(max_length=10, default="NOT INCLUDED")
+    phone_number = models.CharField(max_length=20, default="NOT INCLUDED")
 
 
 class OrderItem(models.Model):

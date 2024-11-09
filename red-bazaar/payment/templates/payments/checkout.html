@@ -42,6 +42,7 @@ Checkout
                 <!-- Tab 1: Use Profile Address -->
                 <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <form id="payment-form" class="mt-4">
+                        <input type="hidden" name="form_type" value="profile">
                         <h2>Billing Information</h2>
                         <!-- Billing form fields pre-filled from user profile -->
                         <div class="mb-3">
@@ -68,12 +69,17 @@ Checkout
                             <label for="postal-code">Postal Code</label>
                             <input type="text" id="postal-code" name="postal_code" value="{{ initial_data.postal_code }}" placeholder="Enter your postal code" class="form-control" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="phone-number">Contact Number</label>
+                            <input type="text" id="phone-number" name="phone_number" value="{{ initial_data.phone_number }}" placeholder="Enter your phone number" class="form-control" required>
+                        </div>
                     </form>
                 </div>
 
                 <!-- Tab 2: Enter Alternative Address -->
                 <div class="tab-pane fade" id="alternative" role="tabpanel" aria-labelledby="alternative-tab">
                     <form id="alt-payment-form" class="mt-4">
+                        <input type="hidden" name="form_type" value="alternative">
                         <h2>Alternative Shipping Address</h2>
                         <!-- Alternative address form fields -->
                         <div class="mb-3">
@@ -99,6 +105,10 @@ Checkout
                         <div class="mb-3">
                             <label for="alt-postal-code">Postal Code</label>
                             <input type="text" id="alt-postal-code" name="alt_postal_code" placeholder="Enter your postal code" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone-number">Contact Number</label>
+                            <input type="text" id="alt-phone-number" name="alt_phone_number" placeholder="Enter your phone number" class="form-control" required>
                         </div>
                     </form>
                 </div>
@@ -176,36 +186,48 @@ Checkout
     });
 
     // Function to confirm payment for the active form
-    function confirmPayment(activeForm, nameId, emailId) {
-        stripe.confirmCardPayment('{{ client_secret }}', {
-            payment_method: {
-                card: card,
-                billing_details: {
-                    name: document.getElementById(nameId).value,
-                    email: document.getElementById(emailId).value
-                }
-            }
-        }).then(function(result) {
-            if (result.error) {
-                document.getElementById('card-errors').textContent = result.error.message;
-            } else if (result.paymentIntent.status === 'succeeded') {
-                activeForm.submit();
-                // Redirect to payment success page
-                window.location.href = "{% url 'orders:place_order' %}";
-            }
-        });
-    }
+function confirmPayment(activeForm, nameId, emailId, phoneId) {
+    const formData = new FormData(activeForm);
+    console.log([...formData]);  
 
-    // Event handler for the unified Pay button
-    document.getElementById('submit-button').addEventListener('click', function(event) {
-        event.preventDefault();
-        // Check which tab is active and set the respective form
-        var activeTab = document.querySelector('.tab-pane.active');
-        if (activeTab && activeTab.id === 'profile') {
-            confirmPayment(document.getElementById('payment-form'), 'full-name', 'email');
-        } else {
-            confirmPayment(document.getElementById('alt-payment-form'), 'alt-full-name', 'alt-email');
+    stripe.confirmCardPayment('{{ client_secret }}', {
+        payment_method: {
+            card: card,
+            billing_details: {
+                name: document.getElementById(nameId).value,
+                email: document.getElementById(emailId).value,
+                phone: document.getElementById(phoneId).value 
+            }
+        }
+    }).then(function(result) {
+        if (result.error) {
+            document.getElementById('card-errors').textContent = result.error.message;
+        } else if (result.paymentIntent.status === 'succeeded') {
+            // Add CSRF token and submit form data via fetch
+            fetch("{% url 'orders:place_order' %}", {
+                method: 'POST',
+                body: formData,
+                headers: { 'X-CSRFToken': '{{ csrf_token }}' }
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = "{% url 'orders:confirmation' %}";
+                }
+            });
         }
     });
+}
+
+// Event handler for the Pay button
+document.getElementById('submit-button').addEventListener('click', function(event) {
+    event.preventDefault();
+    // Check the active tab and set the appropriate form
+    var activeTab = document.querySelector('.tab-pane.active');
+    if (activeTab && activeTab.id === 'profile') {
+        confirmPayment(document.getElementById('payment-form'), 'full-name', 'email', 'phone-number');
+    } else {
+        confirmPayment(document.getElementById('alt-payment-form'), 'alt-full-name', 'alt-email', 'alt-phone-number');
+    }
+});
+
 </script>
 {% endblock extra_body %}

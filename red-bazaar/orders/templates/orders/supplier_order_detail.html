@@ -41,12 +41,12 @@
                         </div>
                         <div>
                             <h5>Buyer Information</h5>
-                            <p><strong>Username:</strong> {{ order.buyer.username }}</p>
-                            <p><strong>Email:</strong> {{ order.buyer.email }}</p>
-                            <p><strong>Phone:</strong> {{ order.buyer.profile.phone_number }}</p>
-                            <p><strong>Address:</strong> {{ order.buyer.profile.address }}, {{ order.buyer.profile.city }}</p>
-                            <p><strong>Postcode:</strong> {{ order.buyer.profile.postal_code }}</p>
-                            <p><strong>Country:</strong> {{ order.buyer.profile.country }}</p>
+                            <p><strong>Username:</strong> {{ order.ship_address.username }}</p>
+                            <p><strong>Email:</strong> {{ order.ship_address.email }}</p>
+                            <p><strong>Phone:</strong> {{ order.ship_address.phone_number }}</p>
+                            <p><strong>Address:</strong> {{ order.ship_address.address }}, {{ order.ship_address.city }}</p>
+                            <p><strong>Postcode:</strong> {{ order.ship_address.postal_code }}</p>
+                            <p><strong>Country:</strong> {{ order.ship_address.country }}</p>
                         </div>
                     </div>
 
