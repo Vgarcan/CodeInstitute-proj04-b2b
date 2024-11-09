@@ -45,6 +45,16 @@ class Order(models.Model):
 class ShipAddr(models.Model):
     """
     Represents a shipping address for an order.
+
+    Attributes:
+        order (ForeignKey): The order associated with this shipping address.
+        username (str): The name of the recipient.
+        email (str): The email of the recipient.
+        address (str): The street address of the recipient.
+        city (str): The city for the shipping address.
+        country (str): The country for the shipping address.
+        postal_code (str): The postal code of the shipping address.
+        phone_number (str): The contact number for the recipient.
     """
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name="buyers_address")

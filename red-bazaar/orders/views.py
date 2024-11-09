@@ -57,7 +57,6 @@ def create_order(request):
             buyer=request.user,
             seller_id=seller_id.id,
             total_price=total_price,
-
         )
 
         # Create the shipping address and assign the instance directly
@@ -90,6 +89,15 @@ def create_order(request):
 def confirm_order(request):
     """
     Displays the order confirmation page with the user's orders.
+
+    Parameters:
+    - request (HttpRequest): The request object, which contains session data and the logged-in user.
+        This object is passed by Django's view system and contains information about the current request.
+
+    Returns:
+    - HttpResponseRedirect: Redirects to the user's dashboard after displaying the order confirmation page.
+        The function uses Django's `redirect` function to redirect the user to the 'users:dashboard' URL.
+        The `messages.success` function is used to display a success message to the user.
     """
     messages.success(request, "Your orders have been successfully created!")
 
@@ -162,7 +170,8 @@ def update_order(request, order_id, order_status):
     - HttpResponseRedirect: Redirects to the user's dashboard after updating the order status.
     If the order is successfully updated, a success message is displayed.
     """
-    order = Order.objects.get(id=order_id)
+    # Ensures that only the Supplier can update their orders
+    order = Order.objects.get(id=order_id, seller=request.user)
     order.status = order_status
     order.save()
     messages.success(request, "Order status updated!")
