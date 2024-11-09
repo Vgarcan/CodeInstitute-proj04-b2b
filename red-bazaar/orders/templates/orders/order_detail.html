@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+    Order Invoice
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+{% comment %}
+ CSS tag injection 
+{% endcomment %}
+{% block css_inpage %}
+{% endblock css_inpage %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="mb-0">Invoice</h3>
+                </div>
+                <div class="card-body">
+                    <!-- Order Details Section -->
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5>Order Summary</h5>
+                            <p><strong>Order ID:</strong> {{ order.id }}</p>
+                            <p><strong>Order Date:</strong> {{ order.ordered_on|date:"F j, Y, g:i a" }}</p>
+                            <p><strong>Supplier:</strong> {{ order.seller.username }}</p>
+                            <p><strong>Status:</strong> <span class="badge bg-secondary">{{ order.status|title }}</span></p>
+                        </div>
+                        <div>
+                            <h5>Buyer Information</h5>
+                            <p><strong>Username:</strong> {{ user.username }}</p>
+                            <p><strong>Email:</strong> {{ user.email }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Items Section -->
+                    <h5 class="text-center mb-3">Items Purchased</h5>
+                    <table class="table table-hover table-responsive-md text-center">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Image</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in order_items %}
+                            <tr>
+                                <td>
+                                    <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/static/imgs/no-img-av.webp{% endif %}" 
+                                         alt="{{ item.product.name }}" class="img-thumbnail" style="width: 60px; height: auto;">
+                                </td>
+                                <td>{{ item.product.name }}</td>
+                                <td>{{ item.quantity }}</td>
+                                <td>${{ item.product.price }}</td>
+                                <td>${{ item.item_total }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                                <td><strong>${{ order.total_price }}</strong></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <!-- Back to Dashboard Button -->
+                    <div class="text-center mt-4">
+                        <a href="{% url 'users:dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extra_body %}
+{% endblock extra_body %}
+
+{% comment %}
+ JS tag injection 
+{% endcomment %}
+{% block js_inpage %}
+{% endblock js_inpage %}
