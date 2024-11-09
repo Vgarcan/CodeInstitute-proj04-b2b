@@ -40,6 +40,8 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = ('status', 'ordered_on')
     search_fields = ('buyer__username', 'seller__username', 'id')
 
+    exclude = ('ship_address',)
+
     # READ ONLY fields
     readonly_fields = ('buyer', 'seller', 'total_price',
                        'ordered_on', 'status')

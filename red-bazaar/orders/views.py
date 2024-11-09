@@ -100,6 +100,13 @@ def confirm_order(request):
 def order_detail(request, order_id):
     """
     Displays the details of a specific order.
+
+    Parameters:
+    - request (HttpRequest): The request object, which contains session data and the logged-in user.
+    - order_id (int): The unique identifier of the order to be displayed.
+
+    Returns:
+    - HttpResponse: Renders the 'orders/order_detail.html' template with the order and its associated order items.
     """
     order = Order.objects.get(id=order_id)
     order_items = OrderItem.objects.filter(order=order)
@@ -110,14 +117,25 @@ def order_detail(request, order_id):
 def supplier_order_detail(request, order_id):
     """
     Allows a supplier to view and update the status of a specific order.
+
+    Parameters:
+    - request (HttpRequest): The request object, which contains session data and the logged-in user.
+    - order_id (int): The unique identifier of the order to be viewed or updated.
+
+    Returns:
+    - HttpResponse: Renders the 'orders/supplier_order_detail.html' template with the order and its associated order items.
+    If the request method is POST, it also updates the order status based on the provided 'status' parameter.
+    If the new status is valid, it saves the changes and displays a success message.
+    If the new status is invalid, it displays an error message.
     """
     order = Order.objects.get(
-        id=order_id, seller=request.user)  # Asegura que solo el Supplier ve sus órdenes
+        # Ensures that only the Supplier sees their orders
+        id=order_id, seller=request.user)
     order_items = OrderItem.objects.filter(order=order)
 
     if request.method == "POST":
         new_status = request.POST.get("status")
-        if new_status in dict(Order.STATUS_CHOICES).keys():  # Validar el nuevo estado
+        if new_status in dict(Order.STATUS_CHOICES).keys():  # Validates the new status
             order.status = new_status
             order.save()
             messages.success(request, "Order status updated successfully.")
@@ -134,6 +152,15 @@ def supplier_order_detail(request, order_id):
 def update_order(request, order_id, order_status):
     """
     Allows a supplier to update the status of an order.
+
+    Parameters:
+    - request (HttpRequest): The request object, which contains session data and the logged-in user.
+    - order_id (int): The unique identifier of the order to be updated.
+    - order_status (str): The new status to be assigned to the order.
+
+    Returns:
+    - HttpResponseRedirect: Redirects to the user's dashboard after updating the order status.
+    If the order is successfully updated, a success message is displayed.
     """
     order = Order.objects.get(id=order_id)
     order.status = order_status
