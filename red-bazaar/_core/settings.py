@@ -32,8 +32,11 @@ SECRET_KEY = os.environ.get('DJANGO_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get(('DJANGO_DEBUG'), False)
 
-ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1',
-                 'localhost', '192.168.1.163', '192.168.2.116']
+ALLOWED_HOSTS = ['127.0.0.1',
+                 'localhost', '192.168.2.116', 'dev.red-bazaar.com']
+
+# Add domain to the list of trusted origins so that Django accepts requests from that domain
+CSRF_TRUSTED_ORIGINS = ['https://dev.red-bazaar.com']
 
 # MEDIA SETTINGS
 MEDIA_URL = '/media/'
@@ -68,8 +71,6 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'payment',
-
-
 ]
 
 AUTH_PASSWORD_VALIDATORS = [
