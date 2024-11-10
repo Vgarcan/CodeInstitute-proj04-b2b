@@ -5,6 +5,8 @@ from users.models import CustomUser
 from django.contrib import messages
 from users.decorators import role_required
 from utils import sup_dict
+from django.db.models import Q
+
 
 # Create your views here.
 
@@ -163,15 +165,23 @@ def view_product_detail(request, prd_id):
 
 def search_products(request):
     """
-    This function retrieves products from the database based on the provided
-    search query and renders them in a template.
+    Retrieves products from the database based on the provided search query
+    and renders them in a template.
     """
-    # Retrieve the search query from the request.
-    query = request.GET.get("search")
-    # Filter the products based on the search query.
-    products = Product.objects.filter(name__icontains=query)
-    # Render the template with the filtered products.
-    return render(request, "products/product-list.html", {"products": products})
+    # Gets the query from the request
+    query = request.GET.get("q", "").strip()
+    print(f"Search query: '{query}'")
+
+    # Checks if the query is empty
+    if query:
+        products = Product.objects.filter(
+            Q(name__icontains=query) | Q(category_id__name__icontains=query)
+        )
+    else:
+        products = []
+        print("No search query provided.")
+
+    return render(request, "products/product-list.html", {"query": query, "products": products})
 
 
 @role_required("BUY")
