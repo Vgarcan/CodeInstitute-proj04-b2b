@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
-from .models import Product
+from .models import Product, Category
 from users.models import CustomUser
 from django.contrib import messages
 from users.decorators import role_required
@@ -165,23 +165,52 @@ def view_product_detail(request, prd_id):
 
 def search_products(request):
     """
-    Retrieves products from the database based on the provided search query
-    and renders them in a template.
+    Searches products based on the search query, which includes products by name
+    or products belonging to a category or its subcategories.
+
+    Parameters:
+    request (HttpRequest): The HTTP request object. This object contains information about the client's request.
+
+    Returns:
+    HttpResponse: Rendered template with the search results. If the search query is empty, an empty list of products is returned.
     """
-    # Gets the query from the request
-    query = request.GET.get("q", "").strip()
+    # Obtén el término de búsqueda
+    query = request.GET.get("q", "").strip().lower()
     print(f"Search query: '{query}'")
 
-    # Checks if the query is empty
-    if query:
-        products = Product.objects.filter(
-            Q(name__icontains=query) | Q(category_id__name__icontains=query)
-        )
-    else:
-        products = []
-        print("No search query provided.")
+    products = []  # Initialize the list of products
 
-    return render(request, "products/product-list.html", {"query": query, "products": products})
+    if query:
+        # # Checks for main Categories that matches the query
+        matching_categories = Category.objects.filter(name__icontains=query)
+        #! ### TEST ###
+        print(matching_categories)
+        #! ### TEST ###
+
+        # # Gets the ID of all related Categories and Sub-Categories
+        category_ids = set()
+        for category in matching_categories:
+            category_ids.add(category.id)  # Include the primary category
+            # ? https://django-mptt.readthedocs.io/en/latest/mptt.models.html#mptt.models.MPTTModel.get_descendants
+            category_ids.update(category.get_descendants(include_self=True).values_list(
+                'id', flat=True))  # Include the secondary category
+
+            #! ### TEST ###
+            print(category_ids)
+            #! ### TEST ###
+
+        # search for Products that are related to the Category/Sub-Category or matches the name
+        products = Product.objects.filter(
+            Q(name__icontains=query) | Q(category_id__in=category_ids)
+        )
+
+        #! ### TEST ###
+        print(f"Products found: {products.count()}")
+        for product in products:
+            print(f" - {product.name} (Category: {product.category_id.name})")
+        #! ### TEST ###
+
+    return render(request, "products/product-list.html", {"products": products})
 
 
 @role_required("BUY")
