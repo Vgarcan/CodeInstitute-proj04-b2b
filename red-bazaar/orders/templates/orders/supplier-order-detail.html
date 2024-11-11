@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% comment %}
  Set the name of the page 
@@ -31,60 +32,76 @@
                     <h3 class="mb-0">Order Details</h3>
                 </div>
                 <div class="card-body">
-                    <!-- Order Details Section -->
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                            <h5>Order Summary</h5>
-                            <p><strong>Order ID:</strong> {{ order.id }}</p>
-                            <p><strong>Order Date:</strong> {{ order.ordered_on|date:"F j, Y, g:i a" }}</p>
-                            <p><strong>Status:</strong> <span class="badge bg-secondary">{{ order.status|title }}</span></p>
+                    <div class="row">
+                        {## Order Details Section ##}
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Order Summary</h5>
+                                    <p><strong>Order ID:</strong> {{ order.id }}</p>
+                                    <p><strong>Order Date:</strong> {{ order.ordered_on|date:"F j, Y, g:i a" }}</p>
+                                    <p><strong>Status:</strong> <span class="badge bg-secondary">{{ order.status|title }}</span></p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <h5>Buyer Information</h5>
-                            <p><strong>Username:</strong> {{ order.ship_address.username }}</p>
-                            <p><strong>Email:</strong> {{ order.ship_address.email }}</p>
-                            <p><strong>Phone:</strong> {{ order.ship_address.phone_number }}</p>
-                            <p><strong>Address:</strong> {{ order.ship_address.address }}, {{ order.ship_address.city }}</p>
-                            <p><strong>Postcode:</strong> {{ order.ship_address.postal_code }}</p>
-                            <p><strong>Country:</strong> {{ order.ship_address.country }}</p>
+                        
+                        {## Buyer Information Section ##}
+                        <div class="col-md-6 mb-4">
+                            <div class="card shadow-sm border-0 h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Buyer Information</h5>
+                                    <p><strong>Username:</strong> {{ order.ship_address.username }}</p>
+                                    <p><strong>Email:</strong> {{ order.ship_address.email }}</p>
+                                    <p><strong>Phone:</strong> {{ order.ship_address.phone_number }}</p>
+                                    <p><strong>Address:</strong> {{ order.ship_address.address }}, {{ order.ship_address.city }}</p>
+                                    <p><strong>Postcode:</strong> {{ order.ship_address.postal_code }}</p>
+                                    <p><strong>Country:</strong> {{ order.ship_address.country }}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Items Section -->
-                    <h5 class="text-center mb-3">Items in Order</h5>
-                    <table class="table table-hover table-responsive-md text-center">
-                        <thead class="table-primary">
-                            <tr>
-                                <th scope="col">Image</th>
-                                <th scope="col">Product</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Unit Price</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for item in order_items %}
-                            <tr>
-                                <td>
-                                    <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}/static/imgs/no-img-av.webp{% endif %}" 
-                                         alt="{{ item.product.name }}" class="img-thumbnail" style="width: 60px; height: auto;">
-                                </td>
-                                <td>{{ item.product.name }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>${{ item.product.price }}</td>
-                                <td>${{ item.item_total }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <td colspan="4" class="text-end"><strong>Total:</strong></td>
-                                <td><strong>${{ order.total_price }}</strong></td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                    {## Items Section ##}
+                    <div class="card mb-4 shadow-sm border-0">
+                        <div class="card-body">
+                            <h5 class="card-title text-center">Items in Order</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover text-center">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Product</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Unit Price</th>
+                                            <th scope="col">Subtotal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in order_items %}
+                                        <tr>
+                                            <td>
+                                                <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
+                                                     alt="{{ item.product.name }}" class="img-thumbnail" style="width: 60px; height: auto;">
+                                            </td>
+                                            <td>{{ item.product.name }}</td>
+                                            <td>{{ item.quantity }}</td>
+                                            <td>${{ item.product.price }}</td>
+                                            <td>${{ item.item_total }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr class="table-light">
+                                            <td colspan="4" class="text-end"><strong>Total:</strong></td>
+                                            <td><strong>${{ order.total_price }}</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
 
-                    <!-- Update Status Form -->
+                    {## Update Status Form ##}
                     <form method="POST" class="mt-4 text-center">
                         {% csrf_token %}
                         <label for="status" class="form-label"><strong>Update Order Status:</strong></label>
@@ -98,7 +115,7 @@
                         <button type="submit" class="btn btn-success">Update Status</button>
                     </form>
 
-                    <!-- Back to Dashboard Button -->
+                    {## Back to Dashboard Button ##}
                     <div class="text-center mt-4">
                         <a href="{% url 'users:dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
                     </div>
@@ -108,6 +125,7 @@
     </div>
 </div>
 {% endblock content %}
+
 
 {% comment %}
  To the bottom of the body tag 
