@@ -118,7 +118,7 @@ def order_detail(request, order_id):
     """
     order = Order.objects.get(id=order_id)
     order_items = OrderItem.objects.filter(order=order)
-    return render(request, 'orders/order_detail.html', {'order': order, 'order_items': order_items})
+    return render(request, 'orders/order-detail.html', {'order': order, 'order_items': order_items})
 
 
 @role_required('SUP')
@@ -150,7 +150,7 @@ def supplier_order_detail(request, order_id):
         else:
             messages.error(request, "Invalid status selected.")
 
-    return render(request, 'orders/supplier_order_detail.html', {
+    return render(request, 'orders/supplier-order-detail.html', {
         'order': order,
         'order_items': order_items
     })
