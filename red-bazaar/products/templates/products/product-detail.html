@@ -99,6 +99,6 @@ document.getElementById('quantity').addEventListener('input', function() {
     // Update the href with the new quantity
     var addToCartBtn = document.getElementById('addToCartBtn');
     var productId = "{{ product.id }}";
-    addToCartBtn.href = "{% url 'products:add-cart' product.id 1 %}".replace('1', quantity);
+    addToCartBtn.href = `/products/add-to-cart/${productId}/${quantity}/`;
 });
 {% endblock js_inpage %}
