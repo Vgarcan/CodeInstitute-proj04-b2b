@@ -65,7 +65,7 @@
 
                 <!-- Add to Basket Button -->
                 <div class="mb-3">
-                    <a href="{% url 'products:add-cart' product.id 1 %}" id="addToCartBtn" class="btn btn-primary btn-lg">
+                    <a data-base-url="{% url 'products:add-cart' product.id 1 %}" href="{% url 'products:add-cart' product.id 1 %}" id="addToCartBtn" class="btn btn-primary btn-lg">
                         <i class="fas fa-shopping-cart"></i> Add to basket
                     </a>
                 </div>
@@ -96,9 +96,9 @@ document.getElementById('quantity').addEventListener('input', function() {
     // Gets the selected Quantity
     var quantity = document.getElementById('quantity').value;
     
-    // Update the href with the new quantity
+    // Update the data-base-url with the new quantity
     var addToCartBtn = document.getElementById('addToCartBtn');
-    var productId = "{{ product.id }}";
-    addToCartBtn.href = `/products/add-to-cart/${productId}/${quantity}/`;
+    var baseUrl = addToCartBtn.getAttribute('data-base-url');
+    addToCartBtn.href = baseUrl.replace(/1$/, quantity);
 });
 {% endblock js_inpage %}
