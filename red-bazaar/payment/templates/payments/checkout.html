@@ -63,7 +63,24 @@ Checkout
                         </div>
                         <div class="mb-3">
                             <label for="country">Country</label>
-                            <input type="text" id="country" name="country" value="{{ initial_data.country }}" placeholder="Enter your country" class="form-control" required>
+                            <select id="country" name="country" class="form-control" required>
+                                <option value="">Select your country</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="AU">Australia</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                                <option value="ES">Spain</option>
+                                <option value="IT">Italy</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="JP">Japan</option>
+                                <option value="CN">China</option>
+                                <option value="IN">India</option>
+                                <option value="BR">Brazil</option>
+                                <option value="MX">Mexico</option>
+                                <!-- Agrega más países según necesites -->
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="postal-code">Postal Code</label>
@@ -100,7 +117,24 @@ Checkout
                         </div>
                         <div class="mb-3">
                             <label for="alt-country">Country</label>
-                            <input type="text" id="alt-country" name="alt_country" placeholder="Enter your country" class="form-control" required>
+                            <select id="alt-country" name="alt_country" class="form-control" required>
+                                <option value="">Select your country</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="AU">Australia</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                                <option value="ES">Spain</option>
+                                <option value="IT">Italy</option>
+                                <option value="NL">Netherlands</option>
+                                <option value="JP">Japan</option>
+                                <option value="CN">China</option>
+                                <option value="IN">India</option>
+                                <option value="BR">Brazil</option>
+                                <option value="MX">Mexico</option>
+                                {## ADD MORE COUNTRIES HERE ##}
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="alt-postal-code">Postal Code</label>
@@ -176,7 +210,10 @@ Checkout
     };
 
     // Create an instance of the card Element and mount it
-    var card = elements.create('card', { style: style });
+    var card = elements.create('card', {
+        style: style,
+        hidePostalCode: true
+    });
     card.mount('#card-element');
 
     // Handle real-time validation errors from the card Element
@@ -186,12 +223,16 @@ Checkout
     });
 
     // Function to confirm payment for the active form
-function confirmPayment(activeForm, nameId, emailId, phoneId) {
+function confirmPayment(activeForm, nameId, emailId, phoneId, addressId, cityId, countryId, postalCodeId) {
     const formData = new FormData(activeForm);
     console.log([...formData]);  
     console.log('Billing Name:', document.getElementById(nameId).value);
     console.log('Billing Email:', document.getElementById(emailId).value);
     console.log('Billing Phone:', document.getElementById(phoneId).value);
+    console.log('Billing Address:', document.getElementById(addressId).value);
+    console.log('Billing City:', document.getElementById(cityId).value);
+    console.log('Billing Country:', document.getElementById(countryId).value);
+    console.log('Billing Postal Code:', document.getElementById(postalCodeId).value);
     console.log('Client Secret:', '{{ client_secret }}');
     // Perform a stripe payment request
     stripe.confirmCardPayment('{{ client_secret }}', {
@@ -200,7 +241,13 @@ function confirmPayment(activeForm, nameId, emailId, phoneId) {
             billing_details: {
                 name: document.getElementById(nameId).value,
                 email: document.getElementById(emailId).value,
-                phone: document.getElementById(phoneId).value 
+                phone: document.getElementById(phoneId).value,
+                address: {
+                    line1: document.getElementById(addressId).value,
+                    city: document.getElementById(cityId).value,
+                    country: document.getElementById(countryId).value,
+                    postal_code: document.getElementById(postalCodeId).value,
+                }
             }
         }
     }).then(function(result) {
@@ -227,9 +274,9 @@ document.getElementById('submit-button').addEventListener('click', function(even
     // Check the active tab and set the appropriate form
     var activeTab = document.querySelector('.tab-pane.active');
     if (activeTab && activeTab.id === 'profile') {
-        confirmPayment(document.getElementById('payment-form'), 'full-name', 'email', 'phone-number');
+        confirmPayment(document.getElementById('payment-form'), 'full-name', 'email', 'phone-number', 'address', 'city', 'country', 'postal-code');
     } else {
-        confirmPayment(document.getElementById('alt-payment-form'), 'alt-full-name', 'alt-email', 'alt-phone-number');
+        confirmPayment(document.getElementById('alt-payment-form'), 'alt-full-name', 'alt-email', 'alt-phone-number', 'alt-address', 'alt-city', 'alt-country', 'alt-postal-code');
     }
 });
 
