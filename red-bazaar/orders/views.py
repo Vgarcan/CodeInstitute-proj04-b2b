@@ -33,8 +33,10 @@ def create_order(request):
 
     # Extract address data based on the form submission
     form_type = request.POST.get('form_type')
+
     address_data = {
-        'username': request.POST.get('full-name') if form_type == 'profile' else request.POST.get('alt_full_name'),
+        'username': request.user.username,
+        'full_name': request.POST.get('full_name') if form_type == 'profile' else request.POST.get('alt_full_name'),
         'email': request.POST.get('email') if form_type == 'profile' else request.POST.get('alt_email'),
         'address': request.POST.get('address') if form_type == 'profile' else request.POST.get('alt_address'),
         'city': request.POST.get('city') if form_type == 'profile' else request.POST.get('alt_city'),
@@ -43,6 +45,12 @@ def create_order(request):
         'phone_number': request.POST.get('phone_number') if form_type == 'profile' else request.POST.get('alt_phone_number'),
     }
 
+    #! ### TEST ###
+    for item in address_data.values():
+        print(item)
+    #! ### TEST ###
+
+    # Extract the products and quantities from the shopping cart dictionary
     cart_items = sup_dict(shopping_cart, source="cart")
 
     print('ORDERS - VIEWS.PY - create_order | cart_items.items(): ',

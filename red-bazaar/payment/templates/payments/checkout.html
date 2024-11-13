@@ -189,7 +189,11 @@ Checkout
 function confirmPayment(activeForm, nameId, emailId, phoneId) {
     const formData = new FormData(activeForm);
     console.log([...formData]);  
-
+    console.log('Billing Name:', document.getElementById(nameId).value);
+    console.log('Billing Email:', document.getElementById(emailId).value);
+    console.log('Billing Phone:', document.getElementById(phoneId).value);
+    console.log('Client Secret:', '{{ client_secret }}');
+    // Perform a stripe payment request
     stripe.confirmCardPayment('{{ client_secret }}', {
         payment_method: {
             card: card,

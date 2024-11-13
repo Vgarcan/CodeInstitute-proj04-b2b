@@ -24,10 +24,10 @@ class ShipAddrAdmin(admin.TabularInline):
     can_delete = False  # No ability to delete order items through admin interface
 
     # READ ONLY fields
-    readonly_fields = ('username', 'email', 'address', 'city',
+    readonly_fields = ('full_name', 'email', 'address', 'city',
                        'country', 'postal_code', 'phone_number')
     # Display fields
-    fields = ('username', 'email', 'address', 'city',
+    fields = ('full_name', 'email', 'address', 'city',
               'country', 'postal_code', 'phone_number')
 
 

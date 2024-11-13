@@ -59,6 +59,7 @@ class ShipAddr(models.Model):
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name="buyers_address")
     username = models.CharField(max_length=255, default="NOT INCLUDED")
+    full_name = models.CharField(max_length=255, default="NOT INCLUDED")
     email = models.EmailField(max_length=255, default="NOT INCLUDED")
     address = models.CharField(max_length=255, default="NOT INCLUDED")
     city = models.CharField(max_length=255, default="NOT INCLUDED")
@@ -67,7 +68,7 @@ class ShipAddr(models.Model):
     phone_number = models.CharField(max_length=20, default="NOT INCLUDED")
 
     def __str__(self):
-        return f"{self.username} - {self.address}, {self.city}, {self.country}"
+        return f"{self.username} - {self.full_name} - {self.address}, {self.city}, {self.country}"
 
 
 class OrderItem(models.Model):

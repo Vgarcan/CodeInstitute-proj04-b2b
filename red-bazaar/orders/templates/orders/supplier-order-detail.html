@@ -37,7 +37,7 @@
                         <div class="col-md-6 mb-4">
                             <div class="card shadow-sm border-0 h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Order Summary</h5>
+                                    <h5 class="card-title text-center">Order Summary</h5>
                                     <p><strong>Order ID:</strong> {{ order.id }}</p>
                                     <p><strong>Order Date:</strong> {{ order.ordered_on|date:"F j, Y, g:i a" }}</p>
                                     <p><strong>Status:</strong> <span class="badge bg-secondary">{{ order.status|title }}</span></p>
@@ -49,13 +49,15 @@
                         <div class="col-md-6 mb-4">
                             <div class="card shadow-sm border-0 h-100">
                                 <div class="card-body">
-                                    <h5 class="card-title">Buyer Information</h5>
-                                    <p><strong>Username:</strong> {{ order.ship_address.username }}</p>
-                                    <p><strong>Email:</strong> {{ order.ship_address.email }}</p>
-                                    <p><strong>Phone:</strong> {{ order.ship_address.phone_number }}</p>
+                                    <h5 class="card-title text-center">Buyer Information</h5>
+                                    <p class="text-center"><strong>Order from::</strong> {{ order.ship_address.username }}</p>
+                                    <hr class="w-50 mx-auto">
+                                    <p><strong>Ship to:</strong> {{ order.ship_address.full_name }}</p>
                                     <p><strong>Address:</strong> {{ order.ship_address.address }}, {{ order.ship_address.city }}</p>
                                     <p><strong>Postcode:</strong> {{ order.ship_address.postal_code }}</p>
                                     <p><strong>Country:</strong> {{ order.ship_address.country }}</p>
+                                    <p><strong>Email:</strong> {{ order.ship_address.email }}</p>
+                                    <p><strong>Phone:</strong> {{ order.ship_address.phone_number }}</p>
                                 </div>
                             </div>
                         </div>
@@ -81,7 +83,7 @@
                                         <tr>
                                             <td>
                                                 <img src="{% if item.product.image %}{{ item.product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
-                                                     alt="{{ item.product.name }}" class="img-thumbnail" style="width: 60px; height: auto;">
+                                                    alt="{{ item.product.name }}" class="img-thumbnail" style="width: 60px; height: auto;">
                                             </td>
                                             <td>{{ item.product.name }}</td>
                                             <td>{{ item.quantity }}</td>
