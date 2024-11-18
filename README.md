@@ -47,15 +47,24 @@
 
 ## Introduction
 
-Red Bazaar is a B2B marketplace designed to connect suppliers and companies efficiently. This project was born from the idea of simplifying the procurement process for businesses, allowing suppliers to showcase their products while enabling companies to find the best deals.
+**RedBazaar** is a B2B platform designed to connect restaurants and suppliers, focusing on fostering trade between small and medium-sized enterprises (SMEs). The platform aims to provide a professional, centralized tool that simplifies the ordering process for restaurants, helping them save time, reduce product waste, and cut costs. For suppliers, especially smaller ones, RedBazaar offers increased visibility, making it easier to reach potential customers in a competitive market.
+
+This idea emerged from a personal experience while working in a café, where I observed the inefficiencies of managing orders through multiple platforms. RedBazaar solves this problem by grouping all suppliers under one platform, enabling restaurants to search for products rather than being tied to a specific supplier. For example, if a restaurant needs chicken strips, the platform displays all available options from various suppliers, allowing the business to choose the best deal.
+
+Looking ahead, RedBazaar plans to introduce features that will enhance efficiency and flexibility for both restaurants and suppliers. Future updates will include tools for creating optimised shopping lists, finding the best-priced products, and promoting daily offers from suppliers. By focusing on affordability and accessibility, RedBazaar aims to build a community that empowers SMEs to thrive in the digital marketplace.
+
 
 ## Features
 
-- **User Registration and Authentication:** Secure registration and login for suppliers and companies.
-- **Product Listings Management:** Suppliers can create, update, and delete product listings.
-- **Dynamic Dashboard:** A user-friendly dashboard for suppliers and companies to manage their interactions.
-- **Advanced Search and Filters:** Companies can search for products based on various criteria.
+RedBazaar is currently in its initial development phase, providing the core functionality required to facilitate seamless transactions between buyers (restaurants) and suppliers. The platform is focused on delivering a simple and effective e-commerce experience, ensuring it meets the minimum viable product requirements. 
 
+At this stage, RedBazaar includes the following features:
+- **Product Search:** Restaurants can browse available products across multiple suppliers.
+- **Shopping Cart and Transactions:** Buyers can add products to a shopping cart and complete purchases directly through the website.
+- **Order Management:** Suppliers receive detailed orders submitted by buyers, including all necessary information to fulfil the requests.
+- **Order Status Updates:** Suppliers can update the status of orders, providing real-time visibility for buyers about their purchases.
+
+While the current state focuses on essential functionality, it sets the foundation for future enhancements that will make the platform more dynamic, efficient, and user-friendly.
 ## Development Tools
 
 - **Django:** The web framework used for building the application.
@@ -160,7 +169,18 @@ Red Bazaar is a B2B marketplace designed to connect suppliers and companies effi
 
 ### Future Enhancements
 
-[Not Ready Yet]
+As RedBazaar evolves, several advanced features are planned to enhance the platform and expand its functionality for both buyers and suppliers. The vision for RedBazaar includes:
+
+- **QR Code Integration:** Buyers will be able to add products to their shopping lists by scanning QR codes. This will speed up the process and allow predefined quantities to be adjusted before completing purchases.
+- **Smart Price Comparison Wizard:** A tool designed to help buyers optimise their shopping lists by identifying the best deals based on price, supplier ratings, or other preferences.
+- **Calendar-Based Insights:** Both buyers and suppliers will have access to a calendar feature that leverages historical data:
+  - Buyers will receive reminders about past purchases, such as increased orders for specific products during seasonal events, helping them plan more effectively.
+  - Suppliers will be notified of past periods of high demand, allowing them to adjust their inventory, prepare special offers, or target specific customers more strategically.
+- **Enhanced Supplier Visibility:** Suppliers will have the ability to promote their products and daily deals, ensuring maximum exposure on the platform.
+- **API for Market Insights:** A free API will provide valuable analytics and trends for both buyers and suppliers, helping them make informed business decisions.
+- **Dynamic Supplier Selection:** Buyers will have more flexibility in choosing suppliers, with tools that allow them to compare products and switch suppliers easily.
+
+These future plans aim to make RedBazaar a comprehensive solution for connecting restaurants and suppliers, fostering growth and collaboration within the small and medium-sized business community.
 
 ## Testing
 
