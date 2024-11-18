@@ -120,7 +120,8 @@ class Product(models.Model):
         None. The method modifies the instance's slug attribute and calls the superclass's save method.
         """
         # Automatically generate the slug based on the product title
-        self.slug = slugify(f"{self.seller_id}-{self.name}")
+        if not self.slug:
+            self.slug = slugify(f"{self.seller_id}-{self.name}")
         super(Product, self).save(*args, **kwargs)
 
     def __str__(self):

@@ -78,7 +78,8 @@ def create_edit_product(request, prd_id=None):
     return render(
         request,
         "products/prod-creation.html",
-        {"prod_form": product_form},  # Pass the product form to the template.
+        {"prod_form": product_form,
+         'product': product},  # Pass the product form to the template.
     )
 
 
