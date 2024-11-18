@@ -67,16 +67,57 @@ At this stage, RedBazaar includes the following features:
 While the current state focuses on essential functionality, it sets the foundation for future enhancements that will make the platform more dynamic, efficient, and user-friendly.
 ## Development Tools
 
-- **Django:** The web framework used for building the application.
-- **Bootstrap:** Utilized for responsive design and UI components.
+RedBazaar is being developed using a set of tools that streamline the coding, version control, and deployment processes. These tools ensure that development adheres to best practices and allows for efficient collaboration and deployment.
+
+- **Visual Studio Code (VSCode):**  
+  The primary IDE used for writing and managing the code. VSCode is enhanced with extensions such as:
+  - **autoPEP8:** Automatically formats the code to comply with the PEP8 standard, ensuring clean and readable Python code.
+
+- **Git:**  
+  Used for version control, enabling the tracking of changes to the codebase and facilitating collaboration among developers.
+
+- **GitHub:**  
+  The repository for hosting the project, allowing for remote collaboration, issue tracking, and streamlined version management.
+
+- **pip and `requirements.txt`:**  
+  pip is used for managing project dependencies, with all necessary libraries listed in the `requirements.txt` file for easy installation and environment setup.
+
+- **Heroku:**  
+  The platform used for deploying the project. Heroku allows for quick and scalable deployment, making it easy to share and test the application in a live environment.
+
 
 ## Technologies Used
 
 ### Backend
-- **Django:** Core framework for handling server-side logic and database interactions.
+
+- **Django:**  
+  The primary framework used for building the backend of RedBazaar. Django handles the server-side logic, routing, and database interactions. It also includes a built-in authentication system for managing user registration and login.
+
+- **Python:**  
+  The core programming language for RedBazaar, used in conjunction with Django to build robust and scalable server-side functionality.
+
+- **Django ORM and Database:**  
+  Django's Object-Relational Mapping (ORM) is used for database operations. The database structure is managed entirely through Django, ensuring consistency and efficiency.
+
+- **Django MPTT:**  
+  This library is used for managing hierarchical data, particularly in creating parent and child categories for the products. It helps organise the categories into tree structures for better usability and data representation.
+
+- **Django AllAuth:**  
+  A library integrated for user authentication, registration, and login. It supports third-party authentication providers like Google and GitHub, allowing users to register with a single click.
 
 ### Frontend
-- **HTML, CSS, JavaScript:** Used for structuring, styling, and adding interactivity to the website.
+
+- **HTML5:**  
+  Used to structure the content of the website, ensuring semantic and accessible markup.
+
+- **CSS3:**  
+  Utilised to style the website, providing consistent and responsive designs across different devices.
+
+- **JavaScript:**  
+  Enhances interactivity on the site by enabling dynamic content updates and user interactions.
+
+- **Bootstrap:**  
+  A popular front-end framework that helps create responsive and visually appealing designs. Bootstrap is used for layout management, navigation bars, modals, and other UI components.
 
 ## Project Structure
 
