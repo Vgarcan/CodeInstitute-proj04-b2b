@@ -289,68 +289,96 @@ These future plans aim to make RedBazaar a comprehensive solution for connecting
 ## Testing
 
 ### HTML Validation
+The HTML structure of **RedBazaar** adheres to web standards and was validated using the W3C Validator. The validation process confirmed that all pages are error-free and meet modern HTML5 standards.
 
-[Not Ready Yet]
+Validation efforts ensured that:
+- The structure is semantically correct.
+- There are no broken tags or misplaced elements.
+- Accessibility features, such as alt attributes and ARIA roles, are properly integrated.
+
+**HTML Validation Result:**
+![HTML Validation Result](red-bazaar/static/imgs/readme-pics/html-validation-result.jpg)
 
 ### CSS Validation
+The CSS of **RedBazaar** has been validated with the W3C CSS Validator. The stylesheets passed the validation process with zero errors, ensuring compliance with modern CSS standards.
 
-[Not Ready Yet]
+Highlights include:
+- Fully responsive design, ensuring optimal layout across all devices.
+- Consistent use of modern CSS3 features, including flexbox and grid layouts.
+- Readable and maintainable code structure.
+
+**CSS Validation Result:**
+![CSS Validation Result](red-bazaar/static/imgs/readme-pics/css-validation-result.jpg)
 
 ### Accessibility
+Accessibility is a core focus for **RedBazaar**, following the Web Content Accessibility Guidelines (WCAG). Key accessibility measures include:
 
-[Not Ready Yet]
+- **Keyboard Navigation:** Ensuring that all navigation and interactive elements are accessible via keyboard inputs.
+- **Contrast Ratios:** Maintaining sufficient contrast between text and backgrounds to support readability.
+- **Alt Text for Images:** Providing descriptive alt attributes for all images, ensuring compatibility with screen readers.
+- **ARIA Roles:** Enhancing interactive elements with appropriate ARIA roles for better accessibility.
 
-### Wave Validation
+A WAVE audit was conducted, confirming compliance with accessibility standards. Minor adjustments, such as improving button contrast, are planned for future updates.
 
-[Not Ready Yet]
+**Wave Validation Screenshot:**
+![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-validation.jpg)
 
 ### Lighthouse Validation
+**RedBazaar** achieved high Lighthouse scores in performance, accessibility, and SEO. Some notable efforts include:
 
-[Not Ready Yet]
+- Image optimization using WebP format for faster load times without compromising quality.
+- Efficient CSS and JavaScript delivery, ensuring quick rendering across devices.
+- Meta descriptions and structured data to enhance search engine visibility.
 
-### JSHint Validation
-
-[Not Ready Yet]
+**Lighthouse Validation Screenshot:**
+![Lighthouse Validation Result](red-bazaar/static/imgs/readme-pics/lighthouse-validation.jpg)
 
 ### PEP8 Validation
+All Python code in **RedBazaar** adheres to the PEP8 standard, ensuring maintainable and clean code. Validation was conducted using automated tools, with particular attention to:
 
-[Not Ready Yet]
+- Proper indentation and spacing.
+- Clear and concise function and class comments.
+- Logical organization of imports and modules.
+
+The codebase is fully compliant, with plans to continually monitor and maintain PEP8 standards.
+
+**PEP8 Validation Result:**
+![PEP8 Validation Result](red-bazaar/static/imgs/readme-pics/pep8-validation-result.jpg)
 
 ### Device Testing
+**RedBazaar** was tested across multiple devices, including:
+- Desktops
+- Tablets
+- Smartphones
 
-[Not Ready Yet]
+Media queries were used to adapt the layout for different screen sizes. Testing confirmed that all features, from navigation to purchasing workflows, function seamlessly across devices.
+
+**Device Testing Example:**
+![Responsive Device Testing](red-bazaar/static/imgs/readme-pics/device-testing-example.jpg)
 
 ### Browser Compatibility
+Comprehensive browser testing was conducted for **RedBazaar**, covering:
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+- Safari
+- Opera
 
-[Not Ready Yet]
+The platform performs consistently across all tested browsers, providing a reliable user experience regardless of the user’s preferred browser.
 
-### User Stories Testing
+**Browser Testing Example:**
+![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/browser-testing-example.jpg)
 
-#### **Restaurants (Buyers)**
+### JSHint Validation
+JavaScript used in **RedBazaar** passed validation through JSHint with zero errors. The code is well-documented and follows best practices, ensuring readability and maintainability.
 
-| **Feature** | **Action** | **Expected Result** | **Actual Result** |
-|-----------|----------|---------|--------------------|
-| **Product Search**          | Use the search bar to find specific products             | Display of relevant product listings matching the search criteria        | Works as expected       |
-| **Shopping Cart Management**| Add products to the shopping cart                       | Products are added to the cart and displayed in the summary              | Works as expected       |
-| **Order Status Tracking**   | Navigate to the order history page to view order statuses| Order status (e.g., pending, in process, dispatched, completed) is shown | Works as expected       |
-| **Secure Payment**          | Use a credit/debit card to make a purchase               | Payment is processed securely and the order is confirmed                 | Works as expected       |
+Highlights include:
+- Efficient use of JavaScript and jQuery for interactivity.
+- Validation and error handling for all user inputs.
+- Lightweight and optimized scripts for quick execution.
 
-#### **Suppliers**
-
-| **Feature** | **Action** | **Expected Result** | **Actual Result** |
-|-----------|----------|---------|--------------------|
-| **Order Reception**         | Check received orders in the supplier dashboard          | All new orders are displayed, including relevant details                 | Works as expected       |
-| **Order Status Updates**    | Update the status of an order (e.g., pending, completed) | Buyers see the updated order status in their dashboard                   | Works as expected       |
-| **Secure Payment Confirmation** | View payment confirmation for processed orders        | Payment confirmation details are visible and accurate                    | Works as expected       |
-
-#### **System Administrators**
-
-| **Feature** | **Action** | **Expected Result** | **Actual Result** |
-|-----------|----------|---------|--------------------|
-| **Category Management**       | Use the admin panel to create or modify categories   | New categories are added or existing ones are updated successfully       | Works as expected       |
-| **Order Monitoring**          | View orders and transactions in the admin dashboard | Full details of orders and transactions are available for review         | Works as expected       |
-
-
+**JSHint Validation Result:**
+![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.jpg)
 
 ## Current State and Future Plans
 
