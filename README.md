@@ -255,7 +255,21 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
 
 ### User Stories
 
-[Not Ready Yet]
+#### **Restaurants (Buyers)**
+1. **As a buyer**, I want to search for products easily on the platform so I can quickly find what I need.
+2. **As a buyer**, I want to add products to a shopping cart to organise my orders before confirming the transaction.
+3. **As a buyer**, I want to make secure and reliable payments using my credit or debit card to ensure my transactions are safe and effective.
+4. **As a buyer**, I want to track the status of my orders (e.g., pending, in process, dispatched, completed, rejected) to stay informed about their progress.
+
+#### **Suppliers**
+1. **As a supplier**, I want to receive orders from buyers through the platform to manage my sales efficiently.
+2. **As a supplier**, I want to update the status of orders (e.g., pending, in process, dispatched, completed, rejected) to keep buyers informed about their progress.
+3. **As a supplier**, I want all transactions to be handled securely and effectively, giving me confidence in the platform's reliability.
+
+#### **System Administrators**
+1. **As an administrator**, I want a straightforward panel where I can monitor the platform's performance and operations.
+2. **As an administrator**, I want exclusive control over creating and managing product categories to maintain order and consistency within the system.
+
 
 ### Future Enhancements
 
@@ -312,7 +326,31 @@ These future plans aim to make RedBazaar a comprehensive solution for connecting
 
 ### User Stories Testing
 
-[Not Ready Yet]
+#### **Restaurants (Buyers)**
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-----------|----------|---------|--------------------|
+| **Product Search**          | Use the search bar to find specific products             | Display of relevant product listings matching the search criteria        | Works as expected       |
+| **Shopping Cart Management**| Add products to the shopping cart                       | Products are added to the cart and displayed in the summary              | Works as expected       |
+| **Order Status Tracking**   | Navigate to the order history page to view order statuses| Order status (e.g., pending, in process, dispatched, completed) is shown | Works as expected       |
+| **Secure Payment**          | Use a credit/debit card to make a purchase               | Payment is processed securely and the order is confirmed                 | Works as expected       |
+
+#### **Suppliers**
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-----------|----------|---------|--------------------|
+| **Order Reception**         | Check received orders in the supplier dashboard          | All new orders are displayed, including relevant details                 | Works as expected       |
+| **Order Status Updates**    | Update the status of an order (e.g., pending, completed) | Buyers see the updated order status in their dashboard                   | Works as expected       |
+| **Secure Payment Confirmation** | View payment confirmation for processed orders        | Payment confirmation details are visible and accurate                    | Works as expected       |
+
+#### **System Administrators**
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result** |
+|-----------|----------|---------|--------------------|
+| **Category Management**       | Use the admin panel to create or modify categories   | New categories are added or existing ones are updated successfully       | Works as expected       |
+| **Order Monitoring**          | View orders and transactions in the admin dashboard | Full details of orders and transactions are available for review         | Works as expected       |
+
+
 
 ## Current State and Future Plans
 
