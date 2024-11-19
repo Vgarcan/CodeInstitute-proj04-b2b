@@ -126,7 +126,7 @@ def dashboard(request):
     if user.role == 'SUP':  # Supplier dashboard
         products = Product.objects.filter(seller_id=user)
         received_orders = Order.objects.filter(
-            seller=user)  # Orders for the supplier
+            seller=user).order_by('-id')  # Orders for the supplier
 
         context['products'] = products
         context['received_orders'] = received_orders

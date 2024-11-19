@@ -138,13 +138,13 @@ def delete_product(request, prd_id):
     if product.seller_id != request.user:
         messages.error(
             request, "You do not have permission to delete this product.")
-        return redirect("products:list")
+        return redirect("users:dashboard")
     # Delete the product from the database.
     product.delete()
     # Show a success message to the user.
     messages.success(request, "Product deleted successfully")
     # Redirect to the product list page.
-    return redirect("products:list")
+    return redirect("users:dashboard")
 
 
 def view_product_detail(request, prd_id):
