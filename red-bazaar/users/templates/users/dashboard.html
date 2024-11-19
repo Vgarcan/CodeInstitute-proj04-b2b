@@ -33,7 +33,10 @@
                     {% if user.role == "BUY" %}
                         {# Link for Buyers to View Their Orders #}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Orders</a>
+                            <a class="nav-link" href="#recentOrdersTable">My Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#spendingSummary">Spending Summary</a>
                         </li>
                     {% elif user.role == "SUP" %}
                         {# Links for Suppliers to View Received Orders and Manage Products #}
@@ -66,46 +69,52 @@
 
             {# Dashboard Content for Buyers #}
             {% if user.role == "BUY" %}
-                <h3>Recent Orders</h3>
+            <h3 id="recentOrdersTable">Recent Orders</h3>
 
-                {# Orders Table: Checks if the user has any orders placed, else shows info message #}
-                {% if orders.exists %}
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Order ID</th>
-                                    <th>Supplier</th>
-                                    <th>Status</th>
-                                    <th>Total</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {# Loop Through Each Order for the Buyer #}
-                                {% for order in orders %}
-                                <tr>
-                                    <td>{{ order.id }}</td>
-                                    {# Supplier's username shown for each order #}
-                                    <td>{{ order.seller.username }}</td>
-                                    <td>{{ order.status }}</td>
-                                    <td>${{ order.total_price }}</td>
-                                    {# Link to View Details of Each Order #}
-                                    <td><a href="{% url 'orders:order_details' order.id %}" class="btn btn-info btn-sm">View</a></td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                {% else %}
-                    {# Message shown if no orders have been placed by the buyer #}
-                    <div class="alert alert-info" role="alert">
-                        You have not placed any orders yet. <a href="{% url 'products:all' %}" class="alert-link">Start shopping now!</a>
-                    </div>
-                {% endif %}
+            {# Orders Table: Checks if the user has any orders placed, else shows info message #}
+            {% if orders.exists %}
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Supplier</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {# Loop Through Each Order for the Buyer #}
+                            {% for order in orders %}
+                            <tr class="recent-order-row {% if forloop.counter > 20 %}d-none{% endif %}">
+                                <td>{{ order.id }}</td>
+                                {# Supplier's username shown for each order #}
+                                <td>{{ order.seller.username }}</td>
+                                <td>{{ order.status }}</td>
+                                <td>${{ order.total_price }}</td>
+                                {# Link to View Details of Each Order #}
+                                <td><a href="{% url 'orders:order_details' order.id %}" class="btn btn-info btn-sm">View</a></td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            
+                {# Button to Show More Orders #}
+                <div class="text-center mt-3">
+                    <button id="loadMore" class="btn btn-primary">Load More</button>
+                </div>
+            
+            {% else %}
+                {# Message shown if no orders have been placed by the buyer #}
+                <div class="alert alert-info" role="alert">
+                    You have not placed any orders yet. <a href="{% url 'products:all' %}" class="alert-link">Start shopping now!</a>
+                </div>
+            {% endif %}
 
                 {# Section for Spending Summary (Placeholder Chart) #}
-                <h3>Spending Summary</h3>
+                <h3 id="spendingSummary">Spending Summary</h3>
                 {% if orders.exists %}
                     <canvas id="spendingChart"></canvas>
                 {% else %}
@@ -249,7 +258,7 @@
     // Button to load more orders
     document.addEventListener("DOMContentLoaded", function () {
         let currentVisible = 20; // Initially show 20 rows
-        const rows = document.querySelectorAll(".order-row");
+        const rows = document.querySelectorAll(".order-row, .recent-order-row");
         const loadMoreButton = document.getElementById("loadMore");
 
         loadMoreButton.addEventListener("click", function () {

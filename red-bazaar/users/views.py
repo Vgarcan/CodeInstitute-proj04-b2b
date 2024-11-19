@@ -132,7 +132,8 @@ def dashboard(request):
         context['received_orders'] = received_orders
 
     elif user.role == 'BUY':  # Buyer dashboard
-        orders = Order.objects.filter(buyer=user)  # Orders placed by the buyer
+        orders = Order.objects.filter(buyer=user).order_by(
+            '-id')  # Orders placed by the buyer
 
         context['orders'] = orders
 
