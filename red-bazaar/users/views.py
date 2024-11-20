@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from allauth.account.views import LoginView, SignupView
-from .forms import CustomUserForm, ProfileForm
+from .forms import CustomUserForm, ProfileForm, MessageForm
+from .models import CustomUser
 from products.models import Product
 from orders.models import Order, OrderItem
 
@@ -48,7 +49,7 @@ class CustomSignupView(SignupView):  # CBV
 
 
 @login_required
-def profile(request):
+def profile(request, user_id=None):
     """
     View to display the user's profile.
 
@@ -63,8 +64,18 @@ def profile(request):
     Returns:
     HttpResponse: The rendered profile page template, which displays the user's information.
     """
-
-    return render(request, 'users/profile.html')
+    if user_id is None:
+        return render(request, 'users/profile.html')
+    else:
+        user = CustomUser.objects.get(id=user_id)
+        return render(
+            request,
+            'users/profile.html',
+            {
+                'view_user': user,
+                'message_form': MessageForm()
+            }
+        )
 
 
 @login_required
@@ -138,3 +149,23 @@ def dashboard(request):
         context['orders'] = orders
 
     return render(request, 'users/dashboard.html', context)
+
+
+@login_required
+def send_message(request, username):
+    recipient = get_object_or_404(CustomUser, username=username)
+    if request.method == 'POST':
+        form = MessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.sender = request.user  # Current user as sender
+            message.recipient = recipient  # Profile being viewed as recipient
+            message.save()
+            return redirect('users:user_profile', recipient.pk)
+    else:
+        form = MessageForm()
+
+    return render(request, 'messages/send_message.html', {
+        'form': form,
+        'recipient': recipient,
+    })

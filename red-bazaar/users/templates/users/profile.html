@@ -12,7 +12,7 @@
 # Set the CSS file and Other for the page
 {% endcomment %}
 {% block extra_head %}
-{% endblock %}
+{% endblock extra_head %}
 
 {% comment %}
 # Appends the content in the BODY tag
@@ -21,10 +21,31 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4 text-center">
-            <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid mb-4" alt="Profile Picture" width="150" height="150">
-            <h1>{{ user.username }}</h1>
-            <p class="text-muted">{{ user.email }}</p>
-            <a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+            {% if view_user %}
+                <img src="{% if view_user.profile.profile_picture %}{{ view_user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid mb-4" alt="Profile Picture" width="150" height="150">
+            {% else %}
+                <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid mb-4" alt="Profile Picture" width="150" height="150">
+            {% endif %}
+            <h1>{% if view_user %}{{ view_user.username }}{% else %}{{ user.username }}{% endif %}</h1>
+            <p class="text-muted">{% if view_user %}{{ view_user.email }}{% else %}{{ user.email }}{% endif %}</p>
+            {% if not message_form %}
+                <a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+            {% else %}
+            <div class="container my-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Send a Message to {{ view_user.username }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="{% url 'users:send_message' view_user.username %}">
+                            {% csrf_token %}
+                            {{ message_form.as_p }}
+                            <button type="submit" class="btn btn-primary">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
         </div>
 
         <div class="col-md-8">
@@ -33,9 +54,10 @@
                     <h2>Profile Details</h2>
                 </div>
                 <div class="card-body">
-                    <p><strong>Username:</strong> {{ user.username }}</p>
-                    <p><strong>Email:</strong> {{ user.email }}</p>
-                    <p><strong>Role:</strong> {{ user.get_role_display }}</p>
+                    <p><strong>Username:</strong> {% if view_user %}{{ view_user.username }}{% else %}{{ user.username }}{% endif %}</p>
+                    <p><strong>Email:</strong> {% if view_user %}{{ view_user.email }}{% else %}{{ user.email }}{% endif %}</p>
+                    <p><strong>Role:</strong> {% if view_user %}{{ view_user.get_role_display }}{% else %}{{ user.get_role_display }}{% endif %}</p>
+                    
                 </div>
             </div>
 
@@ -44,23 +66,24 @@
                     <h3>Profile Information</h3>
                 </div>
                 <div class="card-body">
-                    <p><strong>Full Name:</strong> {{ user.profile.full_name }}</p>
-                    <p><strong>Country:</strong> {{ user.profile.country }}</p>
-                    <p><strong>City:</strong> {{ user.profile.city }}</p>
-                    <p><strong>Address:</strong> {{ user.profile.address }}</p>
-                    <p><strong>Postcode:</strong> {{ user.profile.postal_code }}</p>
-                    <p><strong>Phone Number:</strong> {{ user.profile.phone_number }}</p>
-                    <p><strong>Biography:</strong> {{ user.profile.bio }}</p>
-                    <p><strong>Website:</strong> <a href="{{ user.profile.website }}" target="_blank">{{ user.profile.website }}</a></p>
+                    
+                    <p><strong>Full Name:</strong>{% if view_user %}{{ view_user.profile.full_name }}{% else %}{{ user.profile.full_name }}{% endif %}</p>
+                    <p><strong>Country:</strong> {% if view_user %}{{ view_user.profile.country }}{% else %}{{ user.profile.country }}{% endif %}</p>
+                    <p><strong>City:</strong> {% if view_user %}{{ view_user.profile.city }}{% else %}{{ user.profile.city }}{% endif %}</p>
+                    <p><strong>Address:</strong> {% if view_user %}{{ view_user.profile.address }}{% else %}{{ user.profile.address }}{% endif %}</p>
+                    <p><strong>Postcode:</strong>{% if view_user %}{{ view_user.profile.postal_code }}{% else %}{{ user.profile.postal_code }}{% endif %}</p>
+                    <p><strong>Phone Number:</strong>{% if view_user %}{{ view_user.profile.phone_number }}{% else %}{{ user.profile.phone_number }}{% endif %}</p>
+                    <p><strong>Biography:</strong> {% if view_user %}{{ view_user.profile.bio }}{% else %}{{ user.profile.bio }}{% endif %}</p>
+                    <p><strong>Website:</strong> <a href="{% if view_user %}{{ view_user.profile.website }}{% else %}{{ user.profile.website }}{% endif %}" target="_blank">{% if view_user %}{{ view_user.profile.website }}{% else %}{{ user.profile.website }}{% endif %}</a></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock content %}
 
 {% comment %}
 # Append JS files here for the page
 {% endcomment %}
 {% block extra_body %}
-{% endblock %}
+{% endblock extra_body %}
