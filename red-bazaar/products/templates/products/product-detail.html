@@ -54,7 +54,7 @@
 
                 <!-- Rating -->
                 <p class="mb-4"><strong>Rating:</strong> 
-                    <span class="badge badge-warning">{{ product.rating }} <i class="fas fa-star"></i></span>
+                    <span class="badge badge-warning">{{ product.rating }} <i class="bi bi-star-fill"></i></span>
                 </p>
 
                 <!-- Select Quantity -->
@@ -66,13 +66,13 @@
                 <!-- Add to Basket Button -->
                 <div class="mb-3">
                     <a data-base-url="{% url 'products:add-cart' product.id 1 %}" href="{% url 'products:add-cart' product.id 1 %}" id="addToCartBtn" class="btn btn-primary btn-lg">
-                        <i class="fas fa-shopping-cart"></i> Add to basket
+                        <i class="bi bi-cart-plus-fill"></i> Add to basket
                     </a>
                 </div>
 
                 <!-- Back to Product List Button -->
                 <a href="{% url 'products:all' %}" class="btn btn-outline-secondary btn-lg">
-                    <i class="fas fa-arrow-left"></i> Back to Product List
+                    <i class="bi bi-arrow-left-circle-fill"></i> Back to Product List
                 </a>
             </div>
         </div>

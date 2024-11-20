@@ -25,43 +25,125 @@ Product List for {{ user.username}}
  Inject HTML for the content 
 {% endcomment %}
 {% block content %}
-    <div class="container mt-4">
-        <h1 class="text-center">Product List</h1>
-        
-        {% if products %}
-            <!-- Display products when available -->
-            <div class="row">
-                {% for product in products %}
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="card-img-top" alt="{{ product.name }}">
-                            <div class="card-body"> 
-                                <h5 class="card-title">{{ product.name }}</h5>
-                                <p class="card-text">Price: ${{ product.price }}</p>
-                                <p class="card-text">Quantity: {{ product.quantity }}</p>
-                                <p class="card-text">Description: {{ product.description }}</p>
-                                <a href="{% url 'products:item-view' product.id %}" class="btn btn-primary">View Details</a>
-                            </div>
-                        </div>
+<div class="container mt-4">
+    <h1 class="text-center">Product List</h1>
+    <div class="row">
+        <!-- Products Table Section -->
+        <div class="col-lg-9">
+            {% if products %}
+                <!-- Display products in a table -->
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="table-primary">
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Provider</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                {% comment %} <th>Description</th> {% endcomment %}
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product in products %}
+                            <tr>
+                                <td>
+                                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
+                                         alt="{{ product.name }}" style="width: 60px; height: auto;">
+                                </td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.seller_id }}</td>
+                                <td>${{ product.price }}</td>
+                                <td>{{ product.quantity }}</td>
+                                {% comment %} <td>{{ product.description }}</td> {% endcomment %}
+                                <td>
+                                    <a href="{% url 'products:item-view' product.id %}" class="btn btn-primary btn-sm">View Details</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <!-- Display message and search bar when no results found -->
+                <div class="text-center mt-5">
+                    <h3 class="text-muted">No products found for "{{ query }}"</h3>
+                    <p>Please try searching with different keywords.</p>
+                    <!-- Centered Search Bar -->
+                    <div class="d-flex justify-content-center">
+                        <form class="form-inline d-flex" action="{% url 'products:search' %}" method="GET">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ query }}">
+                            <button class="btn btn-success ml-2" type="submit">Search</button>
+                        </form>
                     </div>
-                {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Shopping Cart Section -->
+        <div class="container col-lg-3">
+            <div class="card d-block justify-content-end my-3">
+                <!-- Search Bar  -->
+                <div class="card-header bg-primary text-white text-center">
+                    <h5>Search</h5>
+                </div>
+                
+                <form class="form-inline d-flex flex-row-reverse" action="{% url 'products:search' %}" method="GET">
+                    <button class="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q">
+                </form>
             </div>
-        {% else %}
-            <!-- Display message and search bar when no results found -->
-            <div class="text-center mt-5">
-                <h3 class="text-muted">No products found for "{{ query }}"</h3>
-                <p>Please try searching with different keywords.</p>
-                <!-- Centered Search Bar -->
-                <div class="d-flex justify-content-center">
-                    <form class="form-inline d-flex" action="{% url 'products:search' %}" method="GET">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q" value="{{ query }}">
-                        <button class="btn btn-success ml-2" type="submit">Search</button>
-                    </form>
+            <!-- Title -->
+            <div class="card sticky-top">
+                <div class="card-header bg-primary text-white text-center">
+                    <h5>Your Shopping Cart</h5>
+                </div>
+                <div class="card-body p-2">
+                    <!-- Check if there are items in the cart -->
+                    {% if cart_items %}
+                        <!-- Loop through the sellers -->
+                        {% for seller_id, items in cart_items.items %}
+                        <div class="mb-3">
+                            <h6 class="text-muted">Seller: {{ items.0.product.seller_id.username }}</h6>
+                            <ul class="list-group list-group-flush">
+                                <!-- Loop through the items for this seller -->
+                                {% for item in items %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-2">
+                                    <div class="w-75">
+                                        <strong>{{ item.product.name }}</strong>
+                                        <small class="d-block text-muted">Qty: {{ item.quantity }}</small>
+                                        <small class="d-block text-muted">Price: ${{ item.product.price }}</small>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="badge badge-primary badge-pill">${{ item.subtotal }}</span>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endfor %}
+                        <!-- Total Cost Section -->
+                        <hr>
+                        <div class="text-right">
+                            <h6>Total: <span class="text-success font-weight-bold">${{ total_cost }}</span></h6>
+                        </div>
+                        <!-- Checkout Buttons -->
+                        <div class="text-center mt-3">
+                            <a href="{% url 'products:view-cart' %}" class="btn btn-success btn-sm ml-2">Go to Cart</a>
+                        </div>
+                    {% else %}
+                        <!-- Empty Cart Message -->
+                        <p class="text-muted text-center">Your cart is empty.</p>
+                    {% endif %}
                 </div>
             </div>
-        {% endif %}
+        </div>
+
     </div>
+</div>
 {% endblock %}
+
 
 
 {% comment %}

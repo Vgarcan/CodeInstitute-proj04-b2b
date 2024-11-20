@@ -115,8 +115,28 @@ def view_products(request, provider_id=None):
             messages.warning(request, f'ERROR: "{e.__class__.__name__}": {e}')
             products = {}  # Creates an EMPTY value
 
+    # Get the current user's shopping cart from the session.
+    # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
+    shopping_cart = request.session.get('shopping_cart', {})
+    total_cost = request.session.get('cart_total', 0)
+
+    # Retrieve the products from the shopping cart based on their IDs.
+    # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
+    products_in_cart = Product.objects.filter(id__in=shopping_cart.keys())
+
+    # Prepare a dictionary to group products by seller_id
+    # imported from UTILS.PY
+    cart_items = sup_dict(shopping_cart, source="cart")
+
     # Render the template with the products.
-    return render(request, "products/product-list.html", {"products": products})
+    return render(request,
+                  "products/product-list.html",
+                  {
+                      "products": products,
+                      'cart_items': cart_items,
+                      'total_cost': total_cost
+                  }
+                  )
 
 
 @role_required("SUP")
@@ -175,7 +195,7 @@ def search_products(request):
     Returns:
     HttpResponse: Rendered template with the search results. If the search query is empty, an empty list of products is returned.
     """
-    # Obtén el término de búsqueda
+    # Retrieve the query parameters
     query = request.GET.get("q", "").strip().lower()
     print(f"Search query: '{query}'")
 
@@ -211,7 +231,28 @@ def search_products(request):
             print(f" - {product.name} (Category: {product.category_id.name})")
         #! ### TEST ###
 
-    return render(request, "products/product-list.html", {"products": products})
+    # Get the current user's shopping cart from the session.
+    # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
+    shopping_cart = request.session.get('shopping_cart', {})
+    total_cost = request.session.get('cart_total', 0)
+
+    # Retrieve the products from the shopping cart based on their IDs.
+    # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
+    products_in_cart = Product.objects.filter(id__in=shopping_cart.keys())
+
+    # Prepare a dictionary to group products by seller_id
+    # imported from UTILS.PY
+    cart_items = sup_dict(shopping_cart, source="cart")
+
+    # Render the template with the products.
+    return render(request,
+                  "products/product-list.html",
+                  {
+                      "products": products,
+                      'cart_items': cart_items,
+                      'total_cost': total_cost
+                  }
+                  )
 
 
 @role_required("BUY")
