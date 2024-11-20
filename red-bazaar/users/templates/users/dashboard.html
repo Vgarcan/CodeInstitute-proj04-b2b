@@ -21,7 +21,7 @@
 <div class="container-fluid">
     <div class="row">
         {# Sidebar for Navigation Links #}
-        <nav class="col-md-2 bg-light sidebar sticky-top">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar sticky-top">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     {# Active Dashboard Link #}
@@ -116,7 +116,7 @@
                 {# Section for Spending Summary (Placeholder Chart) #}
                 <h3 id="spendingSummary">Spending Summary</h3>
                 {% if orders.exists %}
-                    <canvas id="spendingChart"></canvas>
+                    <canvas class="col-12" id="spendingChart"></canvas>
                 {% else %}
                     <p>No spending data available yet. Start placing orders to see your spending summary.</p>
                 {% endif %}
@@ -182,7 +182,7 @@
                 {# Section for Sales Summary (Placeholder Chart) #}
                 <h3 id="salesSummary">Sales Summary</h3>
                 {% if received_orders.exists %}
-                    <canvas id="salesChart"></canvas>
+                    <canvas class="col-12" id="salesChart"></canvas>
                 {% else %}
                     <p>No sales data available yet. Once you receive orders, your sales summary will be displayed here.</p>
                 {% endif %}
