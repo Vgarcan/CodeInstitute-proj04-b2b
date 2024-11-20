@@ -26,7 +26,12 @@
 
               <h2 class="h4 mb-4">Edit Profile Information</h2>
 
-              <form method="POST" class="bg-light p-4 rounded shadow-sm">
+              <div class="col text-center">
+                <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid mb-4" alt="Profile Picture" width="150" height="150">
+                <h3><b>{{ user.username | upper }}</b></h3>
+              </div>
+
+              <form method="POST" class="bg-light p-4 rounded shadow-sm" enctype="multipart/form-data">
                   {% csrf_token %}
 
                   <!-- User form (username and email) -->

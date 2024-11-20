@@ -189,7 +189,7 @@ ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 # Requires users to input their password twice during signup to prevent typos.
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
 # URL to redirect users to after they successfully complete the signup process.
-ACCOUNT_SIGNUP_REDIRECT_URL = '/accounts/signup-success'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/user/profile'
 # Defines a list of usernames that cannot be registered, such as 'admin'.
 ACCOUNT_USERNAME_BLACKLIST = ['admin',]
 
