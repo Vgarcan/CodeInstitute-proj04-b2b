@@ -78,8 +78,10 @@ def create_edit_product(request, prd_id=None):
     return render(
         request,
         "products/prod-creation.html",
-        {"prod_form": product_form,
-         'product': product},  # Pass the product form to the template.
+        {
+            "prod_form": product_form,
+            'product': product
+        },  # Pass the product form to the template.
     )
 
 
@@ -129,14 +131,15 @@ def view_products(request, provider_id=None):
     cart_items = sup_dict(shopping_cart, source="cart")
 
     # Render the template with the products.
-    return render(request,
-                  "products/product-list.html",
-                  {
-                      "products": products,
-                      'cart_items': cart_items,
-                      'total_cost': total_cost
-                  }
-                  )
+    return render(
+        request,
+        "products/product-list.html",
+        {
+            "products": products,
+            'cart_items': cart_items,
+            'total_cost': total_cost
+        }
+    )
 
 
 @role_required("SUP")
@@ -245,14 +248,15 @@ def search_products(request):
     cart_items = sup_dict(shopping_cart, source="cart")
 
     # Render the template with the products.
-    return render(request,
-                  "products/product-list.html",
-                  {
-                      "products": products,
-                      'cart_items': cart_items,
-                      'total_cost': total_cost
-                  }
-                  )
+    return render(
+        request,
+        "products/product-list.html",
+        {
+            "products": products,
+            'cart_items': cart_items,
+            'total_cost': total_cost
+        }
+    )
 
 
 @role_required("BUY")
@@ -371,16 +375,16 @@ def remove_product(request, prd_id, quantity):
             del shopping_cart[prd_id]
             messages.success(
                 request,
-                f'Removed {current_quantity} of {Product.objects.get(
-                    id=prd_id).name} from the cart.'
+                f'Removed {current_quantity} of',
+                f'{Product.objects.get(id=prd_id).name} from the cart.'
             )
         else:
             # Otherwise, reduce the quantity
             shopping_cart[prd_id] -= quantity
             messages.success(
                 request,
-                f'Removed {quantity} of {Product.objects.get(
-                    id=prd_id).name} from the cart.'
+                f'Removed {quantity} of',
+                f'{Product.objects.get(id=prd_id).name} from the cart.'
             )
 
     # Update the shopping cart in the session

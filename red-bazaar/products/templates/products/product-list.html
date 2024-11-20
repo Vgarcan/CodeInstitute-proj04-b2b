@@ -41,7 +41,6 @@ Product List for {{ user.username}}
                                 <th>Provider</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
-                                {% comment %} <th>Description</th> {% endcomment %}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -56,7 +55,6 @@ Product List for {{ user.username}}
                                 <td>{{ product.seller_id }}</td>
                                 <td>${{ product.price }}</td>
                                 <td>{{ product.quantity }}</td>
-                                {% comment %} <td>{{ product.description }}</td> {% endcomment %}
                                 <td>
                                     <a href="{% url 'products:item-view' product.id %}" class="btn btn-primary btn-sm">View Details</a>
                                 </td>

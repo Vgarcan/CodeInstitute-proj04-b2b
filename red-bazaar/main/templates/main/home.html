@@ -74,7 +74,7 @@
         <!-- Supplier 1 -->
         <div class="col-sm-6 col-md-4">
           <div class="card shadow-sm h-100">
-            <img src="supplier1.jpg" class="card-img-top" alt="Supplier 1">
+            <img src="{% static 'imgs/companies/comp-1.jpeg' %}" class="card-img-top" alt="Supplier 1">
             <div class="card-body">
               <h5 class="card-title">John's Organic Farm</h5>
               <p class="card-text">Supplying fresh, organic produce to local restaurants.</p>
@@ -85,7 +85,7 @@
         <!-- Supplier 2 -->
         <div class="col-sm-6 col-md-4">
           <div class="card shadow-sm h-100">
-            <img src="supplier2.jpg" class="card-img-top" alt="Supplier 2">
+            <img src="{% static 'imgs/companies/comp-2.jpeg' %}" class="card-img-top" alt="Supplier 2">
             <div class="card-body">
               <h5 class="card-title">Green Valley Poultry</h5>
               <p class="card-text">Specializing in free-range poultry and eggs.</p>
@@ -96,7 +96,7 @@
         <!-- Supplier 3 -->
         <div class="col-sm-6 col-md-4">
           <div class="card shadow-sm h-100">
-            <img src="supplier3.jpg" class="card-img-top" alt="Supplier 3">
+            <img src="{% static 'imgs/companies/comp-3.jpeg' %}" class="card-img-top" alt="Supplier 3">
             <div class="card-body">
               <h5 class="card-title">Steel Kitchen Solutions</h5>
               <p class="card-text">Providing durable kitchen equipment and utensils.</p>
@@ -147,7 +147,7 @@
     <div class="container">
       <h2 class="display-6">Ready to Streamline Your Supply Chain?</h2>
       <p>Join hundreds of restaurants and suppliers already benefiting from our platform.</p>
-      <a href="#" class="btn btn-light btn-lg mt-3">Get Started</a>
+      <a href="{% url 'account_signup' %}" class="btn btn-light btn-lg mt-3">Get Started</a>
     </div>
   </section>
 
