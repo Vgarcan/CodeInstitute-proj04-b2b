@@ -70,5 +70,5 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = [
             'full_name', 'country', 'city', 'address', 'postal_code', 'phone_number',
-            'bio', 'website', 'facebook_url', 'twitter_url', 'instagram_url', 'linkedin_url'
+            'bio', 'profile_picture', 'website', 'facebook_url', 'twitter_url', 'instagram_url', 'linkedin_url'
         ]  # Fields that will appear in the form

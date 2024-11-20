@@ -64,7 +64,27 @@ class CustomUser(AbstractUser):
 
 class Profile(models.Model):
     """
-    A model to store additional user-specific information.
+    A model to store additional information about a user, such as personal details, social media links, and profile settings.
+
+    Fields:
+    - `user`: A one-to-one relationship with the `CustomUser` model, linking each profile to a specific user.
+    - `full_name`: The user's full name (optional).
+    - `country`: The user's country of residence (optional).
+    - `city`: The user's city of residence (optional).
+    - `address`: The user's address (optional).
+    - `postal_code`: The user's postal code (optional).
+    - `phone_number`: The user's phone number (optional, but not recommended to store as an integer).
+    - `profile_picture`: An image field for storing the user's profile picture (optional).
+    - `bio`: A short biography or description of the user (optional).
+    - `website`: The user's personal or business website URL (optional).
+    - `facebook_url`, `twitter_url`, `instagram_url`, `linkedin_url`: URLs to the user's social media profiles (optional).
+    - `created_at`: Timestamp of when the profile was created (auto-generated).
+    - `updated_at`: Timestamp of when the profile was last updated (auto-generated).
+    - `is_active`: A flag indicating whether the profile is active (default is `True`).
+    - `is_verified`: A flag indicating whether the user's profile is verified (default is `False`).
+
+    Methods:
+    - `__str__`: Returns a string representation of the Profile object, showing the username and role associated with the user.
     """
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
@@ -73,7 +93,7 @@ class Profile(models.Model):
     city = models.CharField(max_length=255, blank=True, null=True)
     address = models.CharField(max_length=255, blank=True, null=True)
     postal_code = models.CharField(max_length=10, blank=True, null=True)
-    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    phone_number = models.IntegerField(max_length=20, blank=True, null=True)
     profile_picture = models.ImageField(
         upload_to='profile_pictures/', blank=True, null=True)
     bio = models.TextField(blank=True, null=True)
