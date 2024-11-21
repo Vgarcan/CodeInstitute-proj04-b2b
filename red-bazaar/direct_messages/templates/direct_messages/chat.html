@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+{% comment %}
+ CSS tag injection 
+{% endcomment %}
+{% block css_inpage %}
+.chat-sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.chat-sidebar .user:hover {
+    background-color: var(--colour-primary-light);
+}
+
+.chat-header {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+.chat-messages {
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.chat-message .message-content {
+    border-radius: 15px;
+    max-width: 75%;
+}
+
+.chat-message.sent .message-content {
+    background-color: var(--colour-accent);
+    color: var(--colour-text-light);
+}
+
+.chat-message.received .message-content {
+    background-color: var(--colour-accent-light);
+    color: var(--colour-text-dark);
+}
+
+.chat-input input {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.chat-input button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}
+{% endblock css_inpage %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Toggle Sidebar Button for Mobile -->
+            <button class="col btn btn-light d-md-none m-2 bg-danger text-white" onclick="toggleSidebar()">
+                <i class="bi bi-list"></i> Conversations
+            </button>
+
+            <!-- Sidebar for Conversations -->
+            <div id="chat-sidebar" class="col-12 col-md-4 col-lg-3 chat-sidebar bg-light shadow-sm d-md-block d-none">
+                <h5 class="text-center py-3 text-secondary">Conversations</h5>
+                {% for user in conversations %}
+                    <div class="user d-flex align-items-center p-2 border-bottom cursor-pointer" onclick="location.href='{% url 'direct_messages:chat' user.user.id %}'">
+                        <img src="{% if user.user.profile.profile_picture %}{{ user.user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
+                            alt="User Avatar" class="rounded-circle shadow-sm" style="width: 40px; height: 40px;">
+                        <div class="ms-3">
+                            <h6 class="mb-0 text-dark">{{ user.user.username }}</h6>
+                            <small class="text-muted">{{ user.last_message|truncatechars:30 }}</small>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <!-- Chat Section -->
+            <div class="col-12 col-md-8 col-lg-9 d-flex flex-column">
+                <!-- Chat Header -->
+                {% if recipient %}
+                <div class="d-flex align-items-center p-3 bg-danger text-white shadow-sm">
+                    <img src="{% if recipient.profile.profile_picture %}{{ recipient.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
+                        alt="User Avatar" class="rounded-circle shadow-sm" style="width: 50px; height: 50px;">
+                    <div class="ms-3">
+                        <h5 class="mb-0">{{ recipient.username }}</h5>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Chat Messages -->
+                <div class="chat-messages flex-grow-1 bg-white p-3 border shadow-sm">
+                    {% for message in messages %}
+                    <div class="chat-message {% if message.sender == user %}sent text-end{% else %}received{% endif %}">
+                        {% if message.subject %}
+                        <div class="subject-content p-1 mb-1 text-muted bg-light border rounded shadow-sm">
+                            <small><strong>{{ message.subject }}</strong></small>
+                        </div>
+                        {% endif %}
+                        <div class="message-content p-2 shadow-sm d-inline-block">
+                            {{ message.message }}
+                        </div>
+                        <small class="text-muted d-block mt-1">
+                            {{ message.created_at|date:"H:i" }}
+                        </small>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Chat Input -->
+                {% if recipient %}
+                <div class="p-3 chat-input border-top bg-light shadow-sm">
+                    <form method="POST" class="d-flex align-items-center">
+                        {% csrf_token %}
+                        <input type="text" name="message" class="form-control me-2" placeholder="Type a message..." required>
+                        <button type="submit" class="btn btn-primary d-flex align-items-center justify-content-center">
+                            <i class="bi bi-send"></i>
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extra_body %}
+
+{% endblock extra_body %}
+
+{% comment %}
+ JS tag injection 
+{% endcomment %}
+{% block js_inpage %}
+    function toggleSidebar() {
+        const sidebar = document.querySelector('.chat-sidebar');
+        sidebar.classList.toggle('d-none'); // Add or remove the 'd-none' class to toggle visibility
+    }
+{% endblock js_inpage %}
