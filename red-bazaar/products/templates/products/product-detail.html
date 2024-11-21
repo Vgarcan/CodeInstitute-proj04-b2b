@@ -41,7 +41,7 @@
                 <h2 class="mb-3">Product Details</h2>
 
                 <!-- Supplier -->
-                <p class="mb-2"><strong>Supplier:</strong> {{ product.seller_id }}</p>
+                <p class="mb-2"><strong>Supplier:</strong><a href="{% url 'users:user_profile' product.seller_id.id %}">{{ product.seller_id }}</a></p>
 
                 <!-- Price -->
                 <p class="mb-2"><strong>Price:</strong> <span class="text-success">${{ product.price }}</span></p>
@@ -51,6 +51,9 @@
 
                 <!-- Description -->
                 <p class="mb-2"><strong>Description:</strong> {{ product.description }}</p>
+
+                <!-- Category -->
+                <p class="mb-2"><strong>Category:</strong> {{ product.category_id }}</p>
 
                 <!-- Rating -->
                 <p class="mb-4"><strong>Rating:</strong> 

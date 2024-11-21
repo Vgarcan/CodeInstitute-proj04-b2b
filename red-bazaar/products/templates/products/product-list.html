@@ -52,7 +52,7 @@ Product List for {{ user.username}}
                                          alt="{{ product.name }}" style="width: 60px; height: auto;">
                                 </td>
                                 <td>{{ product.name }}</td>
-                                <td>{{ product.seller_id }}</td>
+                                <td><a href="{% url 'users:user_profile' product.seller_id.id %}">{{ product.seller_id }}</a></td>
                                 <td>${{ product.price }}</td>
                                 <td>{{ product.quantity }}</td>
                                 <td>
