@@ -1,3 +1,5 @@
+from direct_messages.models import Message
+from django.db.models import Q
 from products.models import Product
 from orders.models import Order, OrderItem
 
@@ -85,5 +87,84 @@ def sup_dict(source_data, source=None):
     return cart_items
 
 
-def calculate_total_from_sups():
-    pass
+def get_cart_items_count(request):
+    """
+    Calculates the total number of items in the shopping cart stored in the session.
+
+    This function retrieves the shopping cart from the session and calculates
+    the total quantity of items. It handles cases where the cart data might be 
+    stored as integers or dictionaries for each product.
+
+    Parameters:
+    - request (HttpRequest): The request object containing the session data.
+
+    Returns:
+    - int: The total number of items in the shopping cart.
+    """
+    shopping_cart = request.session.get(
+        'shopping_cart', {})  # Retrieve the cart from the session
+    total_items = 0  # Initialize total items counter
+
+    for product_id, details in shopping_cart.items():
+        if isinstance(details, int):
+            # If the item is stored as an integer, add it directly
+            total_items += details
+        elif isinstance(details, dict):
+            # If the item is stored as a dictionary, extract the 'quantity'
+            total_items += details.get('quantity', 0)
+        else:
+            # Optional: Handle unexpected formats for debugging purposes
+            print(f"Unexpected format for product_id {product_id}: {details}")
+
+    return total_items  # Return the total item count
+
+
+def get_unread_messages_count(user):
+    """
+    Calculates the total number of unread messages for a user.
+
+    This function queries the Message model to count all messages
+    where the recipient is the given user and `is_read` is False.
+
+    Parameters:
+    - user (CustomUser): The currently authenticated user.
+
+    Returns:
+    - int: The total number of unread messages.
+    """
+    return Message.objects.filter(recipient=user, is_read=False).count()
+
+
+def global_counts(request):
+    """
+    Adds global counts for new messages and cart items to the context.
+
+    This function ensures that the count of unread messages and the total
+    items in the shopping cart are always available in the context for 
+    templates. These counts are only calculated if the user is authenticated.
+
+    Parameters:
+    - request (HttpRequest): The request object containing session and user data.
+
+    Returns:
+    - dict: A dictionary containing:
+        - 'new_messages_count': The total number of unread messages.
+        - 'cart_items_count': The total number of items in the cart.
+    """
+    if request.user.is_authenticated:
+        # Calculate the number of unread messages
+        new_messages_count = get_unread_messages_count(request.user)
+
+        # Calculate the total number of items in the shopping cart
+        cart_items_count = get_cart_items_count(request)
+
+        return {
+            'new_messages_count': new_messages_count,  # Total unread messages
+            'cart_items_count': cart_items_count,  # Total items in the cart
+        }
+
+    # If the user is not authenticated, return zero counts
+    return {
+        'new_messages_count': 0,
+        'cart_items_count': 0,
+    }

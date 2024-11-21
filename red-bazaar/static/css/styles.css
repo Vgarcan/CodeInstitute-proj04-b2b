@@ -374,3 +374,51 @@ thead {
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+/* Chat */
+
+.chat-sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.chat-sidebar .user:hover {
+    background-color: var(--colour-primary-light);
+}
+
+.chat-header {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+.chat-messages {
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.chat-message .message-content {
+    border-radius: 15px;
+    max-width: 75%;
+}
+
+.chat-message.sent .message-content {
+    background-color: var(--colour-accent);
+    color: var(--colour-text-light);
+}
+
+.chat-message.received .message-content {
+    background-color: var(--colour-accent-light);
+    color: var(--colour-text-dark);
+}
+
+.chat-input input {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.chat-input button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}

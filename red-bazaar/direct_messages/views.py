@@ -1,12 +1,13 @@
+from .models import Message, CustomUser
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ChatForm
-from django.db.models import Max, F, Q
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import MessageForm, ChatForm
 from .models import Message
 from users.models import CustomUser
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.db.models import Max
 
 # Create your views here.
 
@@ -37,7 +38,7 @@ def chat_view(request, recipient_id=None):
     View for displaying the chat interface.
 
     Retrieves a unique list of conversations for the logged-in user, consolidating all messages between two users into a single conversation.
-    Handles message sending and updates the chat interface dynamically.
+    Handles message sending, marks messages as read when the conversation is accessed, and updates the chat interface dynamically.
 
     Args:
         request: The HTTP request object.
@@ -46,28 +47,30 @@ def chat_view(request, recipient_id=None):
     Returns:
         HttpResponse: Renders the chat template with the list of unique conversations and messages.
     """
-    # Retrieve unique conversations where the current user is involved
+    # Retrieve unique conversations involving the current user
     conversations = (
-        Message.objects.filter(Q(sender=request.user) |
-                               Q(recipient=request.user))
+        Message.objects.filter(
+            Q(sender=request.user) |
+            Q(recipient=request.user)
+        )
         .values('sender', 'recipient')
-        .distinct()  # Ensure each pair of users appears only once
+        .distinct()
     )
 
-    # Prepare a dictionary to group conversations
+    # Prepare a dictionary to group conversations by unique users
     unique_users = {}
     for convo in conversations:
-        # Identify the other user in the conversation
+        # Determine the other user in the conversation
         other_user_id = convo['recipient'] if convo['sender'] == request.user.id else convo['sender']
 
-        # Skip duplicates by ensuring each user pair appears only once
+        # Skip duplicates by ensuring each user appears only once
         if other_user_id in unique_users:
             continue
 
         # Fetch the user object for the other participant
         other_user = CustomUser.objects.get(id=other_user_id)
 
-        # Retrieve the most recent message between the current user and the other user
+        # Retrieve the most recent message in the conversation
         last_message = (
             Message.objects.filter(
                 Q(sender=request.user, recipient=other_user)
@@ -77,18 +80,19 @@ def chat_view(request, recipient_id=None):
             .first()
         )
 
-        # Add the conversation to the dictionary
+        # Add the conversation details to the dictionary
         unique_users[other_user_id] = {
             'user': other_user,
             'last_message': last_message.message if last_message else "No messages yet",
+            'last_message_time': last_message.created_at if last_message else None,
         }
 
-    # Get the selected recipient, if any
+    # If a recipient ID is provided, fetch the recipient
     recipient = None
     if recipient_id:
         recipient = get_object_or_404(CustomUser, id=recipient_id)
 
-    # Retrieve all messages between the current user and the selected recipient
+    # Fetch messages between the logged-in user and the selected recipient
     messages = []
     if recipient:
         messages = Message.objects.filter(
@@ -96,7 +100,12 @@ def chat_view(request, recipient_id=None):
             | Q(sender=recipient, recipient=request.user)
         ).order_by('created_at')
 
-    # Handle form submission for sending a message
+        # Mark all unread messages as read
+        unread_messages = messages.filter(
+            recipient=request.user, is_read=False)
+        unread_messages.update(is_read=True)
+
+    # Handle message sending
     if request.method == 'POST' and recipient:
         form = ChatForm(request.POST)
         if form.is_valid():
@@ -108,8 +117,10 @@ def chat_view(request, recipient_id=None):
     else:
         form = ChatForm()
 
+    # Render the chat template with the context data
     return render(request, 'direct_messages/chat.html', {
-        'conversations': unique_users.values(),  # Pass only the unique conversations
+        # Sort conversations by the latest message time
+        'conversations': sorted(unique_users.values(), key=lambda x: x['last_message_time'], reverse=True),
         'messages': messages,
         'form': form,
         'recipient': recipient,
