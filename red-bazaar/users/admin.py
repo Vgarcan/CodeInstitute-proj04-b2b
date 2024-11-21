@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomUser, Profile, Message
+from .models import CustomUser, Profile
 
 # Register your models here.
 
@@ -28,24 +28,5 @@ class ProfileAdmin(admin.ModelAdmin):
     list_select_related = ('user',)
 
 
-class MessageAdmin(admin.ModelAdmin):
-    """ Profile display for Admin"""
-
-    # Row Display
-    list_display = ('id', 'sender', 'recipient', 'subject', 'created_at')
-    list_display_links = ('id', 'subject')
-
-    # Filters
-    list_filter = ('sender', 'recipient')
-    # READ ONLY fields
-    readonly_fields = (
-        'id', 'sender', 'recipient',
-        'subject', 'message', 'created_at',
-        'is_read', 'is_deleted_by_sender',
-        'is_deleted_by_recipient'
-    )
-
-
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Profile, ProfileAdmin)
-admin.site.register(Message, MessageAdmin)

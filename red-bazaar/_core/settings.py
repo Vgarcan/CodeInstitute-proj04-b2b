@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'products',
     'orders',
     'payment',
+    'direct_messages',
 ]
 
 AUTH_PASSWORD_VALIDATORS = [

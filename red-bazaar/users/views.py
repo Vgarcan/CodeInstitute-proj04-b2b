@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from allauth.account.views import LoginView, SignupView
-from .forms import CustomUserForm, ProfileForm, MessageForm
+from .forms import CustomUserForm, ProfileForm
 from .models import CustomUser
 from products.models import Product
 from orders.models import Order, OrderItem
+from direct_messages.forms import MessageForm
 
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -149,23 +150,3 @@ def dashboard(request):
         context['orders'] = orders
 
     return render(request, 'users/dashboard.html', context)
-
-
-@login_required
-def send_message(request, username):
-    recipient = get_object_or_404(CustomUser, username=username)
-    if request.method == 'POST':
-        form = MessageForm(request.POST)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.sender = request.user  # Current user as sender
-            message.recipient = recipient  # Profile being viewed as recipient
-            message.save()
-            return redirect('users:user_profile', recipient.pk)
-    else:
-        form = MessageForm()
-
-    return render(request, 'messages/send_message.html', {
-        'form': form,
-        'recipient': recipient,
-    })
