@@ -464,7 +464,145 @@ Highlights include:
 
 ## Deployment
 
-[Not Ready Yet]
+### **Local Deployment Guide**
+
+#### **1. Clone the Repository**
+Open your terminal and run the following command to clone the repository to your local machine:
+```bash
+git clone https://github.com/Vgarcan/CodeInstitute-proj04-b2b.git
+```
+
+#### **2. Navigate to the Project Directory**
+Move into the project directory:
+```bash
+cd CodeInstitute-proj04-b2b
+```
+
+---
+
+#### **3. Set Up a Virtual Environment**
+It’s recommended to use a virtual environment to manage project dependencies.
+
+- **On Windows:**
+  ```bash
+  python -m venv venv
+  venv\Scripts\activate
+  ```
+
+- **On macOS/Linux:**
+  ```bash
+  python3 -m venv venv
+  source venv/bin/activate
+  ```
+
+**Tip:** If you encounter issues activating the virtual environment, ensure Python is installed and accessible via your system's PATH.
+
+---
+
+#### **4. Install Dependencies**
+With the virtual environment activated, install the required dependencies from `requirements.txt`:
+```bash
+pip install -r requirements.txt
+```
+
+**Tip:** If you see errors during installation, ensure you have the latest version of `pip`:
+```bash
+pip install --upgrade pip
+```
+
+---
+
+#### **5. Set Up Environment Variables**
+Create a `.env` file in the project’s root directory and configure the necessary environment variables. An example configuration might look like this:
+
+```plaintext
+SECRET_KEY=your_secret_key
+DEBUG=True
+DATABASE_URL=your_database_url
+STRIPE_PUBLIC_KEY=your_stripe_public_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+EMAIL_HOST_USER=your_email_address
+EMAIL_HOST_PASSWORD=your_email_password
+```
+
+**Tips for Environment Variables:**
+- Make sure your `SECRET_KEY` is a secure, random string.
+- Use the appropriate `DATABASE_URL` for your local database setup (e.g., SQLite, PostgreSQL).
+- If using Stripe in test mode, ensure you use test keys, which are prefixed with `sk_test_` (secret key) and `pk_test_` (public key).
+
+---
+
+#### **6. Apply Database Migrations**
+Run the following commands to apply database migrations and prepare the database:
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+**Tip:** If migrations fail, check your `DATABASE_URL` and ensure your database server is running locally.
+
+---
+
+#### **7. Create a Superuser (Optional)**
+To access the Django admin panel, create a superuser account:
+```bash
+python manage.py createsuperuser
+```
+Follow the prompts to set up a username, email, and password.
+
+---
+
+#### **8. Load Initial Data (Optional)**
+If the project includes fixtures or pre-defined data, load them into the database:
+```bash
+python manage.py loaddata fixtures.json
+```
+
+**Tip:** Ensure the `fixtures.json` file exists in the project and is correctly formatted.
+
+---
+
+#### **9. Run the Development Server**
+Start the development server:
+```bash
+python manage.py runserver
+```
+
+Visit `http://localhost:8000/` in your browser to view the application.
+
+---
+
+#### **Troubleshooting Tips**
+
+- **Dependencies Fail to Install**:
+  - Ensure your Python version matches the project's requirements (e.g., Python 3.8+).
+  - Check for compatibility issues with installed system libraries (e.g., `psycopg2` for PostgreSQL).
+
+- **Environment Variable Issues**:
+  - Double-check the `.env` file formatting; it should not contain extra spaces or special characters.
+  - Ensure the `.env` file is in the root project directory.
+
+- **Database Errors**:
+  - Ensure the database server (e.g., PostgreSQL) is running if using an external database.
+  - Verify the `DATABASE_URL` format:
+    ```plaintext
+    postgres://USER:PASSWORD@HOST:PORT/DBNAME
+    ```
+
+- **Server Fails to Start**:
+  - Check for syntax errors or missing modules.
+  - Ensure all migrations have been applied:
+    ```bash
+    python manage.py showmigrations
+    python manage.py migrate
+    ```
+
+- **Static Files Not Loading**:
+  - Run the following command to collect static files locally:
+    ```bash
+    python manage.py collectstatic
+    ```
+
 
 ## License
 
