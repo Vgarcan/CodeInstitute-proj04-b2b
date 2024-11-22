@@ -390,16 +390,18 @@ Media queries were used to adapt the layout for different screen sizes. Testing 
 
 ### Browser Compatibility
 Comprehensive browser testing was conducted for **RedBazaar**, covering:
-- Google Chrome
-- Microsoft Edge
-- Mozilla Firefox
-- Safari
-- Opera
+- <img src="red-bazaar/static/imgs/readme-pics/ico/google-icon.ico" width="18px"> **Google Chrome**
+- <img src="red-bazaar/static/imgs/readme-pics/edge-icon.ico" width="18px"> **Microsoft Edge**
+- <img src="red-bazaar/static/imgs/readme-pics/ico/opera-icon.ico" width="18px"> **Opera**
+- <img src="red-bazaar/static/imgs/readme-pics/ico/firefox-icon.ico" width="18px"> **Mozilla Firefox**
+- <img src="red-bazaar/static/imgs/readme-pics/ico/safari-icon.ico" width="18px"> **Safari**
+
+<img src="red-bazaar/static/imgs/readme-pics/ico/browser-test.png" style="display: block; margin: auto;" alt="Browser testing picture">
 
 The platform performs consistently across all tested browsers, providing a reliable user experience regardless of the user’s preferred browser.
 
 **Browser Testing Example:**
-![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/browser-testing-example.jpg)
+![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/browser-testing-example.webp)
 
 ### JSHint Validation
 JavaScript used in **RedBazaar** passed validation through JSHint with zero errors. The code is well-documented and follows best practices, ensuring readability and maintainability.
@@ -410,7 +412,7 @@ Highlights include:
 - Lightweight and optimized scripts for quick execution.
 
 **JSHint Validation Result:**
-![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.jpg)
+![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.webp)
 
 ### Responsiveness Testing
 
