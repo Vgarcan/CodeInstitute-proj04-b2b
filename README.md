@@ -380,6 +380,78 @@ Highlights include:
 **JSHint Validation Result:**
 ![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.jpg)
 
+### Responsiveness Testing
+
+| **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
+| --------- | ------------- | ----------------- | ---------- |
+| Landing page - responsiveness | Resize site to 320px      | All elements remain visible and functional   | ✅         |
+| Landing page - responsiveness | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
+| Login page - responsiveness    | Resize site to 320px      | All elements remain visible and functional   | ✅         |
+| Login page - responsiveness    | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
+| Sign-in page - responsiveness  | Resize site to 320px      | All elements remain visible and functional   | ✅         |
+| Sign-in page - responsiveness  | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
+| Dashboard - responsiveness     | Resize site to 320px      | All elements remain visible and functional; sidebar is hidden in tablet/mobile view | ✅         |
+| Dashboard - responsiveness     | Resize site to 1920px     | All elements remain visible and functional; sidebar is visible | ✅         |
+| Profile page - responsiveness  | Resize site to 320px      | All elements remain visible and functional   | ✅         |
+| Profile page - responsiveness  | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
+| Edit profile page - responsiveness | Resize site to 320px  | All elements remain visible and functional   | ✅         |
+| Edit profile page - responsiveness | Resize site to 1920px | All elements remain visible and functional   | ✅         |
+| Create product page - responsiveness | Resize site to 320px | All elements remain visible and functional   | ✅         |
+| Create product page - responsiveness | Resize site to 1920px | All elements remain visible and functional   | ✅         |
+| Edit product page - responsiveness | Resize site to 320px  | All elements remain visible and functional   | ✅         |
+| Edit product page - responsiveness | Resize site to 1920px | All elements remain visible and functional   | ✅         |
+| Chat page - responsiveness     | Resize site to 320px      | All elements remain visible and functional   | ✅         |
+| Chat page - responsiveness     | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
+
+### C.R.U.D. Testing
+
+| **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
+| --------- | ------------- | ----------------- | ---------- |
+| Create User                  | Register a new user              | User account is created successfully               | ✅         |
+| Edit User                    | Modify user details              | Changes are saved and reflected in the profile     | ✅         |
+| Login User                   | Log in with valid credentials    | User is authenticated and redirected to dashboard  | ✅         |
+| Logout User                  | Log out from the account         | User is logged out, and the session is cleared     | ✅         |
+| Create Profile               | Set up a profile for the user    | Profile is created successfully                    | ✅         |
+| Edit Profile                 | Modify profile information       | Changes are saved and reflected in the profile     | ✅         |
+| Create Order (Buyers only)   | Place an order                   | Order is created and stored in the system          | ✅         |
+| View Orders                  | Access order/invoice details     | Orders are visible to Buyers and Suppliers, including shipment address, product list, and quantities | ✅         |
+| Edit Order (Suppliers only)  | Update the status of an order    | Order status is updated correctly                 | ✅         |
+| View Products                | Browse available products        | Products are visible to both Buyers and Suppliers  | ✅         |
+| Create Product (Suppliers only) | Add a new product              | Product is created and visible in the shop         | ✅         |
+| Edit Product (Suppliers only) | Modify a product they own        | Changes are saved and reflected in the system      | ✅         |
+| Delete Product (Suppliers only) | Remove a product they own       | Product is deleted and no longer visible           | ✅         |
+| Search Products              | Search for products by name or category | Search results are displayed correctly for all users | ✅         |
+| Send Message                 | Send a message to a user         | Message is delivered to the recipient              | ✅         |
+| Receive Message              | Receive a message from a user    | Message is visible in the recipient's inbox        | ✅         |
+
+### Features
+
+| **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
+| --------- | ------------- | ----------------- | ---------- |
+| User Registration            | Users can register by creating a new account. Input data is validated for integrity using AllAuth. | Account is created successfully                                  | ✅          |
+| User Login                   | Users can log in with valid credentials and receive a success message. Input data is validated for integrity using AllAuth. | User is authenticated and redirected to the dashboard            | ✅          |
+| User Logout                  | Users can log out from their account.                                                      | User is logged out, and the session is cleared                   | ✅          |
+| Profile Creation             | Users can create a personal profile after registration.                                    | Profile is created successfully                                  | ✅          |
+| Profile Editing              | Users can update their personal information and receive feedback for success or errors.    | Changes are saved and reflected in the profile                   | ✅          |
+| Create Product               | Suppliers can create new products and add them to the store.                               | Product is created and visible in the shop                       | ✅          |
+| Edit Product                 | Suppliers can edit their own products (name, price, description, etc.) with feedback provided for success or errors. | Changes are saved and reflected                                  | ✅          |
+| Delete Product               | Suppliers can delete their own products.                                                   | Product is deleted and no longer visible in the shop             | ✅          |
+| View Products                | Users can browse and view all available products in the store.                             | Products are visible to all users                                | ✅          |
+| Search Products              | Users can search for products by name or category.                                         | Search results are displayed correctly                           | ✅          |
+| Create Order (Buyers only)   | Buyers can place orders for products and receive confirmation messages.                    | Order is created successfully                                    | ✅          |
+| View Orders                  | Buyers and Suppliers can view order details, including shipment address and product info.   | Orders and details are displayed accurately                      | ✅          |
+| Edit Order Status            | Suppliers can update the status of their orders (e.g., Pending, Shipped, Delivered, etc.). | Order status is updated successfully                             | ✅          |
+| Process Payments             | Payments are processed using Stripe in test mode, validating billing information, and preventing invalid transactions. Checkout forms validate input fields, including phone number, country, and data correctness. | Payment is processed, or specific error messages are displayed   | ✅          |
+| Send Message                 | Users can send messages to other users (Suppliers or Buyers).                              | Message is delivered to the recipient                            | ✅          |
+| Receive Message              | Users can receive messages from other users.                                               | Message is visible in the recipient's inbox                      | ✅          |
+| Feedback Messages            | Users receive contextual feedback based on actions, including success or error messages for debugging. | Feedback is displayed based on the user’s actions                | ✅          |
+| Sidebar Navigation           | Sidebar adapts to screen size, hiding on smaller devices and showing on larger screens.     | Sidebar is hidden or displayed as expected                       | ✅          |
+| Role-Based Navigation        | Navigation menu adjusts based on the user type (Buyer or Supplier).                        | Navigation menu displays correct options based on the user role   | ✅          |
+| Shopping Cart                | Shopping cart stores items in cookies, organizes them by Supplier, and displays the cart in the sidebar on the product listing page. | Cart is displayed with items organized by Supplier               | ✅          |
+| Cart Item Counter            | Navigation bar button displays the number of items in the shopping cart.                   | Item count is updated and displayed accurately                   | ✅          |
+| Unread Messages Counter      | Navigation bar button displays the number of unread messages.                              | Message count is updated and displayed accurately                | ✅          |
+
+
 ## Current State and Future Plans
 
 ### Current State
