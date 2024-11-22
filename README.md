@@ -323,6 +323,15 @@ Validation efforts ensured that:
 ![HTML Validation Result](red-bazaar/static/imgs/readme-pics/html-validation-result.jpg)
 
 ### CSS Validation
+
+<p>
+    <a href="https://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+            alt="Valid CSS!" />
+    </a>
+</p>
+
 The CSS of **RedBazaar** has been validated with the W3C CSS Validator. The stylesheets passed the validation process with zero errors, ensuring compliance with modern CSS standards.
 
 Highlights include:
@@ -331,7 +340,7 @@ Highlights include:
 - Readable and maintainable code structure.
 
 **CSS Validation Result:**
-![CSS Validation Result](red-bazaar/static/imgs/readme-pics/css-validation-result.jpg)
+![CSS Validation Result](red-bazaar/static/imgs/readme-pics/css-validation-result.webp)
 
 ### Accessibility
 Accessibility is a core focus for **RedBazaar**, following the Web Content Accessibility Guidelines (WCAG). Key accessibility measures include:
