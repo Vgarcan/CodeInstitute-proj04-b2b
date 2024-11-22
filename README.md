@@ -251,7 +251,30 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
 
 ### Key Principles
 
-[Not Ready Yet]
+1. **User-Centric Design**  
+   The platform is designed to cater to two main user groups: Suppliers managing their products and Buyers exploring and purchasing them. The experience is streamlined for both roles, ensuring efficiency and ease of use.
+
+2. **Role-Specific Navigation**  
+   The interface dynamically adapts based on the user’s role, providing Buyers with features such as product browsing and cart management, while offering Suppliers tools to manage products and track orders.
+
+3. **Clear and Intuitive Interaction**  
+   Every action, from creating a product to completing a purchase, provides immediate feedback to the user, ensuring clarity and confidence in their interactions.
+
+4. **Responsive and Accessible**  
+   The platform is fully responsive, ensuring a seamless experience across all devices and screen sizes. Accessibility has been considered to accommodate diverse user needs.
+
+5. **Effective Communication**  
+   A built-in messaging system enables seamless communication between Buyers and Suppliers, with clear indicators for unread messages to ensure important communications are not missed.
+
+6. **Organised and Searchable Content**  
+   Products are categorised and searchable by name or category, making it easy for Buyers to find what they need. The shopping cart and product listings are organised by Supplier for clarity.
+
+7. **Secure and Reliable Transactions**  
+   Payments are processed securely using Stripe in test mode. The platform validates all payment and billing details to prevent errors and ensure a smooth checkout process.
+
+8. **Transparency and Feedback**  
+   The system provides clear and transparent feedback for all user actions, whether it’s a success message for an order or detailed error information for debugging.
+
 
 ### User Stories
 
