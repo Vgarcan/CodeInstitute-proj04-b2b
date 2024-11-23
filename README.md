@@ -437,7 +437,9 @@ Validation efforts ensured that:
 - Accessibility features, such as alt attributes and ARIA roles, are properly integrated.
 
 **HTML Validation Result:**
-![HTML Validation Result](red-bazaar/static/imgs/readme-pics/html-validation-result.jpg)
+![HTML Validation Result](red-bazaar/static/imgs/readme-pics/w3c-markup.png)
+
+To validate this HTML code, you can use the [W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdev.red-bazaar.com%2F).
 
 ### CSS Validation
 
@@ -458,6 +460,8 @@ Highlights include:
 
 **CSS Validation Result:**
 ![CSS Validation Result](red-bazaar/static/imgs/readme-pics/css-validation-result.webp)
+
+To validate this CSS code, you can use the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=dev.red-bazaar.com&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
 ### Accessibility
 Accessibility is a core focus for **RedBazaar**, following the Web Content Accessibility Guidelines (WCAG). Key accessibility measures include:
@@ -480,7 +484,7 @@ A WAVE audit was conducted, confirming compliance with accessibility standards. 
 - Meta descriptions and structured data to enhance search engine visibility.
 
 **Lighthouse Validation Screenshot:**
-![Lighthouse Validation Result](red-bazaar/static/imgs/readme-pics/lighthouse-validation.jpg)
+![Lighthouse Validation Result](red-bazaar/static/imgs/readme-pics/lighthouse-val.png)
 
 ### PEP8 Validation
 All Python code in **RedBazaar** adheres to the PEP8 standard, ensuring maintainable and clean code. Validation was conducted using automated tools, with particular attention to:
