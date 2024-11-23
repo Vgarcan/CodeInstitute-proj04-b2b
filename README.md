@@ -1,6 +1,6 @@
 # Red Bazaar - B2B Marketplace
 
-![Main LOGO](/red-bazaar/static/imgs/banner1.webp)
+![Main LOGO](/red-bazaar/static/imgs/readme-pics/banner-logo-02.png)
 
 # Victor Garcia Cantalapidera 
 - Slack: [@Victor Garcia](https://code-institute-room.slack.com/team/U0695HZA7FZ)
@@ -17,6 +17,8 @@
 - [Features](#features)
 - [Development Tools](#development-tools)
 - [Technologies Used](#technologies-used)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
 - [Project Structure](#project-structure)
   - [Database Schema](#database-schema)
 - [Wireframes](#wireframes)
@@ -35,20 +37,26 @@
   - [Accessibility](#accessibility)
   - [Wave Validation](#wave-validation)
   - [Lighthouse Validation](#lighthouse-validation)
-  - [JSHint Validation](#jshint-validation)
   - [PEP8 Validation](#pep8-validation)
   - [Device Testing](#device-testing)
   - [Browser Compatibility](#browser-compatibility)
-  - [User Stories Testing](#user-stories-testing)
+  - [JSHint Validation](#jshint-validation)
   - [Project Testing Overview](#project-testing-overview)
-- [Collaborative Efforts](#collaborative-efforts)
+    - [Responsiveness Testing](#responsiveness-testing)
+    - [C.R.U.D. Testing](#crud-testing)
+    - [Features](#features)
 - [Current State and Future Plans](#current-state-and-future-plans)
   - [Current State](#current-state)
   - [Future Plans](#future-plans)
+  - [Moving Forward](#moving-forward)
 - [Deployment](#deployment)
+  - [Local Deployment Guide](#local-deployment-guide)
 - [License](#license)
 - [Bugs and Challenges](#bugs-and-challenges)
+  - [Bugs](#bugs)
+  - [Challenges](#challenges)
 - [Acknowledgement](#acknowledgement)
+
 
 ## Introduction
 
@@ -600,11 +608,62 @@ Highlights include:
 
 ### Current State
 
-[Not Ready Yet]
+RedBazaar is currently at its **minimum viable product (MVP)** stage, focusing on the essential features required to operate as an e-commerce platform. The project has been developed with a clear goal of delivering a functional foundation that allows seamless interactions between buyers (restaurants) and suppliers. This ensures the platform is ready for further development and expansion.
+
+The current implementation includes the following core features:
+
+1. **Product Search**  
+   Restaurants can search and browse products across multiple suppliers, filtering by category or product name to locate items quickly.
+
+2. **Shopping Cart and Transactions**  
+   Buyers can add products to their cart, review their selection, and complete purchases securely using Stripe.
+
+3. **Order Management**  
+   Suppliers receive detailed orders, including product quantities, shipping addresses, and total costs, enabling them to fulfil buyer requests efficiently.
+
+4. **Order Status Updates**  
+   Suppliers can update the status of orders (e.g., Pending, Shipped, Delivered), providing real-time visibility for buyers regarding their purchases.
+
+5. **Messaging System**  
+   Buyers and suppliers can communicate directly through a secure messaging system, clarifying order details or addressing post-order inquiries.
+
+6. **Responsive Design**  
+   The platform is fully responsive, ensuring a smooth experience across all devices, from desktops to mobile phones.
+
+7. **Role-Specific Navigation**  
+   The interface adjusts dynamically based on the user's role. Buyers can browse products, manage orders, and track purchases, while Suppliers can manage product listings and process orders.
+
+This stage provides a solid starting point for the project, demonstrating a functioning e-commerce platform with key features in place. While it represents the minimum necessary to achieve this goal, the project is well-structured for future enhancements.
 
 ### Future Plans
 
-[Not Ready Yet]
+Building on the current foundation, RedBazaar aims to implement additional features and improvements to enhance the platform’s functionality, usability, and scalability. These plans include:
+
+1. **Dark Mode Support**  
+   Introduce a dark mode option to accommodate user preferences and improve accessibility in low-light environments.
+
+2. **Advanced Search Filters**  
+   Allow users to filter products by criteria such as price range, availability, and ratings, improving the browsing experience.
+
+3. **Order Analytics for Suppliers**  
+   Provide suppliers with detailed analytics on order trends, product performance, and buyer behaviour, helping them optimise their offerings.
+
+4. **Enhanced Messaging Features**  
+   Expand the messaging system to include features like file attachments, read receipts, and group conversations for more robust communication.
+
+5. **Customisable User Profiles**  
+   Enable users to personalise their profiles, including adding profile pictures and setting preferences for notifications and communication.
+
+6. **Multi-Currency and Multi-Language Support**  
+   Broaden the platform's reach by supporting multiple currencies and languages to cater to a global audience.
+
+7. **Mobile Application**  
+   Develop a dedicated mobile app to provide users with an optimised experience on mobile devices.
+
+### Moving Forward
+
+With the foundation established, the focus now shifts to enhancing the platform through the planned features above. Each step will be carefully implemented to ensure consistency with the branding and goals of RedBazaar, while incorporating user feedback to guide development. This forward-thinking approach positions RedBazaar as a scalable and adaptable solution for buyers and suppliers in the e-commerce space.
+
 
 ## Deployment
 
