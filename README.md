@@ -18,6 +18,7 @@
 - [Development Tools](#development-tools)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
+  - [Database Schema](#database-schema)
 - [Wireframes](#wireframes)
 - [Colors](#colors)
   - [Color Customization Process](#color-customization-process)
@@ -235,6 +236,18 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
     - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `requirements.txt` (List of Python dependencies)
     - <img src="red-bazaar/static/imgs/readme-pics/ico/ic-info-outline.ico" width="18px"> `README.md` (Project README file)
 
+### Database Schema
+
+The database schema is designed to support the core functionalities of the project, including user management, product listings, order processing, and messaging between users. Below is the relational diagram illustrating the relationships between the key entities:
+
+![Database Schema](red-bazaar/static/imgs/readme-pics/DB-schema-BuyNSell.jpg)
+
+#### Key Highlights:
+- **Users**: Managed through the `CustomUser` table, which differentiates between Buyers and Suppliers. Each user can have a detailed profile linked via the `Profile` table.
+- **Products and Categories**: Products are linked to Suppliers and organised into hierarchical categories using the `Category` table.
+- **Orders**: The `Order` table connects Buyers and Suppliers, storing details like order status and shipping information. Each order contains multiple items managed by the `OrderItem` table.
+- **Messages**: Private messaging between users is handled through the `Message` table, tracking sender, recipient, and read status.
+
 ## Wireframes
 
 [Not Ready Yet]
@@ -246,6 +259,8 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
 ### Color Customization Process
 
 [Not Ready Yet]
+
+
 
 ## User Experience
 
