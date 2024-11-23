@@ -20,8 +20,10 @@
 - [Project Structure](#project-structure)
   - [Database Schema](#database-schema)
 - [Wireframes](#wireframes)
-- [Colors](#colors)
-  - [Color Customization Process](#color-customization-process)
+- [Colours](#colours)
+  - [Purpose and Implementation](#purpose-and-implementation)
+  - [Colour Palette](#colour-palette)
+  - [Colour Customization Process](#colour-customization-process)
 - [How It Works](#how-it-works)
 - [User Experience](#user-experience)
   - [Key Principles](#key-principles)
@@ -253,13 +255,75 @@ The database schema is designed to support the core functionalities of the proje
 
 [Not Ready Yet]
 
-## Colors
+## Colours
 
-[Not Ready Yet]
+The colour scheme used in this project is carefully designed to reflect the branding of "Red Bazaar," ensuring a visually engaging yet professional appearance. The primary colours are inspired by shades of red, reinforcing the connection to the project's name and logo. Secondary colours like greys and whites provide balance and readability, creating a polished user experience.
 
-### Color Customization Process
+### Purpose and Implementation
 
-[Not Ready Yet]
+- **Bootstrap Overwrite**: The colours are implemented using CSS variables defined under the `:root` selector. This ensures they overwrite Bootstrap's default styles seamlessly, maintaining a consistent design across all components.
+- **Centralised Control**: By defining the colours in the root, any future changes can be applied globally, affecting the entire project without needing individual updates to components.
+- **Professional Design**: The palette prioritises accessibility and clarity, combining bold reds for identity and soft greys for neutral elements.
+
+### Colour Palette
+
+![Colour Scheme](red-bazaar/static/imgs/readme-pics/colour-scheme.png)
+
+1. **`--colour-primary-light`**: `#f8d7da`  
+   - A soft, light red used for subtle highlights and less critical notifications. This tone ensures a visual connection to the branding while maintaining readability.
+
+2. **`--colour-primary`**: `#b71c1c`  
+   - A bold, rich red that represents the core identity of "Red Bazaar." It is used in headers, buttons, and other key elements to reinforce the branding.
+
+3. **`--colour-primary-dark`**: `#7f0000`  
+   - A deeper red providing contrast and depth, used for hover effects or active states to indicate interactivity.
+
+4. **`--colour-secondary-light`**: `#f5f5f5`  
+   - A very light grey, ideal for backgrounds and creating a clean, professional look while maintaining a soft contrast with text.
+
+5. **`--colour-secondary`**: `#424242`  
+   - A medium grey used for secondary text and neutral elements, ensuring readability without overpowering primary content.
+
+6. **`--colour-secondary-dark`**: `#212121`  
+   - A dark grey that provides strong contrast for main text or headers against light backgrounds, enhancing clarity.
+
+7. **`--colour-accent`**: `#d32f2f`  
+   - A vivid red accent used for call-to-action buttons, drawing attention to key actions and engaging users.
+
+8. **`--colour-accent-light`**: `#ffcccc`  
+   - A lighter red accent applied in hover effects or secondary highlights, adding visual interest without overwhelming.
+
+9. **`--colour-accent-dark`**: `#8c1d1d`  
+   - A dark red accent for focused or active states, reinforcing the user’s attention on key elements.
+
+10. **`--colour-background-light`**: `#f7f7f7`  
+    - A very light grey background used for sections to create subtle contrasts and maintain a clean design.
+
+11. **`--colour-background`**: `#ffffff`  
+    - The standard white background, ensuring a professional and uncluttered appearance.
+
+12. **`--colour-background-dark`**: `#e0e0e0`  
+    - A neutral grey background for secondary sections, providing differentiation without drawing too much attention.
+
+13. **`--colour-text-light`**: `#ffffff`  
+    - White text, used on dark backgrounds to ensure readability and contrast.
+
+14. **`--colour-text-dark`**: `#2e2e2e`  
+    - A dark grey used for primary text, balancing readability and aesthetics.
+
+15. **`--colour-text-muted`**: `#616161`  
+    - A muted grey tone for secondary information or less important content, maintaining a clear hierarchy in the design.
+
+
+### Colour Customization Process
+
+Currently, the colour scheme of the website is fixed and cannot be customised by users. There are no options to switch between different themes or adjust the colour palette according to user preferences. Additionally, the platform does not support a dark mode or light mode toggle; the website operates in a single predefined mode.
+
+#### Future Plans
+While there are no immediate plans to allow users to change the colour scheme entirely, we aim to implement a dark mode in the future to accommodate user preferences for a darker interface. However, this will be done in a way that preserves the branding of "Red Bazaar" and aligns with the existing colour scheme and logo.
+
+#### Rationale
+The fixed colour scheme ensures consistency with the branding and identity of "Red Bazaar." Allowing users to fully customise the colours could compromise the visual connection to the project's name and logo, which are integral to the platform's identity. As such, any future changes or customisation features will carefully consider this balance.
 
 ## How It Works
 
