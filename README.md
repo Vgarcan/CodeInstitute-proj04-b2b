@@ -495,9 +495,6 @@ All Python code in **RedBazaar** adheres to the PEP8 standard, ensuring maintain
 
 The codebase is fully compliant, with plans to continually monitor and maintain PEP8 standards.
 
-**PEP8 Validation Result:**
-![PEP8 Validation Result](red-bazaar/static/imgs/readme-pics/pep8-validation-result.jpg)
-
 ### Device Testing
 **RedBazaar** was tested across multiple devices, including:
 - Desktops
@@ -840,12 +837,49 @@ Any violation of these terms is strictly prohibited. For permissions or inquirie
 
 ### Bugs
 
-[Not Ready Yet]
+1. **Product ID Conflict in Shopping Cart**
+   - **Description**: A recurring issue arises when handling products with an ID of `1`. The problem occurs during actions such as adding the product to the shopping cart or updating its quantity. This is caused by the way JavaScript interacts with the `href` attribute, which was initially used to pass the product ID.
+   - **Cause**: Django renders the templates first, generating static IDs for products, but JavaScript modifies these IDs dynamically when the page loads. Since the `href` was directly tied to the product ID, any mismatch during the handoff from Django to JavaScript caused errors, particularly with the product ID `1`.
+   - **Temporary Fix**: The `href` attribute was replaced with a `data-*` attribute (e.g., `data-url`) to store the product ID. JavaScript now reads the value from `data-url` instead of relying on the `href`. This approach partially resolved the issue, but intermittent errors persist.
 
 ### Challenges
 
-[Not Ready Yet]
+1. **Synchronising Django and JavaScript**
+   - **Description**: Integrating Django's server-side rendering with JavaScript's client-side processing proved to be a key challenge. The issue specifically arose because Django's initial rendering generates static product IDs, while JavaScript relies on dynamically updated attributes.
+   - **Solution Attempts**: 
+     - Replacing `href` with `data-*` attributes to avoid direct conflicts between Django's rendering and JavaScript's expectations.
+     - Testing the JavaScript logic to ensure it accurately reads and processes the `data-url` attribute.
+   - **Current Status**: While this workaround reduced errors, it did not eliminate them entirely. Further debugging is required to identify and resolve the root cause of the intermittent failures.
+
+2. **Debugging Intermittent Issues**
+   - **Description**: Tracking and replicating this bug has been difficult because it does not occur consistently. It mainly manifests during specific interactions with the product ID `1` but not for other IDs.
+   - **Lesson Learned**: Intermittent issues like this highlight the importance of robust testing and logging. Implementing additional error tracking within JavaScript and Django could help capture more details about the circumstances under which the bug occurs.
+
+### Next Steps
+
+- Refactor JavaScript to improve how it interacts with the `data-*` attributes, ensuring compatibility with Django's rendering logic.
+- Introduce detailed logging to track when and why the error occurs, particularly for the product ID `1`.
+- Explore alternative methods to pass product IDs dynamically without relying on static attributes or conflicting values.
+
 
 ## Acknowledgement
 
-[Not Ready Yet]
+This project was made possible thanks to the numerous resources, articles, and videos available online, as well as the structured guidance provided by Code Institute.
+
+Throughout the development process, we frequently referred to tutorials, forums, and documentation to overcome challenges and implement solutions. For instance, the use of the MPTT library for handling hierarchical data was a direct result of research on platforms like Stack Overflow and various documentation sites. As a practice inspired by Django's approach, we have embedded links to some of these references directly within the scripts. These links serve as a point of reference for anyone reviewing or extending the codebase.
+
+While it is difficult to track every single resource used over the course of three months, we want to acknowledge the invaluable support of:
+
+The instructional videos and materials provided by Code Institute.
+Open-source libraries like Django, Bootstrap, and Stripe, whose extensive documentation and community contributions were instrumental.
+Articles, blogs, and Q&A platforms like Stack Overflow that provided solutions to specific issues encountered during development.
+Specific References
+Below are some examples of key resources and their use in this project:
+
+MPTT Library Documentation: Utilised for creating and managing hierarchical data structures. A link to the documentation is included in the relevant script.
+Stack Overflow Discussions: Helped solve issues related to URL management in Django and JavaScript interactions with template-rendered content.
+Bootstrap Documentation: Referenced for styling and responsive layout solutions, ensuring a polished and consistent user interface.
+Stripe API Documentation: Used extensively for implementing the payment processing system.
+Django Official Documentation: A constant reference for understanding Django ORM, views, and middleware.
+YouTube Tutorials: Several video tutorials provided insights into handling edge cases, such as managing cart quantities and avoiding layout shifts.
+Lastly, we extend our gratitude to the Code Institute mentors and reviewers who offered guidance and support throughout this journey.
