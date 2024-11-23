@@ -809,7 +809,28 @@ Visit `http://localhost:8000/` in your browser to view the application.
 
 ## License
 
-[Not Ready Yet]
+This project is proprietary and is licensed for **educational evaluation purposes only**. The following restrictions apply:
+
+1. **No Redistribution**:  
+   This project may not be copied, distributed, or shared in any form, either online or offline.
+
+2. **Limited Usage**:  
+   Access to this project is granted solely to:
+   - Code Institute instructors, mentors, and supervisors.
+   - Members of the academic team responsible for reviewing and grading the project.
+
+3. **No Derivative Works**:  
+   The code, design, and any other assets included in this project may not be modified, reused, or incorporated into other projects.
+
+4. **Ownership**:  
+   All intellectual property rights of this project remain with the author.
+
+5. **No Commercial Use**:  
+   This project may not be used for any commercial purposes under any circumstances.
+
+Any violation of these terms is strictly prohibited. For permissions or inquiries, please contact the author directly.
+
+![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/lock-license.webp)
 
 ## Bugs and Challenges
 
