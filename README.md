@@ -40,6 +40,7 @@
   - [Device Testing](#device-testing)
   - [Browser Compatibility](#browser-compatibility)
   - [User Stories Testing](#user-stories-testing)
+  - [Project Testing Overview](#project-testing-overview)
 - [Collaborative Efforts](#collaborative-efforts)
 - [Current State and Future Plans](#current-state-and-future-plans)
   - [Current State](#current-state)
@@ -67,26 +68,27 @@ At this stage, RedBazaar includes the following features:
 - **Shopping Cart and Transactions:** Buyers can add products to a shopping cart and complete purchases directly through the website.
 - **Order Management:** Suppliers receive detailed orders submitted by buyers, including all necessary information to fulfil the requests.
 - **Order Status Updates:** Suppliers can update the status of orders, providing real-time visibility for buyers about their purchases.
+- **Messaging System:**  Buyers and suppliers can communicate directly through a secure and efficient messaging system, allowing for clarification of order details, requests, or any additional information.
 
 While the current state focuses on essential functionality, it sets the foundation for future enhancements that will make the platform more dynamic, efficient, and user-friendly.
 ## Development Tools
 
 RedBazaar is being developed using a set of tools that streamline the coding, version control, and deployment processes. These tools ensure that development adheres to best practices and allows for efficient collaboration and deployment.
 
-- **Visual Studio Code (VSCode):**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/vsc-icon.ico" width="18px"> **Visual Studio Code (VSCode):**  
   The primary IDE used for writing and managing the code. VSCode is enhanced with extensions such as:
   - **autoPEP8:** Automatically formats the code to comply with the PEP8 standard, ensuring clean and readable Python code.
 
-- **Git:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/git-icon.ico" width="18px"> **Git:**  
   Used for version control, enabling the tracking of changes to the codebase and facilitating collaboration among developers.
 
-- **GitHub:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/github-icon.ico" width="18px"> **GitHub:**  
   The repository for hosting the project, allowing for remote collaboration, issue tracking, and streamlined version management.
 
-- **pip and `requirements.txt`:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/pip-icon.ico" width="18px"> **pip and `requirements.txt`:**  
   pip is used for managing project dependencies, with all necessary libraries listed in the `requirements.txt` file for easy installation and environment setup.
 
-- **Heroku:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/procfile-filetipe-icon.ico" width="18px"> **Heroku:**  
   The platform used for deploying the project. Heroku allows for quick and scalable deployment, making it easy to share and test the application in a live environment.
 
 
@@ -94,33 +96,33 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
 
 ### Backend
 
-- **Django:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/dj-icon.ico" width="18px"> **Django:**  
   The primary framework used for building the backend of RedBazaar. Django handles the server-side logic, routing, and database interactions. It also includes a built-in authentication system for managing user registration and login.
 
-- **Python:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/python-icon.ico" width="18px"> **Python:**  
   The core programming language for RedBazaar, used in conjunction with Django to build robust and scalable server-side functionality.
 
-- **Django ORM and Database:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/db-icon.ico" width="18px"> **Django ORM and Database:**  
   Django's Object-Relational Mapping (ORM) is used for database operations. The database structure is managed entirely through Django, ensuring consistency and efficiency.
 
-- **Django MPTT:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/mptt-icon.ico" width="18px"> **Django MPTT:**  
   This library is used for managing hierarchical data, particularly in creating parent and child categories for the products. It helps organise the categories into tree structures for better usability and data representation.
 
-- **Django AllAuth:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/login-icon.ico" width="18px"> **Django AllAuth:**  
   A library integrated for user authentication, registration, and login. It supports third-party authentication providers like Google and GitHub, allowing users to register with a single click.
 
 ### Frontend
 
-- **HTML5:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/html_icon.ico" width="18px"> **HTML5:**  
   Used to structure the content of the website, ensuring semantic and accessible markup.
 
-- **CSS3:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/css-icon.ico" width="18px"> **CSS3:**  
   Utilised to style the website, providing consistent and responsive designs across different devices.
 
-- **JavaScript:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/js-icon.ico" width="18px"> **JavaScript:**  
   Enhances interactivity on the site by enabling dynamic content updates and user interactions.
 
-- **Bootstrap:**  
+- <img src="red-bazaar/static/imgs/readme-pics/ico/bootstrap-icon.ico" width="18px"> **Bootstrap:**  
   A popular front-end framework that helps create responsive and visually appealing designs. Bootstrap is used for layout management, navigation bars, modals, and other UI components.
 
 ## Project Structure
@@ -135,6 +137,19 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
             - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for the core application)
             - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `asgi.py` (ASGI configuration for asynchronous requests)
             - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `wsgi.py` (WSGI configuration for server deployment)
+
+        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **direct_messages/**
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initialises the direct_messages module)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for direct messages)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for direct messages)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models for storing direct messages)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the direct_messages module)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for direct messages views)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling direct message interactions)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/** (Handles database schema changes for direct messages)
+          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
+            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/direct_messages/** (HTML templates for direct_messages-related views)
+                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `chat.html`
             
         - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **main/** (Main functionalities of the application)
             - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the main module)
@@ -507,7 +522,9 @@ Highlights include:
 **JSHint Validation Result:**
 ![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.webp)
 
-### Responsiveness Testing
+### Project Testing Overview
+
+#### Responsiveness Testing
 
 | **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
 | --------- | ------------- | ----------------- | ---------- |
@@ -530,7 +547,7 @@ Highlights include:
 | Chat page - responsiveness     | Resize site to 320px      | All elements remain visible and functional   | ✅         |
 | Chat page - responsiveness     | Resize site to 1920px     | All elements remain visible and functional   | ✅         |
 
-### C.R.U.D. Testing
+#### C.R.U.D. Testing
 
 | **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
 | --------- | ------------- | ----------------- | ---------- |
@@ -551,7 +568,7 @@ Highlights include:
 | Send Message                 | Send a message to a user         | Message is delivered to the recipient              | ✅         |
 | Receive Message              | Receive a message from a user    | Message is visible in the recipient's inbox        | ✅         |
 
-### Features
+#### Features
 
 | **TEST**  | **ACTION**    | **EXPECTATION**   | **RESULT** |
 | --------- | ------------- | ----------------- | ---------- |
