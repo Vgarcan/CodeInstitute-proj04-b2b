@@ -22,6 +22,7 @@
 - [Wireframes](#wireframes)
 - [Colors](#colors)
   - [Color Customization Process](#color-customization-process)
+- [How It Works](#how-it-works)
 - [User Experience](#user-experience)
   - [Key Principles](#key-principles)
   - [User Stories](#user-stories)
@@ -260,6 +261,20 @@ The database schema is designed to support the core functionalities of the proje
 
 [Not Ready Yet]
 
+## How It Works
+
+This section provides an overview of the core functionality and user workflows within the platform. The diagram below illustrates the interaction between Buyers and Suppliers, highlighting the key processes, such as user registration, product management, order placement, and messaging.
+
+### Key Processes:
+1. **User Registration and Login**: Users can sign up as Buyers or Suppliers and access role-specific features after logging in.
+2. **Product Management**: Suppliers can add, edit, and delete their products, while Buyers can browse and search for products by category or name.
+3. **Order Placement and Management**: Buyers can place orders, and Suppliers can view and update order statuses.
+4. **Messaging System**: Both Buyers and Suppliers can communicate directly through a secure messaging system.
+5. **Payment Processing**: Buyers can securely complete transactions using Stripe integration.
+
+Below is the flowchart representing these processes:
+
+![Platform Workflow](red-bazaar/static/imgs/readme-pics/fc-webusage.jpg)
 
 
 ## User Experience
@@ -406,12 +421,11 @@ Media queries were used to adapt the layout for different screen sizes. Testing 
 ### Browser Compatibility
 Comprehensive browser testing was conducted for **RedBazaar**, covering:
 - <img src="red-bazaar/static/imgs/readme-pics/ico/google-icon.ico" width="18px"> **Google Chrome**
-- <img src="red-bazaar/static/imgs/readme-pics/edge-icon.ico" width="18px"> **Microsoft Edge**
+- <img src="red-bazaar/static/imgs/readme-pics/ico/edge-icon.ico" width="18px"> **Microsoft Edge**
 - <img src="red-bazaar/static/imgs/readme-pics/ico/opera-icon.ico" width="18px"> **Opera**
 - <img src="red-bazaar/static/imgs/readme-pics/ico/firefox-icon.ico" width="18px"> **Mozilla Firefox**
 - <img src="red-bazaar/static/imgs/readme-pics/ico/safari-icon.ico" width="18px"> **Safari**
 
-<img src="red-bazaar/static/imgs/readme-pics/ico/browser-test.png" style="display: block; margin: auto;" alt="Browser testing picture">
 
 The platform performs consistently across all tested browsers, providing a reliable user experience regardless of the user’s preferred browser.
 
