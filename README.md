@@ -474,7 +474,20 @@ Accessibility is a core focus for **RedBazaar**, following the Web Content Acces
 A WAVE audit was conducted, confirming compliance with accessibility standards. Minor adjustments, such as improving button contrast, are planned for future updates.
 
 **Wave Validation Screenshot:**
-![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-validation.jpg)
+![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-val-results.png)
+
+#### Contrast Errors
+
+During the validation process, **five contrast errors** were flagged. These errors were identified in the **footer links**, where the background is black, and the text is red. Although Wave reported these as potential contrast issues, we conducted additional testing with users and concluded the following:
+
+1. **Readability**: The links are clearly visible to all users we tested, and no one reported difficulty in reading or interacting with them.
+2. **Brand Identity**: The colour scheme aligns with the branding of Red Bazaar and reflects the overall theme and identity of the platform.
+3. **Decision**: While we acknowledge the errors flagged by Wave, we have opted to **retain the current colour scheme**. Changing these colours would compromise the brand consistency established for the site.
+
+**Wave Validation Contrast Error:**
+![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-val-contrast.png)
+
+This decision was made after careful consideration and feedback from multiple sources. We will continue to monitor user feedback and revisit this choice if necessary in future updates.
 
 ### Lighthouse Validation
 **RedBazaar** achieved high Lighthouse scores in performance, accessibility, and SEO. Some notable efforts include:

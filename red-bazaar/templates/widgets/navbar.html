@@ -20,7 +20,7 @@
                 <div class="d-flex align-items-center justify-content-center gap-3 order-md-2 order-1 ms-auto ms-md-0 me-md-3">
                     {% if user.role == 'BUY' %}
                     <!-- Cart Button -->
-                    <a href="{% url 'products:view-cart' %}" class="position-relative text-dark">
+                    <a href="{% url 'products:view-cart' %}" class="position-relative text-dark" aria-label="View Cart">
                         <i class="bi bi-cart fs-3"></i>
                         {% if cart_items_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -30,13 +30,13 @@
                     </a>
                     {% else %}
                     <!-- Add Item Button -->
-                    <a href="{% url 'products:create' %}" class="position-relative text-dark">
+                    <a href="{% url 'products:create' %}" class="position-relative text-dark"aria-label="Add item">
                         <i class="bi bi-plus-square fs-3"></i>
                     </a>
                     {% endif %}
 
                     <!-- Messages Button -->
-                    <a href="{% url 'direct_messages:chat' %}" class="position-relative text-dark">
+                    <a href="{% url 'direct_messages:chat' %}" class="position-relative text-dark" aria-label="Open chat">
                         <i class="bi bi-chat fs-3"></i>
                         {% if new_messages_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -100,7 +100,7 @@
                 <div class="d-flex d-lg-none justify-content-center mt-3">
                     <form class="form-inline d-flex" action="{% url 'products:search' %}" method="GET">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
-                        <button class="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
+                        <button class="btn btn-success" type="submit" aria-label="Search button"><i class="bi bi-search"></i></button>
                     </form>
                 </div>
             </div>
@@ -108,7 +108,7 @@
             <!-- Search Bar for Desktop -->
             <div id="desktop-search" class="d-none d-lg-flex justify-content-end order-md-3 ms-auto">
                 <form class="form-inline d-flex flex-row-reverse" action="{% url 'products:search' %}" method="GET">
-                    <button class="btn btn-success" type="submit"><i class="bi bi-search"></i></button>
+                    <button class="btn btn-success" type="submit"  aria-label="Search button"><i class="bi bi-search"></i></button>
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="q">
                 </form>
             </div>
