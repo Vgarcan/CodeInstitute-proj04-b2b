@@ -7,6 +7,7 @@ chardet==5.2.0
 charset-normalizer==3.3.2
 click==8.1.7
 colorama==0.4.6
+dj-database-url==2.3.0
 Django==5.1.1
 django-allauth==65.1.0
 django-contrib-comments==2.2.0
@@ -19,12 +20,14 @@ Flask==3.0.3
 Flask-WTF==1.2.1
 git-filter-repo==2.38.0
 grappelli-safe==1.1.1
+gunicorn==23.0.0
 idna==3.7
 itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==2.1.5
 Mezzanine==6.0.0
 oauthlib==3.2.2
+packaging==24.2
 pillow==10.3.0
 python-dotenv==1.0.1
 pytz==2024.1

@@ -14,7 +14,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from django.contrib.messages import constants as messages
-
+import dj_database_url
 
 load_dotenv()
 
@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('DJANGO_KEY')
 DEBUG = os.environ.get(('DJANGO_DEBUG'), False)
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                 'localhost', '192.168.2.116', 'dev.red-bazaar.com']
+                 'localhost', '192.168.2.116', 'dev.red-bazaar.com', 'red-bazaar-f20fac08bb5e.herokuapp.com']
 
 # Add domain to the list of trusted origins so that Django accepts requests from that domain
 CSRF_TRUSTED_ORIGINS = ['https://dev.red-bazaar.com']
@@ -226,12 +226,18 @@ WSGI_APPLICATION = '_core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if "DATABASE_URL" in os.environ:
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
     }
-}
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
