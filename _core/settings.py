@@ -32,8 +32,11 @@ SECRET_KEY = os.environ.get('DJANGO_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get(('DJANGO_DEBUG'), False)
 
-ALLOWED_HOSTS = ['127.0.0.1',
-                 'localhost', '192.168.2.116', 'dev.red-bazaar.com', 'red-bazaar-f20fac08bb5e.herokuapp.com']
+ALLOWED_HOSTS = [
+    'localhost',
+    'dev.red-bazaar.com',
+    'red-bazaar-1af30a20d60e.herokuapp.com'
+]
 
 # Add domain to the list of trusted origins so that Django accepts requests from that domain
 CSRF_TRUSTED_ORIGINS = ['https://dev.red-bazaar.com']
