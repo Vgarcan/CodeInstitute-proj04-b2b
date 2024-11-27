@@ -1,6 +1,6 @@
 # Red Bazaar - B2B Marketplace
 
-![Main LOGO](/red-bazaar/static/imgs/readme-pics/banner-logo-02.png)
+![Main LOGO](/static/imgs/readme-pics/banner-logo-02.png)
 
 # Victor Garcia Cantalapidera 
 - Slack: [@Victor Garcia](https://code-institute-room.slack.com/team/U0695HZA7FZ)
@@ -83,20 +83,20 @@ While the current state focuses on essential functionality, it sets the foundati
 
 RedBazaar is being developed using a set of tools that streamline the coding, version control, and deployment processes. These tools ensure that development adheres to best practices and allows for efficient collaboration and deployment.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/vsc-icon.ico" width="18px"> **Visual Studio Code (VSCode):**  
+- <img src="static/imgs/readme-pics/ico/vsc-icon.ico" width="18px"> **Visual Studio Code (VSCode):**  
   The primary IDE used for writing and managing the code. VSCode is enhanced with extensions such as:
   - **autoPEP8:** Automatically formats the code to comply with the PEP8 standard, ensuring clean and readable Python code.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/git-icon.ico" width="18px"> **Git:**  
+- <img src="static/imgs/readme-pics/ico/git-icon.ico" width="18px"> **Git:**  
   Used for version control, enabling the tracking of changes to the codebase and facilitating collaboration among developers.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/github-icon.ico" width="18px"> **GitHub:**  
+- <img src="static/imgs/readme-pics/ico/github-icon.ico" width="18px"> **GitHub:**  
   The repository for hosting the project, allowing for remote collaboration, issue tracking, and streamlined version management.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/pip-icon.ico" width="18px"> **pip and `requirements.txt`:**  
+- <img src="static/imgs/readme-pics/ico/pip-icon.ico" width="18px"> **pip and `requirements.txt`:**  
   pip is used for managing project dependencies, with all necessary libraries listed in the `requirements.txt` file for easy installation and environment setup.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/procfile-filetipe-icon.ico" width="18px"> **Heroku:**  
+- <img src="static/imgs/readme-pics/ico/procfile-filetipe-icon.ico" width="18px"> **Heroku:**  
   The platform used for deploying the project. Heroku allows for quick and scalable deployment, making it easy to share and test the application in a live environment.
 
 
@@ -104,169 +104,170 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
 
 ### Backend
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/dj-icon.ico" width="18px"> **Django:**  
+- <img src="static/imgs/readme-pics/ico/dj-icon.ico" width="18px"> **Django:**  
   The primary framework used for building the backend of RedBazaar. Django handles the server-side logic, routing, and database interactions. It also includes a built-in authentication system for managing user registration and login.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/python-icon.ico" width="18px"> **Python:**  
+- <img src="static/imgs/readme-pics/ico/python-icon.ico" width="18px"> **Python:**  
   The core programming language for RedBazaar, used in conjunction with Django to build robust and scalable server-side functionality.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/db-icon.ico" width="18px"> **Django ORM and Database:**  
+- <img src="static/imgs/readme-pics/ico/db-icon.ico" width="18px"> **Django ORM and Database:**  
   Django's Object-Relational Mapping (ORM) is used for database operations. The database structure is managed entirely through Django, ensuring consistency and efficiency.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/mptt-icon.ico" width="18px"> **Django MPTT:**  
+- <img src="static/imgs/readme-pics/ico/mptt-icon.ico" width="18px"> **Django MPTT:**  
   This library is used for managing hierarchical data, particularly in creating parent and child categories for the products. It helps organise the categories into tree structures for better usability and data representation.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/login-icon.ico" width="18px"> **Django AllAuth:**  
+- <img src="static/imgs/readme-pics/ico/login-icon.ico" width="18px"> **Django AllAuth:**  
   A library integrated for user authentication, registration, and login. It supports third-party authentication providers like Google and GitHub, allowing users to register with a single click.
 
 ### Frontend
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/html_icon.ico" width="18px"> **HTML5:**  
+- <img src="static/imgs/readme-pics/ico/html_icon.ico" width="18px"> **HTML5:**  
   Used to structure the content of the website, ensuring semantic and accessible markup.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/css-icon.ico" width="18px"> **CSS3:**  
+- <img src="static/imgs/readme-pics/ico/css-icon.ico" width="18px"> **CSS3:**  
   Utilised to style the website, providing consistent and responsive designs across different devices.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/js-icon.ico" width="18px"> **JavaScript:**  
+- <img src="static/imgs/readme-pics/ico/js-icon.ico" width="18px"> **JavaScript:**  
   Enhances interactivity on the site by enabling dynamic content updates and user interactions.
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/bootstrap-icon.ico" width="18px"> **Bootstrap:**  
+- <img src="static/imgs/readme-pics/ico/bootstrap-icon.ico" width="18px"> **Bootstrap:**  
   A popular front-end framework that helps create responsive and visually appealing designs. Bootstrap is used for layout management, navigation bars, modals, and other UI components.
 
 ## Project Structure
 
-- <img src="red-bazaar/static/imgs/readme-pics/ico/red-folder-icon.ico" width="18px"> **Root Directory**
+- <img src="static/imgs/readme-pics/ico/red-folder-icon.ico" width="18px"> **Root Directory**
     
-    - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **red-bazaar/** (Main application folder)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **_core/** (Core functionalities and configurations)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the core module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `settings.py` (Core settings and configurations)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for the core application)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `asgi.py` (ASGI configuration for asynchronous requests)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `wsgi.py` (WSGI configuration for server deployment)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **direct_messages/**
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initialises the direct_messages module)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for direct messages)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for direct messages)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models for storing direct messages)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the direct_messages module)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for direct messages views)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling direct message interactions)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/** (Handles database schema changes for direct messages)
-          - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/direct_messages/** (HTML templates for direct_messages-related views)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `chat.html`
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **_core/** (Core functionalities and configurations)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the core module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `settings.py` (Core settings and configurations)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for the core application)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `asgi.py` (ASGI configuration for asynchronous requests)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `wsgi.py` (WSGI configuration for server deployment)
+
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **direct_messages/**
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initialises the direct_messages module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for direct messages)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for direct messages)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models for storing direct messages)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the direct_messages module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for direct messages views)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling direct message interactions)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/** (Handles database schema changes for direct messages)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/direct_messages/** (HTML templates for direct_messages-related views)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `chat.html`
+      
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **main/** (Main functionalities of the application)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the main module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms related to the main module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Main module models and database interactions)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/main/** (HTML templates for main-related views)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `index.html`
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `404.html`
+            - <p>...</p>
+
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **media/** (Uploaded media files)
+
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **orders/**
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the orders module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for orders)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for orders)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to orders)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the orders module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for order-related views)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling order-related processes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
             
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **main/** (Main functionalities of the application)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the main module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms related to the main module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Main module models and database interactions)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/main/** (HTML templates for main-related views)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `index.html`
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `404.html`
-                - <p>...</p>
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/orders/**
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `order-detail.html` (Template for order details)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `supplier-order-detail.html` (Template for supplier order details)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **media/** (Uploaded media files)
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **payment/** (Handles payment-related functionalities)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the payment module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for payments)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for payments)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Payment-related forms for user input)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to payments)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the payment module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for payment-related views)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling payment processes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/payments/**
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `checkout.html` (Template for the checkout page)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `success.html` (Template for the success page after a successful payment)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **orders/**
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the orders module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for orders)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for orders)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to orders)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the orders module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for order-related views)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling order-related processes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
-                
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/orders/**
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `order-detail.html` (Template for order details)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `supplier-order-detail.html` (Template for supplier order details)
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **products/**
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the products module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for products)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for products)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms for product management)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to products)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the products module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for product-related views)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling product-related processes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
+            
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/products/**
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `prod-creation.html` (Template for product creation)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-detail.html` (Template for product details)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-list.html` (Template for listing products)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `shopping-cart.html` (Template for the shopping cart)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **payment/** (Handles payment-related functionalities)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the payment module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for payments)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for payments)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Payment-related forms for user input)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to payments)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the payment module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for payment-related views)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling payment processes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/payments/**
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `checkout.html` (Template for the checkout page)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `success.html` (Template for the success page after a successful payment)
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **static/** (Static assets for the project)
+      - <img src="red-bazaar/static/favicon.ico" width="18px"> `favicon.ico` (Website favicon)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **css/** (Stylesheets for the project)
+            - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `checkout-off.css` (Checkout page stylesheet)
+            - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `styles.css` (Main project stylesheet)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **imgs/** (Images for the project)
+            - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **readme-pics/** (Images for documentation and README)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **js/** (JavaScript files for the project)
+            - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `main.js` (Main JavaScript file)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **products/**
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the products module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for products)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for products)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms for product management)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models related to products)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the products module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for product-related views)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling product-related processes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
-                
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/products/**
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `prod-creation.html` (Template for product creation)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-detail.html` (Template for product details)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-list.html` (Template for listing products)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `shopping-cart.html` (Template for the shopping cart)
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/** (Main templates directory)
+      - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base.html` (Base template for the project)
+      - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base-tmp.html` (Temporary base template)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **widgets/** (Reusable widget templates)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `alert.html` (Template for alerts and notifications)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `footer.html` (Template for the website footer)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `navbar.html` (Template for the navigation bar)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **static/** (Static assets for the project)
-            - <img src="red-bazaar/static/favicon.ico" width="18px"> `favicon.ico` (Website favicon)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **css/** (Stylesheets for the project)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `checkout-off.css` (Checkout page stylesheet)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `styles.css` (Main project stylesheet)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **imgs/** (Images for the project)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **readme-pics/** (Images for documentation and README)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **js/** (JavaScript files for the project)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `main.js` (Main JavaScript file)
+   - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **users/**
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the users module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for user management)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for users)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `decorators.py` (Custom decorators for user-related permissions)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms for user registration, login, and profile management)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models for users and profiles)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `signals.py` (Handles signals for user-related events)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the users module)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for user-related views)
+      - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling user-related processes)
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
+      - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/users/**
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `dashboard.html` (User dashboard template)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `edit_profile.html` (Template for editing user profiles)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `home.html` (Home page for logged-in users)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `login.html` (Login page template)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `profile.html` (User profile view template)
+            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `signup.html` (User signup page template)
 
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/** (Main templates directory)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base.html` (Base template for the project)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base-tmp.html` (Temporary base template)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **widgets/** (Reusable widget templates)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `alert.html` (Template for alerts and notifications)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `footer.html` (Template for the website footer)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `navbar.html` (Template for the navigation bar)
-
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **users/**
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the users module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `admin.py` (Admin site configuration for user management)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `apps.py` (Application configuration for users)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `decorators.py` (Custom decorators for user-related permissions)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `forms.py` (Forms for user registration, login, and profile management)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Database models for users and profiles)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `signals.py` (Handles signals for user-related events)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `tests.py` (Unit tests for the users module)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `urls.py` (URL routing for user-related views)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling user-related processes)
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
-            - <img src="red-bazaar/static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/users/**
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `dashboard.html` (User dashboard template)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `edit_profile.html` (Template for editing user profiles)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `home.html` (Home page for logged-in users)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `login.html` (Login page template)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `profile.html` (User profile view template)
-                - <img src="red-bazaar/static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `signup.html` (User signup page template)
-
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `manage.py` (Entry point script to run the Django application)
-        - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `utils.py` (Utility functions for common operations across the project)
+   - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `manage.py` (Entry point script to run the Django application)
+   
+   - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `utils.py` (Utility functions for common operations across the project)
 
 
-    - <img src="red-bazaar/static/imgs/readme-pics/ico/git-icon.ico" width="18px"> `.gitignore` (Specifies files to be ignored by Git)
-    - <img src="red-bazaar/static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `requirements.txt` (List of Python dependencies)
-    - <img src="red-bazaar/static/imgs/readme-pics/ico/ic-info-outline.ico" width="18px"> `README.md` (Project README file)
+   - <img src="static/imgs/readme-pics/ico/git-icon.ico" width="18px"> `.gitignore` (Specifies files to be ignored by Git)
+   - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `requirements.txt` (List of Python dependencies)
+   - <img src="static/imgs/readme-pics/ico/ic-info-outline.ico" width="18px"> `README.md` (Project README file)
 
 ### Database Schema
 
 The database schema is designed to support the core functionalities of the project, including user management, product listings, order processing, and messaging between users. Below is the relational diagram illustrating the relationships between the key entities:
 
-![Database Schema](red-bazaar/static/imgs/readme-pics/DB-schema-BuyNSell.jpg)
+![Database Schema](static/imgs/readme-pics/DB-schema-BuyNSell.jpg)
 
 #### Key Highlights:
 - **Users**: Managed through the `CustomUser` table, which differentiates between Buyers and Suppliers. Each user can have a detailed profile linked via the `Profile` table.
@@ -290,7 +291,7 @@ The colour scheme used in this project is carefully designed to reflect the bran
 
 ### Colour Palette
 
-![Colour Scheme](red-bazaar/static/imgs/readme-pics/colour-scheme.png)
+![Colour Scheme](static/imgs/readme-pics/colour-scheme.png)
 
 1. **`--colour-primary-light`**: `#f8d7da`  
    - A soft, light red used for subtle highlights and less critical notifications. This tone ensures a visual connection to the branding while maintaining readability.
@@ -361,7 +362,7 @@ This section provides an overview of the core functionality and user workflows w
 
 Below is the flowchart representing these processes:
 
-![Platform Workflow](red-bazaar/static/imgs/readme-pics/fc-webusage.jpg)
+![Platform Workflow](static/imgs/readme-pics/fc-webusage.jpg)
 
 
 ## User Experience
@@ -437,7 +438,7 @@ Validation efforts ensured that:
 - Accessibility features, such as alt attributes and ARIA roles, are properly integrated.
 
 **HTML Validation Result:**
-![HTML Validation Result](red-bazaar/static/imgs/readme-pics/w3c-markup.png)
+![HTML Validation Result](static/imgs/readme-pics/w3c-markup.png)
 
 To validate this HTML code, you can use the [W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdev.red-bazaar.com%2F).
 
@@ -459,7 +460,7 @@ Highlights include:
 - Readable and maintainable code structure.
 
 **CSS Validation Result:**
-![CSS Validation Result](red-bazaar/static/imgs/readme-pics/css-validation-result.webp)
+![CSS Validation Result](static/imgs/readme-pics/css-validation-result.webp)
 
 To validate this CSS code, you can use the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=dev.red-bazaar.com&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
@@ -474,7 +475,7 @@ Accessibility is a core focus for **RedBazaar**, following the Web Content Acces
 A WAVE audit was conducted, confirming compliance with accessibility standards. Minor adjustments, such as improving button contrast, are planned for future updates.
 
 **Wave Validation Screenshot:**
-![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-val-results.png)
+![Wave Validation Result](static/imgs/readme-pics/wave-val-results.png)
 
 #### Contrast Errors
 
@@ -485,7 +486,7 @@ During the validation process, **five contrast errors** were flagged. These erro
 3. **Decision**: While we acknowledge the errors flagged by Wave, we have opted to **retain the current colour scheme**. Changing these colours would compromise the brand consistency established for the site.
 
 **Wave Validation Contrast Error:**
-![Wave Validation Result](red-bazaar/static/imgs/readme-pics/wave-val-contrast.png)
+![Wave Validation Result](static/imgs/readme-pics/wave-val-contrast.png)
 
 This decision was made after careful consideration and feedback from multiple sources. We will continue to monitor user feedback and revisit this choice if necessary in future updates.
 
@@ -497,7 +498,7 @@ This decision was made after careful consideration and feedback from multiple so
 - Meta descriptions and structured data to enhance search engine visibility.
 
 **Lighthouse Validation Screenshot:**
-![Lighthouse Validation Result](red-bazaar/static/imgs/readme-pics/lighthouse-val.png)
+![Lighthouse Validation Result](static/imgs/readme-pics/lighthouse-val.png)
 
 ### PEP8 Validation
 All Python code in **RedBazaar** adheres to the PEP8 standard, ensuring maintainable and clean code. Validation was conducted using automated tools, with particular attention to:
@@ -517,21 +518,21 @@ The codebase is fully compliant, with plans to continually monitor and maintain 
 Media queries were used to adapt the layout for different screen sizes. Testing confirmed that all features, from navigation to purchasing workflows, function seamlessly across devices.
 
 **Device Testing Example:**
-![Responsive Device Testing](red-bazaar/static/imgs/readme-pics/device-testing-example.jpg)
+![Responsive Device Testing](static/imgs/readme-pics/device-testing-example.jpg)
 
 ### Browser Compatibility
 Comprehensive browser testing was conducted for **RedBazaar**, covering:
-- <img src="red-bazaar/static/imgs/readme-pics/ico/google-icon.ico" width="18px"> **Google Chrome**
-- <img src="red-bazaar/static/imgs/readme-pics/ico/edge-icon.ico" width="18px"> **Microsoft Edge**
-- <img src="red-bazaar/static/imgs/readme-pics/ico/opera-icon.ico" width="18px"> **Opera**
-- <img src="red-bazaar/static/imgs/readme-pics/ico/firefox-icon.ico" width="18px"> **Mozilla Firefox**
-- <img src="red-bazaar/static/imgs/readme-pics/ico/safari-icon.ico" width="18px"> **Safari**
+- <img src="static/imgs/readme-pics/ico/google-icon.ico" width="18px"> **Google Chrome**
+- <img src="static/imgs/readme-pics/ico/edge-icon.ico" width="18px"> **Microsoft Edge**
+- <img src="static/imgs/readme-pics/ico/opera-icon.ico" width="18px"> **Opera**
+- <img src="static/imgs/readme-pics/ico/firefox-icon.ico" width="18px"> **Mozilla Firefox**
+- <img src="static/imgs/readme-pics/ico/safari-icon.ico" width="18px"> **Safari**
 
 
 The platform performs consistently across all tested browsers, providing a reliable user experience regardless of the user’s preferred browser.
 
 **Browser Testing Example:**
-![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/browser-testing-example.webp)
+![Browser Compatibility Test](static/imgs/readme-pics/browser-testing-example.webp)
 
 ### JSHint Validation
 JavaScript used in **RedBazaar** passed validation through JSHint with zero errors. The code is well-documented and follows best practices, ensuring readability and maintainability.
@@ -542,7 +543,7 @@ Highlights include:
 - Lightweight and optimized scripts for quick execution.
 
 **JSHint Validation Result:**
-![JSHint Validation Result](red-bazaar/static/imgs/readme-pics/jshint-validation-result.webp)
+![JSHint Validation Result](static/imgs/readme-pics/jshint-validation-result.webp)
 
 ### Project Testing Overview
 
@@ -844,7 +845,7 @@ This project is proprietary and is licensed for **educational evaluation purpose
 
 Any violation of these terms is strictly prohibited. For permissions or inquiries, please contact the author directly.
 
-![Browser Compatibility Test](red-bazaar/static/imgs/readme-pics/lock-license.webp)
+![Browser Compatibility Test](static/imgs/readme-pics/lock-license.webp)
 
 ## Bugs and Challenges
 
