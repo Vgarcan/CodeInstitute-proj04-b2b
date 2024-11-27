@@ -1,0 +1,387 @@
+/* First root - Base colour definitions */
+
+:root {
+    --colour-primary-light: #f8d7da;
+    --colour-primary: #b71c1c;
+    --colour-primary-dark: #7f0000;
+    --colour-secondary-light: #f5f5f5;
+    --colour-secondary: #424242;
+    --colour-secondary-dark: #212121;
+    --colour-accent: #d32f2f;
+    --colour-accent-light: #ffcccc;
+    --colour-accent-dark: #8c1d1d;
+    --colour-background-light: #f7f7f7;
+    --colour-background: #ffffff;
+    --colour-background-dark: #e0e0e0;
+    --colour-text-light: #ffffff;
+    --colour-text-dark: #2e2e2e;
+    --colour-text-muted: #616161;
+}
+
+
+/* Second root - Thematic assignment for Bootstrap overrides */
+
+:root {
+    /* Primary (Buttons, links, highlights) */
+    --bs-primary: var(--colour-primary);
+    --bs-primary-light: var(--colour-primary-light);
+    --bs-primary-dark: var(--colour-primary-dark);
+    /* Secondary (Complementary elements) */
+    --bs-secondary: var(--colour-secondary);
+    --bs-secondary-light: var(--colour-secondary-light);
+    --bs-secondary-dark: var(--colour-secondary-dark);
+    /* Accent (For calls-to-action or important notices) */
+    --bs-accent: var(--colour-accent);
+    --bs-accent-light: var(--colour-accent-light);
+    /* Background colours */
+    --bs-background: var(--colour-background);
+    --bs-background-light: var(--colour-background-light);
+    --bs-background-dark: var(--colour-background-dark);
+    /* Text colours */
+    --bs-text-light: var(--colour-text-light);
+    --bs-text-dark: var(--colour-text-dark);
+    --bs-text-muted: var(--colour-text-muted);
+}
+
+
+/* Body and Global Styles */
+
+body {
+    background-color: var(--colour-background-light);
+    color: var(--colour-text-dark);
+    font-family: 'Helvetica', sans-serif;
+    line-height: 1.6;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+/* Navigation Bar */
+
+nav {
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
+    padding: 0 0.2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand,
+.nav-link {
+    color: var(--bs-primary-light);
+    font-weight: 400;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+    color: var(--bs-secondary-dark);
+}
+
+.dropdown-menu {
+    background-color: var(--colour-primary-dark);
+    border: none;
+    text-align: center;
+}
+.sidebar {
+    position: sticky;
+    top: 0; 
+    height: 100vh; 
+    overflow-y: auto; 
+}
+.sidebar .nav-link {
+    color: var(--bs-secondary);
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--bs-background-dark);
+    color: var(--bs-accent);
+}
+
+
+/* Footer */
+
+footer {
+    background-color: var(--colour-secondary-dark);
+    color: var(--colour-text-light);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+footer a {
+    color: var(--colour-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 400;
+    font-size: 1.1rem;
+}
+
+footer a:hover {
+    color: var(--colour-primary);
+}
+
+
+/* Section Styles */
+
+section {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background-color: var(--colour-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.homesect h1,
+.homesect p {
+    background-color: rgba(249, 249, 249, 0.5);
+    border-radius: 20px;
+}
+
+
+/* Call to Action */
+
+.call-to-action {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+
+/* Button Styles */
+
+button,
+.btn-primary {
+    background-color: var(--colour-accent);
+    color: var(--colour-text-light);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover,
+.btn-primary:hover {
+    background-color: var(--colour-primary);
+    cursor: pointer;
+}
+
+button:active,
+.btn-primary:active {
+    background-color: var(--colour-text-dark);
+    color: var(--colour-text-light);
+}
+
+
+/* Alerts */
+
+.alert-primary {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.alert-success {
+    background-color: var(--colour-secondary);
+    color: var(--colour-text-light);
+}
+
+.alert-info {
+    background-color: var(--colour-accent-light);
+    color: var(--colour-text-dark);
+}
+
+.alert-warning {
+    background-color: var(--colour-primary-light);
+    color: var(--colour-primary-dark);
+}
+
+.alert-danger {
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
+}
+
+
+/* Card Styles */
+
+.card {
+    background-color: var(--colour-background);
+    border: 1px solid var(--colour-secondary-light);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+
+/* Forms */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    background-color: var(--colour-background);
+    border: 1px solid var(--colour-secondary-light);
+    padding: 0.75rem;
+    border-radius: 4px;
+    width: 100%;
+    margin-bottom: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus {
+    border-color: var(--colour-primary);
+    outline: none;
+}
+
+label {
+    color: var(--colour-text-dark);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+
+/* Tables */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid var(--colour-secondary-light);
+}
+
+th,
+td {
+    padding: 0.75rem;
+    text-align: left;
+}
+
+thead {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+
+/* Modals */
+
+.modal-content {
+    background-color: var(--colour-background);
+    border-radius: 8px;
+}
+
+.modal-header {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+.modal-footer {
+    background-color: var(--colour-primary-dark);
+    color: var(--colour-text-light);
+}
+
+
+/* Pagination */
+
+.pagination {
+    justify-content: center;
+}
+
+.page-link {
+    color: var(--colour-primary);
+}
+
+.page-link:hover {
+    color: var(--colour-text-light);
+    background-color: var(--colour-primary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--colour-primary);
+    border-color: var(--colour-primary);
+}
+
+
+/* Intro Section */
+
+#intro-section {
+    background-image: url("../imgs/banner-1.webp");
+    margin-top: 0;
+    border-radius: 10% 30% 50% 70%;
+    min-height: 400px;
+    background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Chat */
+
+.chat-sidebar {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.chat-sidebar .user:hover {
+    background-color: var(--colour-primary-light);
+}
+
+.chat-header {
+    background-color: var(--colour-primary);
+    color: var(--colour-text-light);
+}
+
+.chat-messages {
+    height: calc(100vh - 150px);
+    overflow-y: auto;
+}
+
+.chat-message .message-content {
+    border-radius: 15px;
+    max-width: 75%;
+}
+
+.chat-message.sent .message-content {
+    background-color: var(--colour-accent);
+    color: var(--colour-text-light);
+}
+
+.chat-message.received .message-content {
+    background-color: var(--colour-accent-light);
+    color: var(--colour-text-dark);
+}
+
+.chat-input input {
+    border-radius: 20px;
+    padding: 10px 15px;
+}
+
+.chat-input button {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+}

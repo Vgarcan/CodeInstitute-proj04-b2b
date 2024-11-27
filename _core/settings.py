@@ -35,7 +35,8 @@ DEBUG = os.environ.get(('DJANGO_DEBUG'), False)
 ALLOWED_HOSTS = [
     'localhost',
     'dev.red-bazaar.com',
-    'red-bazaar-1af30a20d60e.herokuapp.com'
+    'red-bazaar-1af30a20d60e.herokuapp.com',
+    '127.0.0.1'
 ]
 
 # Add domain to the list of trusted origins so that Django accepts requests from that domain
@@ -44,10 +45,6 @@ CSRF_TRUSTED_ORIGINS = ['https://dev.red-bazaar.com']
 # MEDIA SETTINGS
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# # STATIC SETTINGS
-# STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR / 'static'
 
 
 # Application definition
@@ -96,6 +93,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
+    # WhiteNoise middleware:
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 # Provider specific settings
@@ -281,6 +280,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# STATIC SETTINGS FOR WHITENOISE
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = [
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
@@ -295,6 +297,9 @@ STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
     # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+# WhiteNoise to serve and compress static files
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
