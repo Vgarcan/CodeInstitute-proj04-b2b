@@ -338,6 +338,16 @@ thead {
     background-size: cover;
 }
 
+#intro-section h1,
+#intro-section p {
+    color: var(--colour-text-dark);
+    background-color: rgba(249, 249, 249, 0.5);
+    border-radius: 20px;
+    text-shadow: rgba(0, 0, 0, 0.756) 1px 0 10px;
+    font-weight: bold;
+    text-wrap: pretty;
+}
+
 /* Chat */
 
 .chat-sidebar {

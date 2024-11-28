@@ -6,7 +6,7 @@
             <div class="navbar-header order-md-0">
                 <h1 class="d-none">Red-Bazaar.com</h1>
                 <a class="navbar-brand" href="{% url 'main:home' %}">
-                    <img src="{% static 'imgs/logo-01.ico' %}" width="auto" height="90" alt="Main LOGO">
+                    <img src="{% static 'imgs/logo-01.ico' %}" height="90" alt="Main LOGO">
                 </a>
             </div>
 
@@ -20,7 +20,7 @@
                 <div class="d-flex align-items-center justify-content-center gap-3 order-md-2 order-1 ms-auto ms-md-0 me-md-3">
                     {% if user.role == 'BUY' %}
                     <!-- Cart Button -->
-                    <a href="{% url 'products:view-cart' %}" class="position-relative text-dark" aria-label="View Cart">
+                    <a href="{% url 'products:view-cart' %}" class="position-relative nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="View Cart" aria-label="View Cart">
                         <i class="bi bi-cart fs-3"></i>
                         {% if cart_items_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -30,13 +30,13 @@
                     </a>
                     {% else %}
                     <!-- Add Item Button -->
-                    <a href="{% url 'products:create' %}" class="position-relative text-dark"aria-label="Add item">
+                    <a href="{% url 'products:create' %}" class="position-relative nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Add an Item" aria-label="Add item">
                         <i class="bi bi-plus-square fs-3"></i>
                     </a>
                     {% endif %}
 
                     <!-- Messages Button -->
-                    <a href="{% url 'direct_messages:chat' %}" class="position-relative text-dark" aria-label="Open chat">
+                    <a href="{% url 'direct_messages:chat' %}" class="position-relative nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="View Messages" aria-label="Open chat">
                         <i class="bi bi-chat fs-3"></i>
                         {% if new_messages_count > 0 %}
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
