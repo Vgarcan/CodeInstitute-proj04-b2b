@@ -68,14 +68,16 @@ nav {
 }
 
 .navbar-brand,
-.nav-link {
+.nav-link,
+.navbar-toggler {
     color: var(--bs-primary-light);
     font-weight: 400;
     transition: color 0.3s ease;
 }
 
 .navbar-brand:hover,
-.nav-link:hover {
+.nav-link:hover,
+.navbar-toggler:hover {
     color: var(--bs-secondary-dark);
 }
 
@@ -84,12 +86,14 @@ nav {
     border: none;
     text-align: center;
 }
+
 .sidebar {
     position: sticky;
-    top: 0; 
-    height: 100vh; 
-    overflow-y: auto; 
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
 }
+
 .sidebar .nav-link {
     color: var(--bs-secondary);
 }
@@ -340,13 +344,15 @@ thead {
 
 #intro-section h1,
 #intro-section p {
-    color: var(--colour-text-dark);
-    background-color: rgba(249, 249, 249, 0.5);
+    color: var(--colour-accent-dark);
+    /* background-color: rgba(249, 249, 249, 0.5); */
     border-radius: 20px;
     text-shadow: rgba(0, 0, 0, 0.756) 1px 0 10px;
+    text-shadow: 1px 1px 2px var(--colour-secondary), 0 0 1em var(--colour-primary-dark), 0 0 0.2em var(--colour-background);
     font-weight: bold;
     text-wrap: pretty;
 }
+
 
 /* Chat */
 

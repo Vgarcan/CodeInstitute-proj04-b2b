@@ -165,9 +165,9 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `models.py` (Main module models and database interactions)
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Main module views and routes)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/main/** (HTML templates for main-related views)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `index.html`
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `404.html`
-            - <p>...</p>
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `index.html`
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `404.html`
+         - <p>...</p>
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **media/** (Uploaded media files)
 
@@ -182,8 +182,8 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
             
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/orders/**
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `order-detail.html` (Template for order details)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `supplier-order-detail.html` (Template for supplier order details)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `order-detail.html` (Template for order details)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `supplier-order-detail.html` (Template for supplier order details)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **payment/** (Handles payment-related functionalities)
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the payment module)
@@ -196,8 +196,8 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling payment processes)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/payments/**
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `checkout.html` (Template for the checkout page)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `success.html` (Template for the success page after a successful payment)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `checkout.html` (Template for the checkout page)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `success.html` (Template for the success page after a successful payment)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **products/**
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the products module)
@@ -211,10 +211,10 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
             
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/products/**
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `prod-creation.html` (Template for product creation)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-detail.html` (Template for product details)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-list.html` (Template for listing products)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `shopping-cart.html` (Template for the shopping cart)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `prod-creation.html` (Template for product creation)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-detail.html` (Template for product details)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `product-list.html` (Template for listing products)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `shopping-cart.html` (Template for the shopping cart)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **static/** (Static assets for the project)
       - <img src="red-bazaar/static/favicon.ico" width="18px"> `favicon.ico` (Website favicon)
@@ -230,9 +230,9 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base.html` (Base template for the project)
       - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base-tmp.html` (Temporary base template)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **widgets/** (Reusable widget templates)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `alert.html` (Template for alerts and notifications)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `footer.html` (Template for the website footer)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `navbar.html` (Template for the navigation bar)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `alert.html` (Template for alerts and notifications)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `footer.html` (Template for the website footer)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `navbar.html` (Template for the navigation bar)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **users/**
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `__init__.py` (Initializes the users module)
@@ -247,12 +247,12 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `views.py` (Views handling user-related processes)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **migrations/**
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/users/**
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `dashboard.html` (User dashboard template)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `edit_profile.html` (Template for editing user profiles)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `home.html` (Home page for logged-in users)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `login.html` (Login page template)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `profile.html` (User profile view template)
-            - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `signup.html` (User signup page template)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `dashboard.html` (User dashboard template)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `edit_profile.html` (Template for editing user profiles)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `home.html` (Home page for logged-in users)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `login.html` (Login page template)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `profile.html` (User profile view template)
+         - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `signup.html` (User signup page template)
 
    - <img src="static/imgs/readme-pics/ico/py-filetype-icon.ico" width="18px"> `manage.py` (Entry point script to run the Django application)
    
@@ -277,7 +277,114 @@ The database schema is designed to support the core functionalities of the proje
 
 ## Wireframes
 
-[Not Ready Yet]
+The wireframes for this project were carefully designed to ensure a user-centric and professional approach to the platform's development. These visual blueprints provided a solid foundation for the layout and functionality of the website. Among all the pages, the **Landing Page**, **Dashboard**, and **Payment Page** were deemed the most representative of the project’s purpose and user flows. As such, we focused on these key pages to demonstrate the platform's core features, ensuring they reflect trust, modernity, and professionalism.
+
+---
+
+### Landing Page Overview
+
+The **Landing Page** is designed to make a strong first impression, combining modern aesthetics with functional elements to guide users seamlessly into the platform. Each section is purposefully structured to provide clear value and inspire confidence.
+
+#### Key Sections:
+1. **Hero with Parallax**:  
+   - Features a modern parallax effect to create a visually engaging experience.  
+   - Serves as the introduction to the platform, inviting users to explore its features.
+
+2. **Featured Suppliers**:  
+   - Highlights top suppliers to establish credibility with new visitors.  
+   - Builds trust by showcasing reliable and popular partners.
+
+3. **Categories**:  
+   - Displays selected categories to spark user interest and demonstrate the platform's ability to address specific needs.
+
+4. **How It Works**:  
+   - Outlines the platform's simplicity in three clear steps, reassuring users of its ease of use.
+
+5. **Call to Action**:  
+   - Guides visitors to the registration form after they’ve explored the page’s benefits, ensuring a smooth transition into platform engagement.
+
+#### Wireframes for Landing Page
+---
+<details>
+  <summary>Wireframe for Landing Page Desktop</summary>
+  <img src="static/imgs/readme-pics/wf-landing.jpg" style="display: block; margin: auto;" alt="Wireframe for Landing Page - Desktop">
+</details>
+
+<details>
+  <summary>Wireframe for Landing Page Responsive</summary>
+  <img src="static/imgs/readme-pics/wf-landing-resp.jpg" style="display: block; margin: auto;" alt="Wireframe for Landing Page - Mobile">
+</details>
+
+---
+
+### Dashboard Page Overview
+
+The **Dashboard** serves as the central hub for users, offering tailored features based on their roles (Buyer or Supplier). Its layout ensures functionality and clarity, making it easy for users to manage their activities.
+
+#### Key Sections:
+1. **Order Table**:  
+   - Displays a comprehensive list of the user’s orders.  
+   - Enables users to manage and track orders efficiently.
+
+2. **Statistics**:  
+   - Provides an overview of the user’s activity, such as purchase or sales performance.  
+   - Encourages engagement by showcasing progress and trends over time.
+
+3. **Product Management (Suppliers Only)**:  
+   - Exclusive to Suppliers, this section features a table displaying all their products.  
+   - Allows Suppliers to easily modify or update product details, ensuring smooth management.
+
+4. **Lateral Navbar**:  
+   - A sticky navigation bar on the left-hand side for quick access to all dashboard features.  
+   - Visible only on desktop devices, it ensures ease of use without overwhelming smaller mobile screens.  
+   - Enhances navigation, allowing users to switch between dashboard sections effortlessly.
+
+
+#### Wireframes for Dashboard
+---
+<details>
+  <summary>Wireframe for Dashboard Desktop</summary>
+  <img src="static/imgs/readme-pics/wf-dashboard.jpg" style="display: block; margin: auto;" alt="Wireframe for Dashboard - Desktop">
+</details>
+
+<details>
+  <summary>Wireframe for Dashboard Responsive</summary>
+  <img src="static/imgs/readme-pics/wf-dashboard-resp.jpg" style="display: block; margin: auto;" alt="Wireframe for Dashboard - Mobile">
+</details>
+
+---
+
+### Payment Page Overview
+
+The **Payment Page** ensures a seamless and trustworthy checkout experience. Its design focuses on clarity and simplicity, minimising distractions to inspire user confidence.
+
+#### Key Sections:
+1. **Form**:  
+   - A clean and minimalistic form for entering billing information.  
+   - Designed to be distraction-free, ensuring users feel secure during the payment process.
+
+2. **Order Summary**:  
+   - Organised by Suppliers, helping users verify that their order details are accurate.  
+   - Reinforces trust by presenting information in a clear, structured format.
+
+#### Wireframes for Payment Page
+---
+<details>
+  <summary>Wireframe for Payment Page Desktop</summary>
+  <img src="static/imgs/readme-pics/wf-payment.jpg" style="display: block; margin: auto;" alt="Wireframe for Payment Page - Desktop">
+</details>
+
+<details>
+  <summary>Wireframe for Payment Page Responsive</summary>
+  <img src="static/imgs/readme-pics/wf-payment-resp.jpg" style="display: block; margin: auto;" alt="Wireframe for Payment Page - Mobile">
+</details>
+
+---
+
+### Why These Wireframes?
+
+These three pages were selected as the most critical to the platform’s overall success. They represent the key user interactions and serve as the backbone of the platform. By focusing on these wireframes, we ensured the design embodies professionalism and user trust. Other pages were developed with flexibility, but these layouts were meticulously crafted to optimise the user experience and reflect the platform’s goals.
+
 
 ## Colours
 
