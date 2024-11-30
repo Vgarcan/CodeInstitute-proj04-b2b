@@ -62,6 +62,8 @@
 
 **RedBazaar** is a B2B platform designed to connect restaurants and suppliers, focusing on fostering trade between small and medium-sized enterprises (SMEs). The platform aims to provide a professional, centralized tool that simplifies the ordering process for restaurants, helping them save time, reduce product waste, and cut costs. For suppliers, especially smaller ones, RedBazaar offers increased visibility, making it easier to reach potential customers in a competitive market.
 
+![AMIRESPONSE photo](static/imgs/readme-pics/amiresp-pic.jpg)
+
 This idea emerged from a personal experience while working in a café, where I observed the inefficiencies of managing orders through multiple platforms. RedBazaar solves this problem by grouping all suppliers under one platform, enabling restaurants to search for products rather than being tied to a specific supplier. For example, if a restaurant needs chicken strips, the platform displays all available options from various suppliers, allowing the business to choose the best deal.
 
 Looking ahead, RedBazaar plans to introduce features that will enhance efficiency and flexibility for both restaurants and suppliers. Future updates will include tools for creating optimised shopping lists, finding the best-priced products, and promoting daily offers from suppliers. By focusing on affordability and accessibility, RedBazaar aims to build a community that empowers SMEs to thrive in the digital marketplace.
@@ -74,9 +76,13 @@ RedBazaar is currently in its initial development phase, providing the core func
 At this stage, RedBazaar includes the following features:
 - **Product Search:** Restaurants can browse available products across multiple suppliers.
 - **Shopping Cart and Transactions:** Buyers can add products to a shopping cart and complete purchases directly through the website.
+![CART photo](static/imgs/readme-pics/cart.png)
 - **Order Management:** Suppliers receive detailed orders submitted by buyers, including all necessary information to fulfil the requests.
+![INVOICE photo](static/imgs/readme-pics/invoice.png)
 - **Order Status Updates:** Suppliers can update the status of orders, providing real-time visibility for buyers about their purchases.
+![ORDER STATUS photo](static/imgs/readme-pics/order-status.png)
 - **Messaging System:**  Buyers and suppliers can communicate directly through a secure and efficient messaging system, allowing for clarification of order details, requests, or any additional information.
+![DIRECT MESSAGES photo](static/imgs/readme-pics/direct-sms.png)
 
 While the current state focuses on essential functionality, it sets the foundation for future enhancements that will make the platform more dynamic, efficient, and user-friendly.
 ## Development Tools
@@ -1003,4 +1009,12 @@ Bootstrap Documentation: Referenced for styling and responsive layout solutions,
 Stripe API Documentation: Used extensively for implementing the payment processing system.
 Django Official Documentation: A constant reference for understanding Django ORM, views, and middleware.
 YouTube Tutorials: Several video tutorials provided insights into handling edge cases, such as managing cart quantities and avoiding layout shifts.
+
 Lastly, we extend our gratitude to the Code Institute mentors and reviewers who offered guidance and support throughout this journey.
+
+### Resource Links
+- [How To Modify and Override Django Allauth Template Page - by Elesh Channel ](https://www.youtube.com/watch?v=VIoKemDBv8Y&list=LL&index=1)
+- [Create A Search Bar - Django Wednesdays #9 - by Codemy.com ](https://www.youtube.com/watch?v=AGtae4L5BbI)
+- [ALLAUTH docs](https://docs.allauth.org/en/latest/)
+- [MPTT (Modified Preorder Tree Traversal)](https://mptt.readthedocs.io/en/latest/overview.html)
+- [Complex lookups with Q objects - Django Docs](https://docs.djangoproject.com/en/5.1/topics/db/queries/#complex-lookups-with-q-objects)
