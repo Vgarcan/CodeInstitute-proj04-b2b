@@ -1,30 +1,129 @@
 {% extends "base.html" %}
 {% load static %}
 
-
-{% comment %} 
-# Set the Title for the page 
+{% comment %}
+ Set the name of the page 
 {% endcomment %}
 {% block page_title %}
-About Me
+About Us
 {% endblock page_title %}
 
-{% comment %} 
-# Set the CSS file and Other for the page 
+{% comment %}
+ Inject extra links into the page header
 {% endcomment %}
 {% block extra_head %}
+<style>
+    .about-us-header {
+        background: linear-gradient(to right, var(--colour-primary), var(--colour-primary-dark));
+        color: var(--colour-text-light);
+        padding: 4rem 2rem;
+    }
+
+    .about-us-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .icon-section i {
+        font-size: 3rem;
+        color: var(--colour-primary);
+    }
+
+    .icon-section h3 {
+        color: var(--colour-secondary);
+    }
+</style>
 {% endblock extra_head %}
 
 {% comment %}
-# Appends the content in the BODY tag
+ Inject HTML for the content 
 {% endcomment %}
 {% block content %}
-This is about me page
+<div class="about-us-header text-center">
+    <h1>Welcome to Red Bazaar</h1>
+    <p class="lead">Connecting buyers and suppliers worldwide with trust and transparency.</p>
+</div>
+
+<div class="container my-5">
+    <!-- Our Mission Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h2 class="text-primary">Our Mission</h2>
+            <p class="text-muted">
+                At Red Bazaar, we aim to empower businesses by creating a seamless platform for trade and collaboration. With innovation
+                and reliability, we bridge the gap between buyers and suppliers globally.
+            </p>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'imgs/our-mission.webp' %}" alt="Our Mission" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <!-- Our History Section -->
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6 order-md-2">
+            <h2 class="text-primary">Our History</h2>
+            <p class="text-muted">
+                Founded with the vision of supporting local businesses, Red Bazaar has grown into a trusted platform for international trade.
+                Our journey is defined by our commitment to quality, trust, and customer satisfaction.
+            </p>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <img src="{% static 'imgs/our-history.webp' %}" alt="Our History" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <!-- What We Offer Section -->
+    <div class="text-center mb-5">
+        <h2 class="text-primary">What We Offer</h2>
+        <div class="row icon-section mt-4">
+            <div class="col-md-4">
+                <i class="bi bi-cart-check"></i>
+                <h3>Seamless Shopping</h3>
+                <p class="text-muted">Discover quality products from verified suppliers worldwide.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-credit-card"></i>
+                <h3>Secure Payments</h3>
+                <p class="text-muted">Enjoy peace of mind with our trusted payment systems.</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-chat"></i>
+                <h3>Customer Support</h3>
+                <p class="text-muted">24/7 support to ensure your trading experience is smooth and hassle-free.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    
+    <div class="text-center my-5">
+        <h2 class="text-primary mb-4">What Our Customers Say</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-4 mb-4">
+                <img class="bd-placeholder-img rounded-circle" src="{% static 'imgs/companies/comp-1.webp' %}" with="140" height="140" alt="">
+                <h2 class="fw-normal">Sarah Johnson, <cite>Retailer</cite></h2>
+                <p>"Red Bazaar has transformed the way we do business. Finding reliable suppliers has never been this easy!"</p>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <img class="bd-placeholder-img rounded-circle" src="{% static 'imgs/companies/comp-2.webp' %}" with="140" height="140" alt="">
+                <h2 class="fw-normal">David Lee, <cite>Entrepreneur</cite></h2>
+                <p>"The platform is intuitive and their support team is fantastic. Highly recommend it to every small business."</p>
+            </div>
+            <div class="col-lg-4 mb-4">
+                <img class="bd-placeholder-img rounded-circle" src="{% static 'imgs/companies/comp-3.webp' %}" with="140" height="140" alt="">
+                <h2 class="fw-normal">John Patel, <cite>Small Business Owner</cite></h2>
+                <p>"I love how secure and transparent the payment process is. It gives me peace of mind when dealing with new suppliers."</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Call to Action Section -->
+    <div class="text-center mt-5">
+        <h2 class="text-primary">Join Us Today</h2>
+        <p class="text-muted">Be part of a growing community of buyers and suppliers revolutionizing global trade.</p>
+        <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg">Sign Up Now</a>
+    </div>
+</div>
 {% endblock content %}
-
-{% comment %}
-# Append JS files here for the page
-{% endcomment %}
-{% block extra_body %}
-{% endblock extra_body %}
-
