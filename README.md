@@ -225,12 +225,13 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **static/** (Static assets for the project)
       - <img src="red-bazaar/static/favicon.ico" width="18px"> `favicon.ico` (Website favicon)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **css/** (Stylesheets for the project)
-            - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `checkout-off.css` (Checkout page stylesheet)
-            - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `styles.css` (Main project stylesheet)
+         - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `checkout-off.css` (Checkout page stylesheet)
+         - <img src="static/imgs/readme-pics/ico/css-filetype-icon.ico" width="18px"> `styles.css` (Main project stylesheet)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **imgs/** (Images for the project)
-            - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **readme-pics/** (Images for documentation and README)
+         - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **readme-pics/** (Images for documentation and README)
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **js/** (JavaScript files for the project)
-            - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `main.js` (Main JavaScript file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `main.js` (Main JavaScript file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `stripe.js` (Stripe JavaScript logic file)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/** (Main templates directory)
       - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base.html` (Base template for the project)
@@ -958,7 +959,7 @@ This project is proprietary and is licensed for **educational evaluation purpose
 
 Any violation of these terms is strictly prohibited. For permissions or inquiries, please contact the author directly.
 
-![Browser Compatibility Test](static/imgs/readme-pics/lock-license.webp)
+![No Commercial Use - Lock Pic](static/imgs/readme-pics/lock-license.webp)
 
 ## Bugs and Challenges
 
