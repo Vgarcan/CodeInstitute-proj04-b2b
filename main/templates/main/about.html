@@ -12,34 +12,13 @@ About Us
  Inject extra links into the page header
 {% endcomment %}
 {% block extra_head %}
-<style>
-    .about-us-header {
-        background: linear-gradient(to right, var(--colour-primary), var(--colour-primary-dark));
-        color: var(--colour-text-light);
-        padding: 4rem 2rem;
-    }
-
-    .about-us-header h1 {
-        font-size: 3rem;
-        font-weight: bold;
-    }
-
-    .icon-section i {
-        font-size: 3rem;
-        color: var(--colour-primary);
-    }
-
-    .icon-section h3 {
-        color: var(--colour-secondary);
-    }
-</style>
 {% endblock extra_head %}
 
 {% comment %}
  Inject HTML for the content 
 {% endcomment %}
 {% block content %}
-<div class="about-us-header text-center">
+<div class="gradient-header text-center">
     <h1>Welcome to Red Bazaar</h1>
     <p class="lead">Connecting buyers and suppliers worldwide with trust and transparency.</p>
 </div>

@@ -1,35 +1,123 @@
 {% extends "base.html" %}
-{% load static %}
 
-
-{% comment %} 
-# Set the Title for the page 
-{% endcomment %}
 {% block page_title %}
-    What da FaQ?
+Frequently Asked Questions (FAQ)
 {% endblock page_title %}
 
-{% comment %} 
-Overrides the Default VALUES. Carefull!
-{% endcomment %}
 {% block extra_head %}
 {% endblock extra_head %}
 
-{% comment %}
-# Set the CSS file and Other for the base page
-{% endcomment %}
-{% block extra_css %}
-{% endblock extra_css %}
-
-{% comment %}
-# Appends the content in the BODY tag
-{% endcomment %}
 {% block content %}
-    FaQ Page
-{% endblock content %}
+<div class="gradient-header text-center">
+    <h1>Frequently Asked Questions</h1>
+    <p class="lead">Find answers to the most common questions about Red Bazaar</p>
+</div>
 
-{% comment %}
-# Append JS files here for the page
-{% endcomment %}
-{% block extra_body %}
-{% endblock extra_body %}
+<div class="container my-5">
+    <div class="faq-section">
+        <h2 class="text-primary">General Questions</h2>
+        <div class="accordion" id="generalFaq">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="generalFaqHeading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#generalFaq1" aria-expanded="true" aria-controls="generalFaq1">
+                        What is Red Bazaar?
+                    </button>
+                </h2>
+                <div id="generalFaq1" class="accordion-collapse collapse" aria-labelledby="generalFaqHeading1" data-bs-parent="#generalFaq">
+                    <div class="accordion-body">
+                        Red Bazaar is a platform designed to connect buyers and suppliers worldwide, enabling seamless and secure transactions for businesses of all sizes.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="generalFaqHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#generalFaq2" aria-expanded="false" aria-controls="generalFaq2">
+                        How do I create an account?
+                    </button>
+                </h2>
+                <div id="generalFaq2" class="accordion-collapse collapse" aria-labelledby="generalFaqHeading2" data-bs-parent="#generalFaq">
+                    <div class="accordion-body">
+                        Creating an account is easy! Click on the "Sign Up" button at the top-right corner of the homepage and fill out the required information to get started.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="generalFaqHeading3">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#generalFaq3" aria-expanded="false" aria-controls="generalFaq3">
+                        Is Red Bazaar free to use?
+                    </button>
+                </h2>
+                <div id="generalFaq3" class="accordion-collapse collapse" aria-labelledby="generalFaqHeading3" data-bs-parent="#generalFaq">
+                    <div class="accordion-body">
+                        Yes, signing up and browsing the platform is completely free. Transaction fees may apply depending on the services used.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2 class="text-primary">For Buyers</h2>
+        <div class="accordion" id="buyersFaq">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="buyersFaqHeading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#buyersFaq1" aria-expanded="true" aria-controls="buyersFaq1">
+                        How do I place an order?
+                    </button>
+                </h2>
+                <div id="buyersFaq1" class="accordion-collapse collapse" aria-labelledby="buyersFaqHeading1" data-bs-parent="#buyersFaq">
+                    <div class="accordion-body">
+                        To place an order, browse the product listings, add items to your cart, and proceed to checkout. You can review your order details before confirming the purchase.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="buyersFaqHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#buyersFaq2" aria-expanded="false" aria-controls="buyersFaq2">
+                        Are payments secure?
+                    </button>
+                </h2>
+                <div id="buyersFaq2" class="accordion-collapse collapse" aria-labelledby="buyersFaqHeading2" data-bs-parent="#buyersFaq">
+                    <div class="accordion-body">
+                        Absolutely. We use Stripe for processing payments, ensuring the highest levels of security and reliability.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2 class="text-primary">For Suppliers</h2>
+        <div class="accordion" id="suppliersFaq">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="suppliersFaqHeading1">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#suppliersFaq1" aria-expanded="true" aria-controls="suppliersFaq1">
+                        How do I list my products?
+                    </button>
+                </h2>
+                <div id="suppliersFaq1" class="accordion-collapse collapse" aria-labelledby="suppliersFaqHeading1" data-bs-parent="#suppliersFaq">
+                    <div class="accordion-body">
+                        Go to the "Add Products" section in your dashboard, fill out the product details, and upload relevant images to list your products.
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="suppliersFaqHeading2">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#suppliersFaq2" aria-expanded="false" aria-controls="suppliersFaq2">
+                        How can I manage my orders?
+                    </button>
+                </h2>
+                <div id="suppliersFaq2" class="accordion-collapse collapse" aria-labelledby="suppliersFaqHeading2" data-bs-parent="#suppliersFaq">
+                    <div class="accordion-body">
+                        Orders can be managed from the "Received Orders" section in your dashboard. You can update statuses, review details, and manage communication with buyers.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

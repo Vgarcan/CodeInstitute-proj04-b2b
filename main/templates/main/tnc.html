@@ -19,11 +19,12 @@
 # Appends the content in the BODY tag
 {% endcomment %}
 {% block content %}
+    <div class="gradient-header text-center">
+        <h2>Terms and Conditions</h2>
+        <p>Welcome to <strong>RED-BAZAAR.COM</strong>, your supply hub. By accessing and using this Site, you agree to be bound by these terms along with our <a href="{% url 'main:privpol' %}">Privacy Policy</a>. If you do not agree with these terms, please do not use this Site.</p>
+    </div>
+
     <div class="container">
-        <section class="text-center my-4">
-            <h2>Terms and Conditions</h2>
-            <p>Welcome to <strong>RED-BAZAAR.COM</strong>, your supply hub. By accessing and using this Site, you agree to be bound by these terms along with our <a href="{% url 'main:privpol' %}">Privacy Policy</a>. If you do not agree with these terms, please do not use this Site.</p>
-        </section>
 
         <!-- Table of Contents -->
         <section class="my-5">

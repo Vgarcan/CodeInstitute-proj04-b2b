@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% comment %}
  Set the name of the page 
@@ -38,21 +39,7 @@ Page Under Development
  To the bottom of the body tag 
 {% endcomment %}
 {% block extra_body %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Show the modal automatically
-        var modal = document.getElementById('developmentModal');
-        var closeModalBtn = document.getElementById('closeModal');
-
-        // Display the modal
-        modal.style.display = 'block';
-
-        // Close the modal when the button is clicked
-        closeModalBtn.addEventListener('click', function () {
-            modal.style.display = 'none';
-        });
-    });
-</script>
+<script src="{% static 'js/under-dev.js' %}"></script>
 {% endblock extra_body %}
 
 {% comment %}

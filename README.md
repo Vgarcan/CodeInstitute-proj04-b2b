@@ -590,6 +590,7 @@ Accessibility is a core focus for **RedBazaar**, following the Web Content Acces
 A WAVE audit was conducted, confirming compliance with accessibility standards. Minor adjustments, such as improving button contrast, are planned for future updates.
 
 **Wave Validation Screenshot:**
+
 ![Wave Validation Result](static/imgs/readme-pics/wave-val-results.png)
 
 #### Contrast Errors
@@ -614,6 +615,7 @@ This decision was made after careful consideration and feedback from multiple so
 - Meta descriptions and structured data to enhance search engine visibility.
 
 **Lighthouse Validation Screenshot:**
+
 ![Lighthouse Validation Result](static/imgs/readme-pics/lighthouse-val.png)
 
 ### PEP8 Validation
@@ -635,11 +637,13 @@ Media queries were used to adapt the layout for different screen sizes. Testing 
 
 **Device Testing Example:**
 #### Phone Screen
+
 ![PHONE RESP HOME](static/imgs/readme-pics/phone-res-home.png)
 ![PHONE RESP Dashboard](static/imgs/readme-pics/phone-res-dsh.png)
 ![PHONE RESP HOME](static/imgs/readme-pics/phone-res-list.png)
 
 #### Tablet Screen
+
 ![TABLET RESP HOME](static/imgs/readme-pics/tablet-res-home.png)
 ![TABLET RESP Dashboard](static/imgs/readme-pics/tablet-res-dsh.png)
 ![TABLET RESP HOME](static/imgs/readme-pics/tablet-res-list.png)
@@ -656,6 +660,7 @@ Comprehensive browser testing was conducted for **RedBazaar**, covering:
 The platform performs consistently across all tested browsers, providing a reliable user experience regardless of the user’s preferred browser.
 
 **Browser Testing Example:**
+
 ![Browser Compatibility Test](static/imgs/readme-pics/browser-testing-example.webp)
 
 ### JSHint Validation

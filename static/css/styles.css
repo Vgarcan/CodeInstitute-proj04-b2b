@@ -329,6 +329,19 @@ thead {
 }
 
 
+/* Header Gradient */
+
+.gradient-header {
+    background: linear-gradient(to right, var(--colour-primary), var(--colour-primary-dark));
+    color: var(--colour-text-light);
+    padding: 4rem 2rem;
+}
+
+.gradient-header a {
+    color: var(--colour-background-light);
+}
+
+
 /* Intro Section */
 
 #intro-section {
@@ -464,4 +477,47 @@ thead {
     to {
         opacity: 1;
     }
+}
+
+
+/* About-Us */
+
+.about-us-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.icon-section i {
+    font-size: 3rem;
+    color: var(--colour-primary);
+}
+
+.icon-section h3 {
+    color: var(--colour-secondary);
+}
+
+
+/* FAQ */
+
+.faq-header h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.faq-section {
+    margin-top: 2rem;
+}
+
+.faq-question {
+    font-weight: bold;
+    color: var(--colour-primary);
+}
+
+.faq-answer {
+    margin-top: 0.5rem;
+    color: var(--colour-text-muted);
+}
+
+.accordion-button:hover {
+    color: var(--colour-text-light);
 }
