@@ -965,7 +965,7 @@ Any violation of these terms is strictly prohibited. For permissions or inquirie
 
 ### Bugs
 
-1. **Product ID Conflict in Shopping Cart**
+1. **Product ID Conflict in Shopping Cart** -- (Fixed ✅)
    - **Description**: A recurring issue arises when handling products with an ID of `1`. The problem occurs during actions such as adding the product to the shopping cart or updating its quantity. This is caused by the way JavaScript interacts with the `href` attribute, which was initially used to pass the product ID.
    - **Cause**: Django renders the templates first, generating static IDs for products, but JavaScript modifies these IDs dynamically when the page loads. Since the `href` was directly tied to the product ID, any mismatch during the handoff from Django to JavaScript caused errors, particularly with the product ID `1`.
    - **Temporary Fix**: The `href` attribute was replaced with a `data-*` attribute (e.g., `data-url`) to store the product ID. JavaScript now reads the value from `data-url` instead of relying on the `href`. This approach partially resolved the issue, but intermittent errors persist.
@@ -1015,6 +1015,7 @@ Django Official Documentation: A constant reference for understanding Django ORM
 
 YouTube Tutorials: Several video tutorials provided insights into handling edge cases, such as managing cart quantities and avoiding layout shifts.
 
+Our most sincere thanks to [Patrick O'Doherty](https://www.linkedin.com/in/patrickaod/) for his invaluable recommendation to use **WhiteNoise** for managing static files instead of an S3 bucket. His clear and detailed explanation was instrumental in implementing this solution effectively.
 
 
 Lastly, we extend our gratitude to the Code Institute mentors and reviewers who offered guidance and support throughout this journey.

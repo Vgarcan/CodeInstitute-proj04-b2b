@@ -116,18 +116,34 @@ Shopping Cart for {{ user.username }}
 {% block js_inpage %}
     {% for seller_id, items in cart_items.items %}
         {% for item in items %}
+            // Remove item event listener
             document.getElementById('removeLink_{{ item.product.id }}').addEventListener('click', function(event) {
                 event.preventDefault();
+
+                // Get the quantity to remove
                 var quantity = document.getElementById('remove_quantity_{{ item.product.id }}').value;
-                var url = "{% url 'products:remove' item.product.id 1 %}".replace('1', quantity);
-                window.location.href = url;
+
+                // Build the URL dynamically using the quantity
+                var baseUrl = "{% url 'products:remove' item.product.id 1 %}";
+                var updatedUrl = baseUrl.replace(/1$/, quantity);
+
+                // Redirect to the updated URL
+                window.location.href = updatedUrl;
             });
 
+            // Add item event listener
             document.getElementById('addLink_{{ item.product.id }}').addEventListener('click', function(event) {
                 event.preventDefault();
+
+                // Get the quantity to add
                 var quantity = document.getElementById('add_quantity_{{ item.product.id }}').value;
-                var url = "{% url 'products:add-cart' item.product.id 1 %}".replace('1', quantity);
-                window.location.href = url;
+
+                // Build the URL dynamically using the quantity
+                var baseUrl = "{% url 'products:add-cart' item.product.id 1 %}";
+                var updatedUrl = baseUrl.replace(/1$/, quantity);
+
+                // Redirect to the updated URL
+                window.location.href = updatedUrl;
             });
         {% endfor %}
     {% endfor %}
