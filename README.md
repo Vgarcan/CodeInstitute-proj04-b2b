@@ -1005,11 +1005,17 @@ Specific References
 Below are some examples of key resources and their use in this project:
 
 MPTT Library Documentation: Utilised for creating and managing hierarchical data structures. A link to the documentation is included in the relevant script.
+
 Stack Overflow Discussions: Helped solve issues related to URL management in Django and JavaScript interactions with template-rendered content.
+
 Bootstrap Documentation: Referenced for styling and responsive layout solutions, ensuring a polished and consistent user interface.
+
 Stripe API Documentation: Used extensively for implementing the payment processing system.
 Django Official Documentation: A constant reference for understanding Django ORM, views, and middleware.
+
 YouTube Tutorials: Several video tutorials provided insights into handling edge cases, such as managing cart quantities and avoiding layout shifts.
+
+
 
 Lastly, we extend our gratitude to the Code Institute mentors and reviewers who offered guidance and support throughout this journey.
 
@@ -1019,3 +1025,5 @@ Lastly, we extend our gratitude to the Code Institute mentors and reviewers who 
 - [ALLAUTH docs](https://docs.allauth.org/en/latest/)
 - [MPTT (Modified Preorder Tree Traversal)](https://mptt.readthedocs.io/en/latest/overview.html)
 - [Complex lookups with Q objects - Django Docs](https://docs.djangoproject.com/en/5.1/topics/db/queries/#complex-lookups-with-q-objects)
+- [WHITENOISE docs](https://whitenoise.readthedocs.io/en/latest/)
+
