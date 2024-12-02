@@ -25,4 +25,22 @@ document.addEventListener('DOMContentLoaded',
              */
             navbarCollapse.classList.toggle('collapse');
         });
+
+        // BOOTSTRAP - Enable ToolTips
+        // https://getbootstrap.com/docs/5.3/components/tooltips/#enable-tooltips
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+        // UNDER DEV - Modal 
+        // Show the modal automatically
+        var modal = document.getElementById('developmentModal');
+        var closeModalBtn = document.getElementById('closeModal');
+
+        // Display the modal
+        modal.style.display = 'block';
+
+        // Close the modal when the button is clicked
+        closeModalBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
     });

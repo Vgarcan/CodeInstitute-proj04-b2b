@@ -521,3 +521,12 @@ thead {
 .accordion-button:hover {
     color: var(--colour-text-light);
 }
+
+
+/* Turn off parallax scrolling for all tablets and phones. Increase/decrease the pixels if needed */
+
+@media only screen and (max-device-width: 425px) {
+    #intro-section {
+        background-attachment: scroll;
+    }
+}
