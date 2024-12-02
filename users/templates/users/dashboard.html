@@ -26,7 +26,7 @@
                 <ul class="nav flex-column">
                     {# Active Dashboard Link #}
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="#dashboard">
                             <i class="fas fa-home"></i> Dashboard
                         </a>
                     </li>
@@ -52,10 +52,10 @@
                     {% endif %}
                     {# Links for Account Settings and Support, accessible by both roles #}
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Account Settings</a>
+                        <a class="nav-link" href="{% url 'main:not_available' %}">Account Settings</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Support</a>
+                        <a class="nav-link" href="{% url 'main:not_available' %}">Support</a>
                     </li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
 
         {# Main Content Area of the Dashboard #}
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2" id="dashboard">Dashboard</h1>
             <hr>
 
             {# Dashboard Content for Buyers #}
@@ -176,7 +176,7 @@
             {% else %}
                 {# Message shown if no orders have been received by the supplier #}
                 <div class="alert alert-info" role="alert">
-                    No orders received yet. <a href="#" class="alert-link">Promote your products to get more orders!</a>
+                    No orders received yet. <a href="{% url 'main:not_available' %}" class="alert-link">Promote your products to get more orders!</a>
                 </div>
             {% endif %}
                 {# Section for Sales Summary (Placeholder Chart) #}

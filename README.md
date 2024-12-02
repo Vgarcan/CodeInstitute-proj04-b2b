@@ -9,7 +9,7 @@
 
 ## Check us out!
 
-[Red Bazaar - Heroku](https://redbazaar.herokuapp.com/) 
+[Red Bazaar - Heroku](https://red-bazaar-1af30a20d60e.herokuapp.com/) 
 
 ## Table of Contents
 
@@ -75,6 +75,7 @@ RedBazaar is currently in its initial development phase, providing the core func
 
 At this stage, RedBazaar includes the following features:
 - **Product Search:** Restaurants can browse available products across multiple suppliers.
+![SEARCH photo](static/imgs/readme-pics/search.png)
 - **Shopping Cart and Transactions:** Buyers can add products to a shopping cart and complete purchases directly through the website.
 ![CART photo](static/imgs/readme-pics/cart.png)
 - **Order Management:** Suppliers receive detailed orders submitted by buyers, including all necessary information to fulfil the requests.
@@ -574,7 +575,7 @@ Highlights include:
 - Readable and maintainable code structure.
 
 **CSS Validation Result:**
-![CSS Validation Result](static/imgs/readme-pics/css-validation-result.webp)
+![CSS Validation Result](static/imgs/readme-pics/css-validation-result.png)
 
 To validate this CSS code, you can use the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=dev.red-bazaar.com&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
@@ -600,6 +601,7 @@ During the validation process, **five contrast errors** were flagged. These erro
 3. **Decision**: While we acknowledge the errors flagged by Wave, we have opted to **retain the current colour scheme**. Changing these colours would compromise the brand consistency established for the site.
 
 **Wave Validation Contrast Error:**
+
 ![Wave Validation Result](static/imgs/readme-pics/wave-val-contrast.png)
 
 This decision was made after careful consideration and feedback from multiple sources. We will continue to monitor user feedback and revisit this choice if necessary in future updates.
@@ -632,7 +634,15 @@ The codebase is fully compliant, with plans to continually monitor and maintain 
 Media queries were used to adapt the layout for different screen sizes. Testing confirmed that all features, from navigation to purchasing workflows, function seamlessly across devices.
 
 **Device Testing Example:**
-![Responsive Device Testing](static/imgs/readme-pics/device-testing-example.jpg)
+#### Phone Screen
+![PHONE RESP HOME](static/imgs/readme-pics/phone-res-home.png)
+![PHONE RESP Dashboard](static/imgs/readme-pics/phone-res-dsh.png)
+![PHONE RESP HOME](static/imgs/readme-pics/phone-res-list.png)
+
+#### Tablet Screen
+![TABLET RESP HOME](static/imgs/readme-pics/tablet-res-home.png)
+![TABLET RESP Dashboard](static/imgs/readme-pics/tablet-res-dsh.png)
+![TABLET RESP HOME](static/imgs/readme-pics/tablet-res-list.png)
 
 ### Browser Compatibility
 Comprehensive browser testing was conducted for **RedBazaar**, covering:
@@ -657,6 +667,7 @@ Highlights include:
 - Lightweight and optimized scripts for quick execution.
 
 **JSHint Validation Result:**
+
 ![JSHint Validation Result](static/imgs/readme-pics/jshint-validation-result.webp)
 
 ### Project Testing Overview

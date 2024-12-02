@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% comment %}
+ Set the name of the page 
+{% endcomment %}
+{% block page_title %}
+Page Under Development
+{% endblock page_title %}
+
+{% comment %}
+ Inject extra links into the page header
+{% endcomment %}
+{% block extra_head %}
+{% endblock extra_head %}
+
+{% comment %}
+ Inject HTML for the content 
+{% endcomment %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Welcome to the Future Page</h1>
+    <p class="text-center text-muted">
+        This page is currently under development, but exciting features are on their way!
+    </p>
+</div>
+
+<!-- Development Modal -->
+<div id="developmentModal">
+    <div id="developmentModalContent">
+        <h2>Page Under Development</h2>
+        <p>We're working hard to bring this page to life. Stay tuned for updates!</p>
+        <button id="closeModal">Got It!</button>
+    </div>
+</div>
+{% endblock content %}
+
+{% comment %}
+ To the bottom of the body tag 
+{% endcomment %}
+{% block extra_body %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Show the modal automatically
+        var modal = document.getElementById('developmentModal');
+        var closeModalBtn = document.getElementById('closeModal');
+
+        // Display the modal
+        modal.style.display = 'block';
+
+        // Close the modal when the button is clicked
+        closeModalBtn.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+    });
+</script>
+{% endblock extra_body %}
+
+{% comment %}
+ JS tag injection 
+{% endcomment %}
+{% block js_inpage %}
+{% endblock js_inpage %}

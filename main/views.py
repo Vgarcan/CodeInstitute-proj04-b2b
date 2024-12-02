@@ -29,3 +29,7 @@ def terms(request):
 
 def priv_pol(request):
     return render(request, 'main/priv-pol.html')
+
+
+def under_dev(request):
+    return render(request, 'main/under-dev.html')
