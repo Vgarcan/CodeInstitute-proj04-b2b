@@ -25,6 +25,7 @@ Product Creation for {{ user.username}}
 {% endcomment %}
 {% block content %}
 
+<div class="container my-3">
   <h2>Product Creation for {{ user.username }}</h2>
   {# ACTION is conditional and "enctype="multipart/form-data" needed for images and files management #}
   <form method="post" action="{% if product %}{% url 'products:create' product.id %}{% else %}{% url 'products:create' %}{% endif %}" enctype="multipart/form-data">
@@ -32,6 +33,9 @@ Product Creation for {{ user.username}}
     {{ prod_form.as_p }}
     <button type="submit">{% if product %} Update Product {% else %} Create Product {% endif %}</button>
   </form>
+</div>
+
+  
 {% endblock content %}
 
 {% comment %}

@@ -96,9 +96,9 @@ class Product(models.Model):
         related_name="products",  # Allows reverse access from Category to Product
         on_delete=models.CASCADE)
     name = models.CharField(max_length=250, blank=True, null=True)
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
     quantity = models.IntegerField(default=0)
-    description = models.TextField(max_length=250, blank=True, null=True)
+    description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='products/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
