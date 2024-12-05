@@ -55,7 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles',  # Set before cloudinary APPs for MEDIA storage only
+    'cloudinary_storage',
+    'cloudinary',
     # ALLAUTH apps:
     # The following apps are required:
     'allauth',
@@ -316,6 +318,17 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
     messages.WARNING: 'warning',
     messages.ERROR: 'danger',  # BOOTSTRAP
+}
+
+STORAGES = {
+    'default': {
+        # For Cloudinary - MEDIA files
+        'BACKEND': 'cloudinary_storage.storage.MediaCloudinaryStorage',
+    },
+    'staticfiles': {
+        # For WhiteNoise - Static files
+        'BACKEND': STATICFILES_STORAGE,
+    },
 }
 
 # STRIPE
