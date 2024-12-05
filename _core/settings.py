@@ -40,7 +40,10 @@ ALLOWED_HOSTS = [
 ]
 
 # Add domain to the list of trusted origins so that Django accepts requests from that domain
-CSRF_TRUSTED_ORIGINS = ['https://dev.red-bazaar.com']
+CSRF_TRUSTED_ORIGINS = [
+    'https://dev.red-bazaar.com',
+    'https://red-bazaar-1af30a20d60e.herokuapp.com',
+]
 
 # MEDIA SETTINGS
 MEDIA_URL = '/media/'
