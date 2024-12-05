@@ -323,6 +323,10 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',  # BOOTSTRAP
 }
 
+
+# This section of the Django settings file is defining storage configurations for handling media files
+# and static files in the project.
+# https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-STORAGES
 STORAGES = {
     'default': {
         # For Cloudinary - MEDIA files

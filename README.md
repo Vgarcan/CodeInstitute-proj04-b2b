@@ -1042,5 +1042,8 @@ Lastly, we extend our gratitude to the Code Institute mentors and reviewers who 
 - [ALLAUTH docs](https://docs.allauth.org/en/latest/)
 - [MPTT (Modified Preorder Tree Traversal)](https://mptt.readthedocs.io/en/latest/overview.html)
 - [Complex lookups with Q objects - Django Docs](https://docs.djangoproject.com/en/5.1/topics/db/queries/#complex-lookups-with-q-objects)
+- [Django 5.1 - STORAGES](https://docs.djangoproject.com/en/5.1/ref/settings/#std-setting-STORAGES)
 - [WHITENOISE docs](https://whitenoise.readthedocs.io/en/latest/)
+- [Django Cloudinary Storage](https://pypi.org/project/django-cloudinary-storage/)
+- [How to Connect Cloudinary to Your Django Project: Step-by-Step Tutorial - by SnipherDev](https://www.youtube.com/watch?v=gj8bs2lf86A)
 

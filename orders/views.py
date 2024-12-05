@@ -126,7 +126,14 @@ def order_detail(request, order_id):
     """
     order = Order.objects.get(id=order_id)
     order_items = OrderItem.objects.filter(order=order)
-    return render(request, 'orders/order-detail.html', {'order': order, 'order_items': order_items})
+    return render(
+        request,
+        'orders/order-detail.html',
+        {
+            'order': order,
+            'order_items': order_items
+        }
+    )
 
 
 @role_required('SUP')

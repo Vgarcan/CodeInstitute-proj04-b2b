@@ -260,7 +260,7 @@ def search_products(request):
 
 
 @role_required("BUY")
-def add_product(request, prd_id, quantity):
+def add_product(request, prd_id, quantity, go_to=None):
     """
     Add a specified quantity of a product to a user's shopping cart using the session.
 
@@ -314,8 +314,12 @@ def add_product(request, prd_id, quantity):
     # Show a success message to the user.
     messages.success(request, f"Product added to cart: {product.name}")
 
-    # Redirect to the product detail page.
-    return redirect("products:item-view", prd_id=prd_id)
+    if go_to == 'cart':
+        # Redirect to the dashboard page.
+        return redirect('products:view-cart')
+    else:
+        # Redirect to the product detail page.
+        return redirect("products:item-view", prd_id=prd_id)
 
 
 @role_required('BUY')

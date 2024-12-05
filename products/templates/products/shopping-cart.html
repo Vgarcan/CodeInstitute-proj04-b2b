@@ -139,7 +139,7 @@ Shopping Cart for {{ user.username }}
                 var quantity = document.getElementById('add_quantity_{{ item.product.id }}').value;
 
                 // Build the URL dynamically using the quantity
-                var baseUrl = "{% url 'products:add-cart' item.product.id 1 %}";
+                var baseUrl = "{% url 'products:add-cart' item.product.id 1 'cart' %}";
                 var updatedUrl = baseUrl.replace(/1$/, quantity);
 
                 // Redirect to the updated URL

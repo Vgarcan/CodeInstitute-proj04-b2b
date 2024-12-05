@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% comment %}
  Set the name of the page 
@@ -98,12 +99,12 @@
 {% endblock %}
 
 
-
 {% comment %}
  To the bottom of the body tag 
 {% endcomment %}
-{% block extrabody %}
-{% endblock extrabody %}
+{% block extra_body %}
+<script src="{% static 'js/product_detail.js' %}"></script>
+{% endblock extra_body %}
 
 
 {% comment %}
