@@ -163,9 +163,13 @@ def delete_product(request, prd_id):
             request, "You do not have permission to delete this product.")
         return redirect("users:dashboard")
     # Delete the product from the database.
-    product.delete()
-    # Show a success message to the user.
-    messages.success(request, "Product deleted successfully")
+    try:
+        product.delete()
+        messages.success(request, "Product deleted successfully")
+    except DatabaseError as e:
+        messages.error(request, "Database error: Unable to delete the product.")
+    except Exception as e:
+        messages.error(request, f"Unexpected error: {e}")
     # Redirect to the product list page.
     return redirect("users:dashboard")
 
