@@ -1,3 +1,8 @@
+from django.db.models import Count
+from django.contrib.auth.decorators import login_required
+from .models import Order
+from django.db.models import Sum, F
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import Order, OrderItem, ShipAddr
 from products.models import Product
@@ -191,3 +196,66 @@ def update_order(request, order_id, order_status):
     order.save()
     messages.success(request, "Order status updated!")
     return redirect('users:dashboard')
+
+
+@login_required
+def chart_data(request, user_role):
+    """
+    Generate data for Chart.js based on user role (buyer or supplier).
+
+    Args:
+        request: HTTP request object.
+        user_role (str): Either 'buyer' or 'supplier'.
+
+    Returns:
+        JsonResponse: Labels (months) and data (totals).
+    """
+    if user_role == "buyer":
+        queryset = (Order.objects.filter(buyer=request.user)
+                    .annotate(month=F('ordered_on__month'))
+                    .values('month')
+                    .annotate(total_spent=Sum('total_price'))
+                    .order_by('month'))
+        data = [entry['total_spent'] for entry in queryset]
+    elif user_role == "supplier":
+        queryset = (Order.objects.filter(seller=request.user)
+                    .annotate(month=F('ordered_on__month'))
+                    .values('month')
+                    .annotate(total_earned=Sum('total_price'))
+                    .order_by('month'))
+        data = [entry['total_earned'] for entry in queryset]
+    else:
+        return JsonResponse({"error": "Invalid user role"}, status=400)
+
+    labels = [f"Month {entry['month']}" for entry in queryset]
+    return JsonResponse({"labels": labels, "data": data})
+
+
+@login_required
+def transaction_status_data(request):
+    """
+    Provide data for total transactions grouped by status.
+    """
+    # Obtener el rol del usuario autenticado
+    print('>>>>>>>', request.user.role)
+    user_role = request.user.role
+
+    print('>>>>>>>', user_role)
+
+    if user_role == "BUY":
+        orders = request.user.orders_as_buyer.all()
+    elif user_role == "SUP":
+        orders = request.user.orders_as_seller.all()
+    else:
+        return JsonResponse({"error": "Invalid user role"}, status=400)
+
+    # Anota la cantidad de órdenes por estado
+    status_data = orders.values('status').annotate(count=Count('id'))
+
+    # Incluye estados con valor cero para los estados que no tienen órdenes
+    all_statuses = dict(Order.STATUS_CHOICES)
+    labels = [all_statuses[status] for status in all_statuses]
+    data = [next((entry['count'] for entry in status_data if entry['status']
+                 == status), 0) for status in all_statuses]
+
+    return JsonResponse({"labels": labels, "data": data})

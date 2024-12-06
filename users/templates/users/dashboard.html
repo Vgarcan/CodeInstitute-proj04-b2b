@@ -12,7 +12,8 @@
 # Set the CSS file and Other for the page
 {% endcomment %}
 {% block extra_head %}
-{% endblock %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock extra_head%}
 
 {% comment %}
 # Appends the content in the BODY tag
@@ -63,7 +64,7 @@
 
 
         {# Main Content Area of the Dashboard #}
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <h1 class="h2" id="dashboard">Dashboard</h1>
             <hr>
 
@@ -114,9 +115,20 @@
             {% endif %}
 
                 {# Section for Spending Summary (Placeholder Chart) #}
-                <h3 id="spendingSummary">Spending Summary</h3>
                 {% if orders.exists %}
-                    <canvas class="col-12" id="spendingChart"></canvas>
+                <h3 id="spendingSummary">Spending Summary</h3>
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <h4>Monthly Summary</h4>
+                            <canvas class="w-75 h-auto" id="buyerSpendingChart"></canvas>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <canvas class="w-75 h-auto" id="transactionStatusChart"></canvas>
+                            <h4 id="transactionStatus">Transaction Status Summary</h4>
+                        </div>
+                    </div>
+                </div>
                 {% else %}
                     <p>No spending data available yet. Start placing orders to see your spending summary.</p>
                 {% endif %}
@@ -180,9 +192,21 @@
                 </div>
             {% endif %}
                 {# Section for Sales Summary (Placeholder Chart) #}
-                <h3 id="salesSummary">Sales Summary</h3>
                 {% if received_orders.exists %}
-                    <canvas class="col-12" id="salesChart"></canvas>
+                <h3 id="salesSummary">Sales Summary</h3>
+                <div class="container my-5">
+                    <div class="row">
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <h4>Monthly Summary</h4>
+                            <canvas class="w-75 h-auto" id="supplierSalesChart"></canvas>
+                        </div>
+                        <div class="col-md-6 d-flex justify-content-center">
+                            <canvas class="w-75 h-auto" id="transactionStatusChart"></canvas>
+                            <h4 id="transactionStatus">Transaction Status Summary</h4>
+                        </div>
+                    </div>
+                </div>
+                    
                 {% else %}
                     <p>No sales data available yet. Once you receive orders, your sales summary will be displayed here.</p>
                 {% endif %}
@@ -233,7 +257,7 @@
                 {% endif %}
 
             {% endif %}
-        </main>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -242,5 +266,12 @@
  To the bottom of the body tag 
 {% endcomment %}
 {% block extra_body %}
+<script>
+    window.userConfig = {
+        userRole : '{{ user.role }}' // Pasado desde Django
+
+    };
+</script>
 <script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/dashboard_charts.js' %}"></script>
 {% endblock extra_body %}

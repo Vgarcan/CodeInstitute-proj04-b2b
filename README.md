@@ -1046,4 +1046,5 @@ Lastly, we extend our gratitude to the Code Institute mentors and reviewers who 
 - [WHITENOISE docs](https://whitenoise.readthedocs.io/en/latest/)
 - [Django Cloudinary Storage](https://pypi.org/project/django-cloudinary-storage/)
 - [How to Connect Cloudinary to Your Django Project: Step-by-Step Tutorial - by SnipherDev](https://www.youtube.com/watch?v=gj8bs2lf86A)
+- [Chart.js - Manual](https://www.chartjs.org/docs/latest/)
 

@@ -13,5 +13,9 @@ urlpatterns = [
     path('order-confirmation', views.confirm_order, name='confirmation'),
     path('update-order-status/<str:order_id>/<str:order_status>',
          views.update_order, name='update_order'),
+    path('api/chart-data/<str:user_role>/',
+         views.chart_data, name='chart_data'),
+    path('api/transaction-status/',
+         views.transaction_status_data, name='transaction_status_data'),
 
 ]
