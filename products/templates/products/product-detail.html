@@ -50,6 +50,9 @@
                 <!-- Available Quantity -->
                 <p class="mb-2"><strong>Available Quantity:</strong> {{ product.quantity }}</p>
 
+                <!-- Pieces per unit -->
+                <p class="mb-2"><strong>Units: 1x</strong> {{ product.description }}</p>
+                
                 <!-- Description -->
                 <p class="mb-2"><strong>Description:</strong> {{ product.description }}</p>
 
@@ -111,7 +114,7 @@
  JS tag injection 
 {% endcomment %}
 {% block js_inpage %}
-document.getElementById('quantity').addEventListener('input', function() {
+{% comment %} document.getElementById('quantity').addEventListener('input', function() {
     // Gets the selected Quantity
     var quantity = document.getElementById('quantity').value;
     
@@ -119,5 +122,5 @@ document.getElementById('quantity').addEventListener('input', function() {
     var addToCartBtn = document.getElementById('addToCartBtn');
     var baseUrl = addToCartBtn.getAttribute('data-base-url');
     addToCartBtn.href = baseUrl.replace(/1$/, quantity);
-});
+}); {% endcomment %}
 {% endblock js_inpage %}

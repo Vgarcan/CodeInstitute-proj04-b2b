@@ -15,8 +15,15 @@ class ProductForm(forms.ModelForm):
     class Meta:
         """ Modify thr Product Form behavior. """
         model = Product
-        fields = ['name', 'description', 'price', 'quantity', 'category_id',
-                  'image']  # Fields that will appear in the form
+        fields = [
+            'name',
+            'description',
+            'price',
+            'quantity',
+            'pieces_per_unit',
+            'category_id',
+            'image'
+        ]  # Fields that will appear in the form
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)

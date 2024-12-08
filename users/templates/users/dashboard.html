@@ -225,6 +225,7 @@
                                     <th scope="col">Description</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Quantity</th>
+                                    <th scope="col">Per Unit</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -240,6 +241,7 @@
                                     <td>{{ product.description|truncatechars:50 }}</td>
                                     <td>${{ product.price }}</td>
                                     <td>{{ product.quantity }}</td>
+                                    <td>{{ product.pieces_per_unit }}</td>
                                     <td>
                                         <a href="{% url 'products:create' product.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
                                         <a href="{% url 'products:delete' product.id %}" class="btn btn-sm btn-warning">Delete</a>

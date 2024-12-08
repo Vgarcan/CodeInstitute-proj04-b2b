@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% comment %}
  Set the name of the page 
@@ -28,11 +29,28 @@ Product Creation for {{ user.username}}
 <div class="container my-3">
   <h2>Product Creation for {{ user.username }}</h2>
   {# ACTION is conditional and "enctype="multipart/form-data" needed for images and files management #}
-  <form method="post" action="{% if product %}{% url 'products:create' product.id %}{% else %}{% url 'products:create' %}{% endif %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ prod_form.as_p }}
-    <button type="submit">{% if product %} Update Product {% else %} Create Product {% endif %}</button>
-  </form>
+  <div class="row">
+    {# Product creation/edit Form #}
+    <div class="col-md-8 text-center">
+      <form method="post" action="{% if product %}{% url 'products:create' product.id %}{% else %}{% url 'products:create' %}{% endif %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ prod_form.as_p }}
+        <button type="submit">{% if product %} Update Product {% else %} Create Product {% endif %}</button>
+      </form>
+    </div>
+    {# Display de card of the user #}
+    <div class="col-md-4 card text-center d-none d-md-block">
+      <div class="sticky-top">
+        <img src="{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid my-3 mb-4 mx-auto" alt="Profile Picture" width="150" height="150">
+        <h1>{{ user.username }}</h1>
+        <p class="text-muted mb-3">{{ user.email }}</p>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  
 </div>
 
   

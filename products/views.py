@@ -166,8 +166,6 @@ def delete_product(request, prd_id):
     try:
         product.delete()
         messages.success(request, "Product deleted successfully")
-    except DatabaseError as e:
-        messages.error(request, "Database error: Unable to delete the product.")
     except Exception as e:
         messages.error(request, f"Unexpected error: {e}")
     # Redirect to the product list page.
@@ -220,8 +218,10 @@ def search_products(request):
         for category in matching_categories:
             category_ids.add(category.id)  # Include the primary category
             # ? https://django-mptt.readthedocs.io/en/latest/mptt.models.html#mptt.models.MPTTModel.get_descendants
-            category_ids.update(category.get_descendants(include_self=True).values_list(
-                'id', flat=True))  # Include the secondary category
+            category_ids.update(
+                category.get_descendants(include_self=True).values_list(
+                    'id', flat=True)
+            )  # Include the secondary category
 
             #! ### TEST ###
             print(category_ids)

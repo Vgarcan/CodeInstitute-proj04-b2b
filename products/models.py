@@ -1,6 +1,7 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.text import slugify
+from utils import user_directory_path
 
 # Create your models here.
 
@@ -95,11 +96,13 @@ class Product(models.Model):
         Category,
         related_name="products",  # Allows reverse access from Category to Product
         on_delete=models.CASCADE)
-    name = models.CharField(max_length=250, blank=True, null=True)
+    name = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=1)
+    pieces_per_unit = models.IntegerField(default=1)
     description = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to='products/', blank=True, null=True)
+    image = models.ImageField(
+        upload_to=user_directory_path, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -143,6 +146,7 @@ class OrderProductSnapshot(models.Model):
     name = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(blank=True, null=True)
+    pieces_per_unit = models.IntegerField(default=0)
     image = models.ImageField(
         upload_to='product_snapshots/', blank=True, null=True)
     category = models.CharField(max_length=250, blank=True, null=True)

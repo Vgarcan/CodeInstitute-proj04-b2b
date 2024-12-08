@@ -1,7 +1,3 @@
-from direct_messages.models import Message
-from django.db.models import Q
-from products.models import Product
-from orders.models import Order, OrderItem
 
 
 def sup_dict(source_data, source=None):
@@ -16,6 +12,7 @@ def sup_dict(source_data, source=None):
     Returns:
     - dict: A dictionary grouping products by seller, with each product's quantity, subtotal, and other details.
     """
+    from products.models import Product
     print("------------------------------------------")
     cart_items = {}
 
@@ -132,6 +129,7 @@ def get_unread_messages_count(user):
     Returns:
     - int: The total number of unread messages.
     """
+    from direct_messages.models import Message
     return Message.objects.filter(recipient=user, is_read=False).count()
 
 
@@ -168,3 +166,19 @@ def global_counts(request):
         'new_messages_count': 0,
         'cart_items_count': 0,
     }
+
+
+def user_directory_path(instance, filename):
+    """
+    Returns a dynamic upload path for product images based on the seller's username.
+
+    Args:
+        instance (Product): The instance of the Product model being saved. This instance contains the seller_id attribute,
+                           which is a ForeignKey to the CustomUser model.
+        filename (str): The name of the uploaded file. This name will be used to store the image in the specified directory.
+
+    Returns:
+        str: A string representing the path where the image will be uploaded. The path is constructed using the seller's
+             username and the filename. The format is "products/{seller_username}/{filename}".
+    """
+    return f"products/{instance.seller_id.username}/{filename}"
