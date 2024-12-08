@@ -31,7 +31,7 @@ Product Creation for {{ user.username}}
   {# ACTION is conditional and "enctype="multipart/form-data" needed for images and files management #}
   <div class="row">
     {# Product creation/edit Form #}
-    <div class="col-md-8 text-center">
+    <div class="col-md-8">
       <form method="post" action="{% if product %}{% url 'products:create' product.id %}{% else %}{% url 'products:create' %}{% endif %}" enctype="multipart/form-data">
         {% csrf_token %}
         {{ prod_form.as_p }}

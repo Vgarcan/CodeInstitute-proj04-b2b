@@ -51,7 +51,7 @@
                 <p class="mb-2"><strong>Available Quantity:</strong> {{ product.quantity }}</p>
 
                 <!-- Pieces per unit -->
-                <p class="mb-2"><strong>Units: 1x</strong> {{ product.description }}</p>
+                <p class="mb-2"><strong>Units: </strong>1x {{ product.pieces_per_unit }}</p>
                 
                 <!-- Description -->
                 <p class="mb-2"><strong>Description:</strong> {{ product.description }}</p>
@@ -61,7 +61,7 @@
 
                 <!-- Rating -->
                 <p class="mb-4"><strong>Rating:</strong> 
-                    <span class="badge badge-warning">{{ product.rating }} <i class="bi bi-star-fill"></i></span>
+                    <span class="badge text-bg-warning">{{ product.rating }} <i class="bi bi-star-fill"></i></span>
                 </p>
 
                 {% if product.quantity > 0 %}
