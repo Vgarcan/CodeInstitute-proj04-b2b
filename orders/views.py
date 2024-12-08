@@ -5,7 +5,7 @@ from django.db.models import Sum, F
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from .models import Order, OrderItem, ShipAddr
-from products.models import Product
+from products.models import OrderProductSnapshot
 from django.contrib import messages
 
 from users.decorators import role_required
@@ -79,12 +79,23 @@ def create_order(request):
 
         # Create OrderItem instances for each product in the order
         for item in items:
+            # Create a snapshot of the product
+            product_snapshot = OrderProductSnapshot.objects.create(
+                name=item['product'].name,
+                price=item['product'].price,
+                description=item['product'].description,
+                image=item['product'].image,
+                category=item['product'].category_id.name
+            )
+
+            # Create the OrderItem with the snapshot
             OrderItem.objects.create(
                 order=order,
-                product=item['product'],
+                product=product_snapshot,
                 quantity=item['quantity'],
                 item_total=item['subtotal']
             )
+
             # Remove the product quantity from database
             item['product'].quantity -= item['quantity']
             item['product'].save()

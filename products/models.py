@@ -128,6 +128,30 @@ class Product(models.Model):
         return f"{self.name}"
 
 
+class OrderProductSnapshot(models.Model):
+    """
+    Represents a snapshot of product data at the time of order placement.
+
+    Attributes:
+        name (str): Name of the product at the time of the order.
+        price (Decimal): Price of the product at the time of the order.
+        description (str): Description of the product.
+        image (ImageField): Optional image of the product.
+        category (str): Name of the category the product belongs to.
+        created_on (DateTimeField): Timestamp when the snapshot was created.
+    """
+    name = models.CharField(max_length=250)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
+    description = models.TextField(blank=True, null=True)
+    image = models.ImageField(
+        upload_to='product_snapshots/', blank=True, null=True)
+    category = models.CharField(max_length=250, blank=True, null=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - £{self.price}"
+
+
 ### WEBSITES: ###
     # Categories and subCategories : https://stackoverflow.com/questions/60120266/django-categories-and-subcategories
 #################
