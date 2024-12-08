@@ -3,7 +3,7 @@ from mptt.admin import MPTTModelAdmin
 
 # Register your models here.
 
-from .models import Product, Category
+from .models import Product, Category, OrderProductSnapshot
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -29,3 +29,20 @@ class CategoryAdmin(MPTTModelAdmin):
 
 
 admin.site.register(Category, CategoryAdmin)
+
+
+class OrderProductSnapshotAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'price',
+                    'category', 'created_on')
+    list_display_links = ('id', 'name')
+    search_fields = ('id', 'name', 'price',
+                     'category', 'created_on')
+
+    # Navigation filters
+    list_filter = ('id', 'created_on')
+    # READ ONLY fields
+    readonly_fields = ('id', 'name', 'price',
+                       'category', 'created_on', 'description', 'image')
+
+
+admin.site.register(OrderProductSnapshot, OrderProductSnapshotAdmin)
