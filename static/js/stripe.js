@@ -53,6 +53,8 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function validateForm(activeForm, requiredFields, phoneId, emailId) {
         let isValid = true;
+        document.getElementById('card-errors').textContent =
+            '';
 
         requiredFields.forEach((fieldId) => {
             const field = document.getElementById(fieldId);
@@ -69,10 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Specific validation for phoneId to ensure it's an integer
         const phoneField = document.getElementById(phoneId);
-        if (phoneField && !/^\d+$/.test(phoneField.value.trim())) {
+
+        // Regex for validating phone numbers
+        const phoneRegex = /^\+?[\d\s\-()]{5,}$/;
+
+        if (phoneField && !phoneRegex.test(phoneField.value.trim())) {
             phoneField.classList.add('is-invalid');
-            document.getElementById('card-errors').textContent =
-                'Phone number must contain only numbers.';
+            document.getElementById('card-errors').textContent +=
+                'Please enter a valid phone number.';
             isValid = false;
         } else if (phoneField) {
             phoneField.classList.remove('is-invalid');
@@ -83,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email validation regex
         if (emailField && !emailPattern.test(emailField.value.trim())) {
             emailField.classList.add('is-invalid');
-            document.getElementById('card-errors').textContent =
+            document.getElementById('card-errors').textContent +=
                 'Please enter a valid email address.';
             isValid = false;
         } else if (emailField) {
@@ -115,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
             postalCodeId,
         ];
         if (!validateForm(activeForm, requiredFields, phoneId, emailId)) {
-            document.getElementById('card-errors').textContent =
+            document.getElementById('card-errors').textContent +=
                 'Please correct the errors in the form.';
             return;
         }

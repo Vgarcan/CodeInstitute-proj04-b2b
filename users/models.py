@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
 class CustomUser(AbstractUser):
@@ -88,20 +89,25 @@ class Profile(models.Model):
     """
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
-    full_name = models.CharField(max_length=255, blank=True, null=True)
-    country = models.CharField(max_length=255, blank=True, null=True)
-    city = models.CharField(max_length=255, blank=True, null=True)
-    address = models.CharField(max_length=255, blank=True, null=True)
-    postal_code = models.CharField(max_length=10, blank=True, null=True)
-    phone_number = models.IntegerField(blank=True, null=True)
+    full_name = models.CharField(
+        max_length=255, blank=True, null=True, default="")
+    country = models.CharField(
+        max_length=255, blank=True, null=True, default="")
+    city = models.CharField(max_length=255, blank=True, null=True, default="")
+    address = models.CharField(
+        max_length=255, blank=True, null=True, default="")
+    postal_code = models.CharField(
+        max_length=10, blank=True, null=True, default="")
+    phone_number = models.IntegerField(
+        validators=[MinValueValidator(10000)], blank=True, null=True)
     profile_picture = models.ImageField(
         upload_to='profile_pictures/', blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
-    website = models.URLField(blank=True, null=True)
-    facebook_url = models.URLField(blank=True, null=True)
-    twitter_url = models.URLField(blank=True, null=True)
-    instagram_url = models.URLField(blank=True, null=True)
-    linkedin_url = models.URLField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True, default="")
+    website = models.URLField(blank=True, null=True, default="")
+    facebook_url = models.URLField(blank=True, null=True, default="")
+    twitter_url = models.URLField(blank=True, null=True, default="")
+    instagram_url = models.URLField(blank=True, null=True, default="")
+    linkedin_url = models.URLField(blank=True, null=True, default="")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
