@@ -312,6 +312,8 @@ thead {
 
 .pagination {
     justify-content: center;
+    background-color: var(--colour-background-light);
+    box-shadow: none;
 }
 
 .page-link {

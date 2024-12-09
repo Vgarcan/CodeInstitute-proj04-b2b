@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ProductForm
 from .models import Product, Category
@@ -96,7 +97,6 @@ def view_products(request, provider_id=None):
     Returns:
     HttpResponse: Rendered template with the products. If an error occurs, an error message will be displayed.
     """
-
     if provider_id is None:
         # Fetch all products from the database.
         products = Product.objects.all()
@@ -106,28 +106,37 @@ def view_products(request, provider_id=None):
             # Check if the provided provider ID exists. If not, display an error message and redirect to the product list page.
             if CustomUser.objects.get(id=provider_id).role != "SUP":
                 messages.error(request, "Invalid provider ID")
-                products = {}  # Creates an EMPTY value
                 return redirect("products:list")
-
             else:
                 products = Product.objects.filter(seller_id=provider_id)
         except Exception as e:
             # Recognise the error and return the response as a message
             messages.error(request, "No product found")
             messages.warning(request, f'ERROR: "{e.__class__.__name__}": {e}')
-            products = {}  # Creates an EMPTY value
+            products = Product.objects.none()  # Return an empty queryset
+
+    # Add pagination
+    paginator = Paginator(products, 20)  # 20 products per page
+    # Get the page number from the request, default to 1
+    page_number = request.GET.get('page', 1)
+
+    try:
+        paginated_products = paginator.page(page_number)
+    except PageNotAnInteger:
+        # If page is not an integer, show the first page
+        paginated_products = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range, show the last page
+        paginated_products = paginator.page(paginator.num_pages)
 
     # Get the current user's shopping cart from the session.
-    # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
     shopping_cart = request.session.get('shopping_cart', {})
     total_cost = request.session.get('cart_total', 0)
 
     # Retrieve the products from the shopping cart based on their IDs.
-    # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
     products_in_cart = Product.objects.filter(id__in=shopping_cart.keys())
 
     # Prepare a dictionary to group products by seller_id
-    # imported from UTILS.PY
     cart_items = sup_dict(shopping_cart, source="cart")
 
     # Render the template with the products.
@@ -135,9 +144,9 @@ def view_products(request, provider_id=None):
         request,
         "products/product-list.html",
         {
-            "products": products,
-            'cart_items': cart_items,
-            'total_cost': total_cost
+            "products": paginated_products,  # Use the paginated products
+            "cart_items": cart_items,
+            "total_cost": total_cost
         }
     )
 
