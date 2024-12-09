@@ -21,6 +21,7 @@
 <div class="container my-5">
     <div class="row">
         <div class="col-md-4 text-center">
+            {# Intro Section #}
             {% if view_user %}
                 <img src="{% if view_user.profile.profile_picture %}{{ view_user.profile.profile_picture.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" class="rounded-circle img-fluid mb-4" alt="Profile Picture" width="150" height="150">
             {% else %}
@@ -28,9 +29,14 @@
             {% endif %}
             <h1>{% if view_user %}{{ view_user.username }}{% else %}{{ user.username }}{% endif %}</h1>
             <p class="text-muted">{% if view_user %}{{ view_user.email }}{% else %}{{ user.email }}{% endif %}</p>
+            {# Access products from assigned supplier #}
+            {% if view_user.role == 'SUP' %}
+            <a class="btn btn-primary" href="{% url 'products:all' view_user.pk %}">View Products</a>
+            {% endif %}
             {% if not message_form %}
                 <a href="{% url 'users:edit_profile' %}" class="btn btn-primary">Edit Profile</a>
             {% else %}
+            {# Message section #}
             <div class="container my-5">
                 <div class="card">
                     <div class="card-header">
@@ -47,7 +53,7 @@
             </div>
             {% endif %}
         </div>
-
+        {# Profile info Section #}
         <div class="col-md-8">
             <div class="card mb-4">
                 <div class="card-header">
