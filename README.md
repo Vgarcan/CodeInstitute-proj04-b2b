@@ -522,11 +522,6 @@ Below is the flowchart representing these processes:
 2. **As a supplier**, I want to update the status of orders (e.g., pending, in process, dispatched, completed, rejected) to keep buyers informed about their progress.
 3. **As a supplier**, I want all transactions to be handled securely and effectively, giving me confidence in the platform's reliability.
 
-#### **System Administrators**
-1. **As an administrator**, I want a straightforward panel where I can monitor the platform's performance and operations.
-2. **As an administrator**, I want exclusive control over creating and managing product categories to maintain order and consistency within the system.
-
-
 ### Future Enhancements
 
 As RedBazaar evolves, several advanced features are planned to enhance the platform and expand its functionality for both buyers and suppliers. The vision for RedBazaar includes:
