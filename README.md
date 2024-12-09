@@ -45,6 +45,7 @@
     - [Responsiveness Testing](#responsiveness-testing)
     - [C.R.U.D. Testing](#crud-testing)
     - [Features](#features)
+  - [User Stories Testing](#user-stories-testing)
 - [Current State and Future Plans](#current-state-and-future-plans)
   - [Current State](#current-state)
   - [Future Plans](#future-plans)
@@ -233,6 +234,10 @@ RedBazaar is being developed using a set of tools that streamline the coding, ve
       - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **js/** (JavaScript files for the project)
          - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `main.js` (Main JavaScript file)
          - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `stripe.js` (Stripe JavaScript logic file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `dashboard_dash.js` (Stripe JavaScript logic file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `dashboard.js` (Stripe JavaScript logic file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `product_details.js` (Stripe JavaScript logic file)
+         - <img src="static/imgs/readme-pics/ico/js-filetype-icon.ico" width="18px"> `under-dev.js` (Stripe JavaScript logic file)
 
    - <img src="static/imgs/readme-pics/ico/folder-icon.ico" width="18px"> **templates/** (Main templates directory)
       - <img src="static/imgs/readme-pics/ico/html-filetype-icon.ico" width="18px"> `base.html` (Base template for the project)
@@ -742,6 +747,25 @@ Highlights include:
 | Shopping Cart                | Shopping cart stores items in cookies, organizes them by Supplier, and displays the cart in the sidebar on the product listing page. | Cart is displayed with items organized by Supplier               | ✅          |
 | Cart Item Counter            | Navigation bar button displays the number of items in the shopping cart.                   | Item count is updated and displayed accurately                   | ✅          |
 | Unread Messages Counter      | Navigation bar button displays the number of unread messages.                              | Message count is updated and displayed accurately                | ✅          |
+
+### User Stories Testing
+
+#### **Restaurants (Buyers)**
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result**|
+|-------------|------------|---------------------|------------------|
+| **Product Search**        | Use the search bar to find products by name or category.  | Display of relevant products that match the search criteria.         | Works as expected         |
+| **Shopping Cart**         | Add products to the shopping cart and view the cart.     | Products appear in the cart with accurate quantities and total cost. | Works as expected         |
+| **Secure Payments**       | Complete a transaction using a credit or debit card via Stripe. | Payment is processed securely using Stripe, a confirmation message is displayed, and the order is created successfully. | Works as expected         |
+| **Order Tracking**        | Navigate to the orders section to view the order status. | Accurate display of order status, including updates as they occur.   | Works as expected         |
+
+#### **Suppliers**
+
+| **Feature** | **Action** | **Expected Result** | **Actual Result**|
+|-------------|------------|---------------------|------------------|
+| **Order Management**      | View new orders received on the platform.                | Orders are listed with relevant details (e.g., buyer, products, quantities). | Works as expected         |
+| **Update Order Status**   | Change the status of an order to pending, in process, dispatched, completed, or rejected. | Status updates are reflected in the buyer's order tracking.          | Works as expected         |
+| **Secure Transactions**   | Process payments through the platform for completed orders. | Payments are securely processed via Stripe, and confirmations are received. | Works as expected         |
 
 
 ## Current State and Future Plans

@@ -49,10 +49,12 @@ Product List for {{ user.username}}
                             {% for product in products %}
                             <tr>
                                 <td>
-                                    <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
-                                         alt="{{ product.name }}" style="width: 60px; height: auto;">
+                                    <a href="{% url 'products:item-view' product.id %}">
+                                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'imgs/no-img-av.webp' %}{% endif %}" 
+                                        alt="{{ product.name }}" style="width: 60px; height: auto;">
+                                    </a>
                                 </td>
-                                <td>{{ product.name }}</td>
+                                <td><a class="text-decoration-none text-dark" href="{% url 'products:item-view' product.id %}">{{ product.name }}</a></td>
                                 <td><a href="{% url 'users:user_profile' product.seller_id.id %}">{{ product.seller_id }}</a></td>
                                 <td>${{ product.price }}</td>
                                 <td>{{ product.quantity }}</td>
