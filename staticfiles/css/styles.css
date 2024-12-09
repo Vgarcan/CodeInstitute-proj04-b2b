@@ -234,6 +234,10 @@ button:active,
     padding: 1.5rem;
 }
 
+.white-space {
+    white-space: pre-wrap;
+}
+
 
 /* Forms */
 

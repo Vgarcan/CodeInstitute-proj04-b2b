@@ -79,7 +79,8 @@
                     <p><strong>Address:</strong> {% if view_user %}{{ view_user.profile.address }}{% else %}{{ user.profile.address }}{% endif %}</p>
                     <p><strong>Postcode:</strong>{% if view_user %}{{ view_user.profile.postal_code }}{% else %}{{ user.profile.postal_code }}{% endif %}</p>
                     <p><strong>Phone Number:</strong>{% if view_user %}{{ view_user.profile.phone_number }}{% else %}{{ user.profile.phone_number }}{% endif %}</p>
-                    <p><strong>Biography:</strong> {% if view_user %}{{ view_user.profile.bio }}{% else %}{{ user.profile.bio }}{% endif %}</p>
+                    <p><strong>Biography:</strong></p>
+                    <p class='white-space'>{% if view_user %}{{ view_user.profile.bio }}{% else %}{{ user.profile.bio }}{% endif %}</p>
                     <p><strong>Website:</strong> <a href="{% if view_user %}{{ view_user.profile.website }}{% else %}{{ user.profile.website }}{% endif %}" target="_blank">{% if view_user %}{{ view_user.profile.website }}{% else %}{{ user.profile.website }}{% endif %}</a></p>
                 </div>
             </div>
