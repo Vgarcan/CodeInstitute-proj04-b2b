@@ -11,22 +11,25 @@ function updateStatusURL(orderId) {
 
 // Button to load more orders
 document.addEventListener("DOMContentLoaded", function() {
-    let currentVisible = 20; // Initially show 20 rows
-    const rows = document.querySelectorAll(".order-row, .recent-order-row");
-    const loadMoreButton = document.getElementById("loadMore");
+    if (!document.getElementById('no-data')) {
+        let currentVisible = 20; // Initially show 20 rows
+        const rows = document.querySelectorAll(".order-row, .recent-order-row");
+        const loadMoreButton = document.getElementById("loadMore");
 
-    loadMoreButton.addEventListener("click", function() {
-        // Show 20 more rows on each button click
-        for (let i = currentVisible; i < currentVisible + 20; i++) {
-            if (rows[i]) {
-                rows[i].classList.remove("d-none");
+        loadMoreButton.addEventListener("click", function() {
+            // Show 20 more rows on each button click
+            for (let i = currentVisible; i < currentVisible + 20; i++) {
+                if (rows[i]) {
+                    rows[i].classList.remove("d-none");
+                }
             }
-        }
-        currentVisible += 20;
+            currentVisible += 20;
 
-        // Hide the button if there are no more rows to show
-        if (currentVisible >= rows.length) {
-            loadMoreButton.style.display = "none";
-        }
-    });
+            // Hide the button if there are no more rows to show
+            if (currentVisible >= rows.length) {
+                loadMoreButton.style.display = "none";
+            }
+        });
+    };
+
 });

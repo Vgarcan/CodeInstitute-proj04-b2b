@@ -53,6 +53,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'main:home' %}">Home</a>
                     </li>
+                    {# Logged in user Links to display #}
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
@@ -63,11 +64,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
                         </li>
-                        {% if user.role == 'BUY' %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{% url 'products:all' %}">All Products</a>
-                            </li>
-                        {% endif %}
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'products:all' %}">All Products</a>
+                        </li>
+                    {# Not logged in user Links to display #}
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'main:about' %}">About</a>

@@ -65,7 +65,7 @@
 
         {# Main Content Area of the Dashboard #}
         <div class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <h1 class="h2" id="dashboard">Dashboard</h1>
+            <h1 class="h2 my-3" id="dashboard">Dashboard</h1>
             <hr>
 
             {# Dashboard Content for Buyers #}
@@ -208,7 +208,7 @@
                 </div>
                     
                 {% else %}
-                    <p>No sales data available yet. Once you receive orders, your sales summary will be displayed here.</p>
+                    <p id="no-data">No sales data available yet. Once you receive orders, your sales summary will be displayed here.</p>
                 {% endif %}
 
                 {# Manage Products Section for Suppliers #}
@@ -243,8 +243,9 @@
                                     <td>{{ product.quantity }}</td>
                                     <td>{{ product.pieces_per_unit }}</td>
                                     <td>
-                                        <a href="{% url 'products:create' product.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                                        <a href="{% url 'products:delete' product.id %}" class="btn btn-sm btn-warning">Delete</a>
+                                        <a href="{% url 'products:item-view' product.id %}" class="btn btn-sm btn-danger d-block">View</a>
+                                        <a href="{% url 'products:create' product.id %}" class="btn btn-sm btn-outline-secondary d-block">Edit</a>
+                                        <a href="{% url 'products:delete' product.id %}" class="btn btn-sm btn-warning d-block">Delete</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
