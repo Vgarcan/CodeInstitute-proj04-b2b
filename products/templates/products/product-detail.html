@@ -65,7 +65,20 @@
                     <span class="badge text-bg-warning">{{ product.rating }} <i class="bi bi-star-fill"></i></span>
                 </p>
 
-                {% if product.quantity > 0 %}
+                {% if user.role != 'BUY' %}
+                <!-- Only for BUYERS Message -->
+                <div class="alert alert-danger text-center" role="alert">
+                    Products can be purchased only for BUYERS
+                </div>
+
+                <!-- Disabled Button -->
+                <div class="mb-3">
+                    <button class="btn btn-secondary btn-lg w-100" disabled>
+                        <i class="bi bi-cart-x-fill"></i> BUYERS only
+                    </button>
+                </div>
+
+                {% elif product.quantity > 0 %}
                 <!-- Select Quantity -->
                 <div class="mb-3">
                     <label for="quantity" class="form-label">Select Quantity:</label>
@@ -78,9 +91,10 @@
                         <i class="bi bi-cart-plus-fill"></i> Add to basket
                     </a>
                 </div>
+
                 {% else %}
                 <!-- Out of Stock Message -->
-                <div class="alert alert-danger" role="alert">
+                <div class="alert alert-danger text-center" role="alert">
                     This product is out of stock.
                 </div>
 
