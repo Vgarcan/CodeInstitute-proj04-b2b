@@ -555,7 +555,7 @@ Validation efforts ensured that:
 **HTML Validation Result:**
 ![HTML Validation Result](static/imgs/readme-pics/w3c-markup.png)
 
-To validate this HTML code, you can use the [W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdev.red-bazaar.com%2F).
+To validate this HTML code, you can use the [W3C Markup Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fred-bazaar-1af30a20d60e.herokuapp.com%2F).
 
 ### CSS Validation
 
@@ -577,7 +577,7 @@ Highlights include:
 **CSS Validation Result:**
 ![CSS Validation Result](static/imgs/readme-pics/css-validation-result.png)
 
-To validate this CSS code, you can use the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=dev.red-bazaar.com&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
+To validate this CSS code, you can use the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fred-bazaar-1af30a20d60e.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en).
 
 ### Accessibility
 Accessibility is a core focus for **RedBazaar**, following the Web Content Accessibility Guidelines (WCAG). Key accessibility measures include:
@@ -970,6 +970,110 @@ Visit `http://localhost:8000/` in your browser to view the application.
     python manage.py collectstatic
     ```
 
+
+### **Heroku Deployment Guide**
+
+### Prerequisites
+
+1. **Heroku account**: Sign up at [Heroku](https://www.heroku.com).
+2. Django project includes:
+   - `Procfile`
+   - `requirements.txt`
+   - `runtime.txt`
+   - `.gitignore`
+   - Proper settings for `STATICFILES_STORAGE`, `DATABASES`, and `ALLOWED_HOSTS`.
+
+---
+
+### Step-by-Step Deployment
+
+#### 1. Install Required Packages
+```bash
+pip install gunicorn whitenoise psycopg2-binary
+pip freeze > requirements.txt
+```
+
+#### 2. Configure `settings.py`
+```python
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # Other middlewares...
+]
+
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
+
+ALLOWED_HOSTS = ['your-app-name.herokuapp.com']
+```
+
+#### 3. Create `Procfile`
+```plaintext
+web: gunicorn <your_core_directory>.wsgi:application
+```
+
+#### 4. Create or Update `runtime.txt`
+```plaintext
+python-3.12.3
+```
+
+#### 5. Run `collectstatic`
+```bash
+python manage.py collectstatic
+```
+
+#### 6. Create Heroku App
+1. Go to [Heroku Dashboard](https://dashboard.heroku.com/).
+2. Click **New** > **Create New App**.
+![Heroku Deployment step 1](static/imgs/readme-pics/heroku-1.png)
+3. Choose a unique app name and region.
+![Heroku Deployment step 2](static/imgs/readme-pics/heroku-2.png)
+
+#### 7. Connect GitHub Repository
+1. Navigate to the **Deploy** tab.
+![Heroku Deployment step 3](static/imgs/readme-pics/heroku-3.png)
+2. Select **GitHub** as the deployment method.
+![Heroku Deployment step 4](static/imgs/readme-pics/heroku-4.png)
+3. Connect your repository and enable **Automatic Deploys**.
+
+#### 8. Configure Environment Variables
+1. Go to the **Settings** tab > **Reveal Config Vars**.
+![Heroku Deployment step 5](static/imgs/readme-pics/heroku-5.png)
+2. Add:
+![Heroku Deployment step 6](static/imgs/readme-pics/heroku-6.png)
+   These variables should match what’s defined in your config.py or .env file locally.
+
+#### 9. Deploy the App
+![Heroku Deployment step 7](static/imgs/readme-pics/heroku-7.png)
+1. Use the **Manual Deploy** option for the first deployment.
+2. Test the app at `https://your-app-name.herokuapp.com`.
+
+#### 10. Monitor and Manage
+- View logs for debugging:
+  ```bash
+  heroku logs --tail
+  ```
+- Scale dynos via the **Resources** tab.
+
+---
+
+### Example Files
+
+#### Procfile
+```plaintext
+web: gunicorn _core.wsgi:application
+```
+
+#### runtime.txt
+```plaintext
+python-3.12.3
+```
 
 ## License
 
