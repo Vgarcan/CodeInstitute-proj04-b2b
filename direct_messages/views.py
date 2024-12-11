@@ -15,21 +15,25 @@ from django.db.models import Q
 @login_required
 def send_message(request, username):
     recipient = get_object_or_404(CustomUser, username=username)
-    if request.method == 'POST':
+    if request.method == "POST":
         form = MessageForm(request.POST)
         if form.is_valid():
             message = form.save(commit=False)
             message.sender = request.user  # Current user as sender
             message.recipient = recipient  # Profile being viewed as recipient
             message.save()
-            return redirect('users:user_profile', recipient.pk)
+            return redirect("users:user_profile", recipient.pk)
     else:
         form = MessageForm()
 
-    return render(request, 'messages/send_message.html', {
-        'form': form,
-        'recipient': recipient,
-    })
+    return render(
+        request,
+        "messages/send_message.html",
+        {
+            "form": form,
+            "recipient": recipient,
+        },
+    )
 
 
 @login_required
@@ -49,11 +53,9 @@ def chat_view(request, recipient_id=None):
     """
     # Retrieve unique conversations involving the current user
     conversations = (
-        Message.objects.filter(
-            Q(sender=request.user) |
-            Q(recipient=request.user)
-        )
-        .values('sender', 'recipient')
+        Message.objects.filter(Q(sender=request.user) |
+                               Q(recipient=request.user))
+        .values("sender", "recipient")
         .distinct()
     )
 
@@ -61,7 +63,11 @@ def chat_view(request, recipient_id=None):
     unique_users = {}
     for convo in conversations:
         # Determine the other user in the conversation
-        other_user_id = convo['recipient'] if convo['sender'] == request.user.id else convo['sender']
+        other_user_id = (
+            convo["recipient"]
+            if convo["sender"] == request.user.id
+            else convo["sender"]
+        )
 
         # Skip duplicates by ensuring each user appears only once
         if other_user_id in unique_users:
@@ -76,15 +82,15 @@ def chat_view(request, recipient_id=None):
                 Q(sender=request.user, recipient=other_user)
                 | Q(sender=other_user, recipient=request.user)
             )
-            .order_by('-created_at')
+            .order_by("-created_at")
             .first()
         )
 
         # Add the conversation details to the dictionary
         unique_users[other_user_id] = {
-            'user': other_user,
-            'last_message': last_message.message if last_message else "No messages yet",
-            'last_message_time': last_message.created_at if last_message else None,
+            "user": other_user,
+            "last_message": last_message.message if last_message else "No messages yet",
+            "last_message_time": last_message.created_at if last_message else None,
         }
 
     # If a recipient ID is provided, fetch the recipient
@@ -98,7 +104,7 @@ def chat_view(request, recipient_id=None):
         messages = Message.objects.filter(
             Q(sender=request.user, recipient=recipient)
             | Q(sender=recipient, recipient=request.user)
-        ).order_by('created_at')
+        ).order_by("created_at")
 
         # Mark all unread messages as read
         unread_messages = messages.filter(
@@ -106,22 +112,30 @@ def chat_view(request, recipient_id=None):
         unread_messages.update(is_read=True)
 
     # Handle message sending
-    if request.method == 'POST' and recipient:
+    if request.method == "POST" and recipient:
         form = ChatForm(request.POST)
         if form.is_valid():
             new_message = form.save(commit=False)
             new_message.sender = request.user
             new_message.recipient = recipient
             new_message.save()
-            return redirect('direct_messages:chat', recipient_id=recipient.id)
+            return redirect("direct_messages:chat", recipient_id=recipient.id)
     else:
         form = ChatForm()
 
     # Render the chat template with the context data
-    return render(request, 'direct_messages/chat.html', {
-        # Sort conversations by the latest message time
-        'conversations': sorted(unique_users.values(), key=lambda x: x['last_message_time'], reverse=True),
-        'messages': messages,
-        'form': form,
-        'recipient': recipient,
-    })
+    return render(
+        request,
+        "direct_messages/chat.html",
+        {
+            # Sort conversations by the latest message time
+            "conversations": sorted(
+                unique_users.values(),
+                key=lambda x: x["last_message_time"],
+                reverse=True,
+            ),
+            "messages": messages,
+            "form": form,
+            "recipient": recipient,
+        },
+    )

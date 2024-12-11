@@ -10,10 +10,10 @@ class OrderItemAdmin(admin.TabularInline):
     can_delete = False  # No ability to delete order items through admin interface
 
     # READ ONLY fields
-    readonly_fields = ('product', 'quantity', 'item_total')
+    readonly_fields = ("product", "quantity", "item_total")
 
     # Display fields
-    fields = ('product', 'quantity', 'item_total')
+    fields = ("product", "quantity", "item_total")
 
 
 class ShipAddrAdmin(admin.TabularInline):
@@ -24,27 +24,41 @@ class ShipAddrAdmin(admin.TabularInline):
     can_delete = False  # No ability to delete order items through admin interface
 
     # READ ONLY fields
-    readonly_fields = ('full_name', 'email', 'address', 'city',
-                       'country', 'postal_code', 'phone_number')
+    readonly_fields = (
+        "full_name",
+        "email",
+        "address",
+        "city",
+        "country",
+        "postal_code",
+        "phone_number",
+    )
     # Display fields
-    fields = ('full_name', 'email', 'address', 'city',
-              'country', 'postal_code', 'phone_number')
+    fields = (
+        "full_name",
+        "email",
+        "address",
+        "city",
+        "country",
+        "postal_code",
+        "phone_number",
+    )
 
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'buyer', 'seller', 'status', 'ordered_on')
-    list_display_links = ('id', )
+    list_display = ("id", "buyer", "seller", "status", "ordered_on")
+    list_display_links = ("id",)
     inlines = [OrderItemAdmin, ShipAddrAdmin]  # Adds OrderItem
 
     # Navigation filters
-    list_filter = ('status', 'ordered_on')
-    search_fields = ('buyer__username', 'seller__username', 'id')
+    list_filter = ("status", "ordered_on")
+    search_fields = ("buyer__username", "seller__username", "id")
 
-    exclude = ('ship_address',)
+    exclude = ("ship_address",)
 
     # READ ONLY fields
-    readonly_fields = ('buyer', 'seller', 'total_price',
-                       'ordered_on', 'status')
+    readonly_fields = ("buyer", "seller", "total_price",
+                       "ordered_on", "status")
 
 
 admin.site.register(Order, OrderAdmin)

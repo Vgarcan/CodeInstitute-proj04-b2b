@@ -28,6 +28,4 @@ class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
         # Filter categories that are not parent categories (i.e., subcategories only)
-        # self.fields['category_id'].queryset = Category.objects.filter(
-        #     parent__isnull=False).order_by('name')
         self.fields['category_id'].queryset = Category.objects.all()

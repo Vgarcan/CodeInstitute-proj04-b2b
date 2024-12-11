@@ -17,11 +17,8 @@ class CustomSignupForm(SignupForm):
     """
 
     role = forms.ChoiceField(
-        choices=[
-            ('BUY', 'Buyer'),
-            ('SUP', 'Supplier')
-        ],
-        label='Role')
+        choices=[("BUY", "Buyer"), ("SUP", "Supplier")], label="Role"
+    )
 
     def signup(self, request, user):
         """
@@ -34,7 +31,7 @@ class CustomSignupForm(SignupForm):
         Returns:
             user: The updated user instance.
         """
-        user.role = self.cleaned_data['role']
+        user.role = self.cleaned_data["role"]
         user.save()
         return user
 
@@ -52,14 +49,14 @@ class CustomUserForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']  # Fields that will appear in the form
+        fields = ["username", "email"]  # Fields that will appear in the form
 
 
 class ProfileForm(forms.ModelForm):
     """
     A form for editing the Profile model.
 
-    This form is used to edit additional user profile information, such as personal details and 
+    This form is used to edit additional user profile information, such as personal details and
     social media links. It is based on Django's ModelForm and is linked to the Profile model.
 
     Attributes:
@@ -69,6 +66,17 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = [
-            'full_name', 'country', 'city', 'address', 'postal_code', 'phone_number',
-            'bio', 'profile_picture', 'website', 'facebook_url', 'twitter_url', 'instagram_url', 'linkedin_url'
+            "full_name",
+            "country",
+            "city",
+            "address",
+            "postal_code",
+            "phone_number",
+            "bio",
+            "profile_picture",
+            "website",
+            "facebook_url",
+            "twitter_url",
+            "instagram_url",
+            "linkedin_url",
         ]  # Fields that will appear in the form

@@ -7,6 +7,7 @@ from orders.models import Order, OrderItem
 from direct_messages.forms import MessageForm
 
 from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 
@@ -20,14 +21,15 @@ def home(request):
     Returns:
     HttpResponse: The rendered home page template.
     """
-    return render(request, 'users/home.html')
+    return render(request, "users/home.html")
 
 
 class CustomLoginView(LoginView):  # CBV
     """
     Custom Login view
     """
-    template_name = 'users/login.html'
+
+    template_name = "users/login.html"
 
     def get_context_data(self, **kwargs):
         # Add extra data to the context for the template
@@ -40,7 +42,8 @@ class CustomSignupView(SignupView):  # CBV
     """
     Custom Signup view
     """
-    template_name = 'users/signup.html'
+
+    template_name = "users/signup.html"
 
     def get_context_data(self, **kwargs):
         # Add extra data to the context for the template
@@ -55,7 +58,7 @@ def profile(request, user_id=None):
     View to display the user's profile.
 
     This view allows authenticated users to view their profile details.
-    The profile page is rendered with a template that displays the user's 
+    The profile page is rendered with a template that displays the user's
     information and any additional profile-specific information.
 
     Parameters:
@@ -66,16 +69,13 @@ def profile(request, user_id=None):
     HttpResponse: The rendered profile page template, which displays the user's information.
     """
     if user_id is None:
-        return render(request, 'users/profile.html')
+        return render(request, "users/profile.html")
     else:
         user = CustomUser.objects.get(id=user_id)
         return render(
             request,
-            'users/profile.html',
-            {
-                'view_user': user,
-                'message_form': MessageForm()
-            }
+            "users/profile.html",
+            {"view_user": user, "message_form": MessageForm()},
         )
 
 
@@ -85,24 +85,24 @@ def edit_profile(request):
     View to display and update the user's profile.
 
     This view allows authenticated users to view and edit their profile details.
-    The profile consists of two forms: one for the user (username and email) 
+    The profile consists of two forms: one for the user (username and email)
     and another for profile-specific information (such as address, country, etc.).
 
-    If the request is a POST, both forms are validated and saved, and the user is 
-    redirected back to the profile page. If the request is not a POST, the forms 
+    If the request is a POST, both forms are validated and saved, and the user is
+    redirected back to the profile page. If the request is not a POST, the forms
     are pre-filled with the current user's data.
 
     Args:
         request: The HTTP request object, which can be a POST or GET request.
 
     Returns:
-        A rendered HTML page with the user and profile forms, or a redirection 
+        A rendered HTML page with the user and profile forms, or a redirection
         to the user's profile page after a successful form submission.
     """
     user = request.user
 
     # Load the user form and profile form
-    if request.method == 'POST':
+    if request.method == "POST":
         user_form = CustomUserForm(request.POST, instance=user)
         profile_form = ProfileForm(
             request.POST, request.FILES, instance=user.profile)
@@ -111,15 +111,19 @@ def edit_profile(request):
             user_form.save()  # Save user changes
             profile_form.save()  # Save profile changes
             # Redirect to the profile page
-            return redirect('users:user_profile')
+            return redirect("users:user_profile")
     else:
         user_form = CustomUserForm(instance=user)
         profile_form = ProfileForm(instance=user.profile)
 
-    return render(request, 'users/edit_profile.html', {
-        'user_form': user_form,
-        'profile_form': profile_form,
-    })
+    return render(
+        request,
+        "users/edit_profile.html",
+        {
+            "user_form": user_form,
+            "profile_form": profile_form,
+        },
+    )
 
 
 @login_required
@@ -132,21 +136,23 @@ def dashboard(request):
 
     # Data to pass to the template
     context = {
-        'user': user,
+        "user": user,
     }
 
-    if user.role == 'SUP':  # Supplier dashboard
+    if user.role == "SUP":  # Supplier dashboard
         products = Product.objects.filter(seller_id=user)
-        received_orders = Order.objects.filter(
-            seller=user).order_by('-id')  # Orders for the supplier
+        received_orders = Order.objects.filter(seller=user).order_by(
+            "-id"
+        )  # Orders for the supplier
 
-        context['products'] = products
-        context['received_orders'] = received_orders
+        context["products"] = products
+        context["received_orders"] = received_orders
 
-    elif user.role == 'BUY':  # Buyer dashboard
+    elif user.role == "BUY":  # Buyer dashboard
         orders = Order.objects.filter(buyer=user).order_by(
-            '-id')  # Orders placed by the buyer
+            "-id"
+        )  # Orders placed by the buyer
 
-        context['orders'] = orders
+        context["orders"] = orders
 
-    return render(request, 'users/dashboard.html', context)
+    return render(request, "users/dashboard.html", context)

@@ -22,29 +22,30 @@ def checkout(request):
     If the shopping cart is empty, redirects to the product list page.
     """
     # Get the shopping cart from the session
-    shopping_cart = request.session.get('shopping_cart', {})
+    shopping_cart = request.session.get("shopping_cart", {})
 
     # Check if the shopping cart is empty
     if not shopping_cart:
         # Redirect to the product list page if the cart is empty
-        return redirect('products:all')
+        return redirect("products:all")
 
     # Group the cart items by seller using the sup_dict function
     cart_items = sup_dict(shopping_cart, source="cart")
-    total_cost = sum(item['subtotal']
-                     for items in cart_items.values() for item in items)
+    total_cost = sum(
+        item["subtotal"] for items in cart_items.values() for item in items
+    )
 
     # Get the current user's profile data to pre-fill the form
     try:
         profile = Profile.objects.get(user=request.user)
         initial_data = {
-            'full_name': profile.full_name,
-            'email': request.user.email,
-            'address': profile.address,
-            'city': profile.city,
-            'country': profile.country,
-            'postal_code': profile.postal_code,
-            'phone_number': profile.phone_number,
+            "full_name": profile.full_name,
+            "email": request.user.email,
+            "address": profile.address,
+            "city": profile.city,
+            "country": profile.country,
+            "postal_code": profile.postal_code,
+            "phone_number": profile.phone_number,
         }
     except Profile.DoesNotExist:
         initial_data = {}
@@ -52,24 +53,29 @@ def checkout(request):
     # Create a PaymentIntent with the total cost in cents (Stripe uses the smallest currency unit)
     intent = stripe.PaymentIntent.create(
         amount=int(total_cost * 100),  # Convert dollars to cents
-        currency='usd',
+        currency="usd",
         automatic_payment_methods={
-            'enabled': True,
+            "enabled": True,
         },
-        metadata={'user_id': request.user.id}
+        metadata={"user_id": request.user.id},
     )
 
     print("Client secret:", intent.client_secret)
 
     # Render the template with initial data, cart items, and client secret for PaymentIntent
-    return render(request, 'payments/checkout.html', {
-        'initial_data': initial_data,
-        'STRIPE_PUBLIC_KEY': settings.STRIPE_PUBLIC_KEY,
-        'cart_items': cart_items,
-        'total_cost': total_cost,
-        'client_secret': intent.client_secret  # Send the client secret to the frontend
-    })
+    return render(
+        request,
+        "payments/checkout.html",
+        {
+            "initial_data": initial_data,
+            "STRIPE_PUBLIC_KEY": settings.STRIPE_PUBLIC_KEY,
+            "cart_items": cart_items,
+            "total_cost": total_cost,
+            # Send the client secret to the frontend
+            "client_secret": intent.client_secret,
+        },
+    )
 
 
 def payment_success(request):
-    return render(request, 'payments/success.html')
+    return render(request, "payments/success.html")

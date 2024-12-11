@@ -14,7 +14,7 @@ class Category(MPTTModel):
         name (str): The name of the category, limited to 250 characters.
         slug (str): A unique slug for each category/subcategory, automatically generated from the name.
         description (str): An optional description of the category, limited to 250 characters.
-        parent (TreeForeignKey): A reference to the parent category, allowing the creation of a parent-child relationship. 
+        parent (TreeForeignKey): A reference to the parent category, allowing the creation of a parent-child relationship.
                                  If the parent category is deleted, its children are also deleted.
 
     MPTTMeta:
@@ -24,27 +24,31 @@ class Category(MPTTModel):
         unique_together (tuple): Ensures the uniqueness of the slug within the same parent category.
         verbose_name_plural (str): The plural form used in the admin interface for the model.
     """
+
     name = models.CharField(max_length=250)
     # Unique slug for each category/subcategory
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(max_length=250, blank=True, null=True)
     parent = TreeForeignKey(
         # Reference to the same model to create hierarchy (parent-child)
-        'self',
+        "self",
         blank=True,
         null=True,
-        related_name='children',  # Access subcategories from a category
+        related_name="children",  # Access subcategories from a category
         # If a parent category is deleted, its children are also deleted
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
     )
 
     class MPTTMeta:  # Esta clase es importante para configurar el modelo MPTT
         # Esto organiza las categorías por nombre
-        order_insertion_by = ['name']
+        order_insertion_by = ["name"]
 
     class Meta:
         # Ensure uniqueness of the slug within the same parent
-        unique_together = ('slug', 'parent',)
+        unique_together = (
+            "slug",
+            "parent",
+        )
         verbose_name_plural = "categories"  # Plural form for admin interface
 
     def save(self, *args, **kwargs):
@@ -64,7 +68,7 @@ class Category(MPTTModel):
             full_path.append(parent.name)
             parent = parent.parent
         # Return the full path in reverse order (root -> current)
-        return ' -> '.join(full_path[::-1])
+        return " -> ".join(full_path[::-1])
 
 
 class Product(models.Model):
@@ -89,13 +93,14 @@ class Product(models.Model):
         rating (int): The rating of the product, defaulting to 0.
     """
 
-    seller_id = models.ForeignKey('users.CustomUser', on_delete=models.CASCADE)
+    seller_id = models.ForeignKey("users.CustomUser", on_delete=models.CASCADE)
     # Slug for URL identification, unique
     slug = models.SlugField(unique=True, blank=True)
     category_id = models.ForeignKey(
         Category,
         related_name="products",  # Allows reverse access from Category to Product
-        on_delete=models.CASCADE)
+        on_delete=models.CASCADE,
+    )
     name = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     quantity = models.IntegerField(default=1)
@@ -143,12 +148,13 @@ class OrderProductSnapshot(models.Model):
         category (str): Name of the category the product belongs to.
         created_on (DateTimeField): Timestamp when the snapshot was created.
     """
+
     name = models.CharField(max_length=250)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.TextField(blank=True, null=True)
     pieces_per_unit = models.IntegerField(default=0)
     image = models.ImageField(
-        upload_to='product_snapshots/', blank=True, null=True)
+        upload_to="product_snapshots/", blank=True, null=True)
     category = models.CharField(max_length=250, blank=True, null=True)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -157,5 +163,5 @@ class OrderProductSnapshot(models.Model):
 
 
 ### WEBSITES: ###
-    # Categories and subCategories : https://stackoverflow.com/questions/60120266/django-categories-and-subcategories
+# Categories and subCategories : https://stackoverflow.com/questions/60120266/django-categories-and-subcategories
 #################

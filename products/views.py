@@ -81,7 +81,7 @@ def create_edit_product(request, prd_id=None):
         "products/prod-creation.html",
         {
             "prod_form": product_form,
-            'product': product
+            "product": product,
         },  # Pass the product form to the template.
     )
 
@@ -118,7 +118,7 @@ def view_products(request, provider_id=None):
     # Add pagination
     paginator = Paginator(products, 20)  # 20 products per page
     # Get the page number from the request, default to 1
-    page_number = request.GET.get('page', 1)
+    page_number = request.GET.get("page", 1)
 
     try:
         paginated_products = paginator.page(page_number)
@@ -130,8 +130,8 @@ def view_products(request, provider_id=None):
         paginated_products = paginator.page(paginator.num_pages)
 
     # Get the current user's shopping cart from the session.
-    shopping_cart = request.session.get('shopping_cart', {})
-    total_cost = request.session.get('cart_total', 0)
+    shopping_cart = request.session.get("shopping_cart", {})
+    total_cost = request.session.get("cart_total", 0)
 
     # Retrieve the products from the shopping cart based on their IDs.
     products_in_cart = Product.objects.filter(id__in=shopping_cart.keys())
@@ -146,8 +146,8 @@ def view_products(request, provider_id=None):
         {
             "products": paginated_products,  # Use the paginated products
             "cart_items": cart_items,
-            "total_cost": total_cost
-        }
+            "total_cost": total_cost,
+        },
     )
 
 
@@ -228,8 +228,8 @@ def search_products(request):
             category_ids.add(category.id)  # Include the primary category
             # ? https://django-mptt.readthedocs.io/en/latest/mptt.models.html#mptt.models.MPTTModel.get_descendants
             category_ids.update(
-                category.get_descendants(include_self=True).values_list(
-                    'id', flat=True)
+                category.get_descendants(
+                    include_self=True).values_list("id", flat=True)
             )  # Include the secondary category
 
             #! ### TEST ###
@@ -249,8 +249,8 @@ def search_products(request):
 
     # Get the current user's shopping cart from the session.
     # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
-    shopping_cart = request.session.get('shopping_cart', {})
-    total_cost = request.session.get('cart_total', 0)
+    shopping_cart = request.session.get("shopping_cart", {})
+    total_cost = request.session.get("cart_total", 0)
 
     # Retrieve the products from the shopping cart based on their IDs.
     # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
@@ -264,11 +264,7 @@ def search_products(request):
     return render(
         request,
         "products/product-list.html",
-        {
-            "products": products,
-            'cart_items': cart_items,
-            'total_cost': total_cost
-        }
+        {"products": products, "cart_items": cart_items, "total_cost": total_cost},
     )
 
 
@@ -327,15 +323,15 @@ def add_product(request, prd_id, quantity, go_to=None):
     # Show a success message to the user.
     messages.success(request, f"Product added to cart: {product.name}")
 
-    if go_to == 'cart':
+    if go_to == "cart":
         # Redirect to the dashboard page.
-        return redirect('products:view-cart')
+        return redirect("products:view-cart")
     else:
         # Redirect to the product detail page.
         return redirect("products:item-view", prd_id=prd_id)
 
 
-@role_required('BUY')
+@role_required("BUY")
 def view_shopping_cart(request):
     """
     Retrieve and display the items in the user's shopping cart.
@@ -348,8 +344,8 @@ def view_shopping_cart(request):
     """
     # Get the current user's shopping cart from the session.
     # If the 'shopping_cart' key does not exist in the session, use an empty dictionary as the default value.
-    shopping_cart = request.session.get('shopping_cart', {})
-    total_cost = request.session.get('cart_total', 0)
+    shopping_cart = request.session.get("shopping_cart", {})
+    total_cost = request.session.get("cart_total", 0)
 
     # Retrieve the products from the shopping cart based on their IDs.
     # Use Django's filter function to retrieve the products with IDs present in the shopping cart.
@@ -361,13 +357,14 @@ def view_shopping_cart(request):
 
     # Render the template with the shopping cart items.
     # Pass the products and total cost as context variables to the template.
-    return render(request, 'products/shopping-cart.html', {
-        'cart_items': cart_items,
-        'total_cost': total_cost
-    })
+    return render(
+        request,
+        "products/shopping-cart.html",
+        {"cart_items": cart_items, "total_cost": total_cost},
+    )
 
 
-@role_required('BUY')
+@role_required("BUY")
 def remove_product(request, prd_id, quantity):
     """
     Remove a specific quantity of a product from the user's shopping cart based on the provided product ID.
@@ -381,7 +378,7 @@ def remove_product(request, prd_id, quantity):
     HttpResponseRedirect: Redirects to the shopping cart page after successful removal.
     """
     # Get the current user's shopping cart from the session.
-    shopping_cart = request.session.get('shopping_cart', {})
+    shopping_cart = request.session.get("shopping_cart", {})
 
     # Check if the product exists in the cart
     if prd_id in shopping_cart:
@@ -392,26 +389,26 @@ def remove_product(request, prd_id, quantity):
             del shopping_cart[prd_id]
             messages.success(
                 request,
-                f'Removed {current_quantity} of {Product.objects.get(
-                    id=prd_id).name} from the cart.'
+                f"Removed {current_quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.",
             )
         else:
             # Otherwise, reduce the quantity
             shopping_cart[prd_id] -= quantity
             messages.success(
                 request,
-                f'Removed {quantity} of {Product.objects.get(
-                    id=prd_id).name} from the cart.'
+                f"Removed {quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.",
             )
 
     # Update the shopping cart in the session
-    request.session['shopping_cart'] = shopping_cart
+    request.session["shopping_cart"] = shopping_cart
 
     # Redirect to the shopping cart page
-    return redirect('products:view-cart')
+    return redirect("products:view-cart")
 
 
-@role_required('BUY')
+@role_required("BUY")
 def checkout(request):
     """
     This function processes the user's checkout request and redirects them to the payment gateway.
@@ -421,19 +418,19 @@ def checkout(request):
     HttpResponseRedirect: Redirects the user to the payment gateway.
     """
     # Get the current user's shopping cart from the session.
-    shopping_cart = request.session.get('shopping_cart', {})
-    total_cost = request.session.get('cart_total', 0)
+    shopping_cart = request.session.get("shopping_cart", {})
+    total_cost = request.session.get("cart_total", 0)
 
     # If the shopping cart is empty, redirect the user to the product list
     if not shopping_cart:
-        messages.error(request, 'Your shopping cart is empty.')
-        return redirect('products:list')
+        messages.error(request, "Your shopping cart is empty.")
+        return redirect("products:list")
 
     # If the total cost is zero, redirect the user to the product list
     if total_cost == 0:
         messages.error(
-            request, 'Your shopping cart does not contain any items.')
-        return redirect('products:list')
+            request, "Your shopping cart does not contain any items.")
+        return redirect("products:list")
 
     # Redirect the user to the payment gateway
-    return redirect('payments:process-payment', total_cost)
+    return redirect("payments:process-payment", total_cost)

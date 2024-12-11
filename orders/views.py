@@ -14,11 +14,11 @@ from utils import sup_dict
 # Create your views here.
 
 
-@role_required('BUY')
+@role_required("BUY")
 def create_order(request):
     """
-    Creates an order based on the user's current shopping cart. 
-    Each item in the cart is converted into an OrderItem, and an Order 
+    Creates an order based on the user's current shopping cart.
+    Each item in the cart is converted into an OrderItem, and an Order
     is created for each seller involved in the transaction.
 
     Parameters:
@@ -29,25 +29,39 @@ def create_order(request):
     """
     print("------------------------------------------")
     # shopping cart from the session
-    shopping_cart = request.session.get('shopping_cart', {})
+    shopping_cart = request.session.get("shopping_cart", {})
 
     if not shopping_cart:
         messages.warning(request, "Your cart is empty.")
         # Redirect to product list if cart is empty
-        return redirect('products:all')
+        return redirect("products:all")
 
     # Extract address data based on the form submission
-    form_type = request.POST.get('form_type')
+    form_type = request.POST.get("form_type")
 
     address_data = {
-        'username': request.user.username,
-        'full_name': request.POST.get('full_name') if form_type == 'profile' else request.POST.get('alt_full_name'),
-        'email': request.POST.get('email') if form_type == 'profile' else request.POST.get('alt_email'),
-        'address': request.POST.get('address') if form_type == 'profile' else request.POST.get('alt_address'),
-        'city': request.POST.get('city') if form_type == 'profile' else request.POST.get('alt_city'),
-        'country': request.POST.get('country') if form_type == 'profile' else request.POST.get('alt_country'),
-        'postal_code': request.POST.get('postal_code') if form_type == 'profile' else request.POST.get('alt_postal_code'),
-        'phone_number': request.POST.get('phone_number') if form_type == 'profile' else request.POST.get('alt_phone_number'),
+        "username": request.user.username,
+        "full_name": request.POST.get("full_name")
+        if form_type == "profile"
+        else request.POST.get("alt_full_name"),
+        "email": request.POST.get("email")
+        if form_type == "profile"
+        else request.POST.get("alt_email"),
+        "address": request.POST.get("address")
+        if form_type == "profile"
+        else request.POST.get("alt_address"),
+        "city": request.POST.get("city")
+        if form_type == "profile"
+        else request.POST.get("alt_city"),
+        "country": request.POST.get("country")
+        if form_type == "profile"
+        else request.POST.get("alt_country"),
+        "postal_code": request.POST.get("postal_code")
+        if form_type == "profile"
+        else request.POST.get("alt_postal_code"),
+        "phone_number": request.POST.get("phone_number")
+        if form_type == "profile"
+        else request.POST.get("alt_phone_number"),
     }
 
     #! ### TEST ###
@@ -58,12 +72,12 @@ def create_order(request):
     # Extract the products and quantities from the shopping cart dictionary
     cart_items = sup_dict(shopping_cart, source="cart")
 
-    print('ORDERS - VIEWS.PY - create_order | cart_items.items(): ',
+    print("ORDERS - VIEWS.PY - create_order | cart_items.items(): ",
           cart_items.items())
     # Create an order for each seller in the cart
     for seller_id, items in cart_items.items():
         # Calculate total price for the order
-        total_price = sum(item['subtotal'] for item in items)
+        total_price = sum(item["subtotal"] for item in items)
 
         # Create the Order instance
         order = Order.objects.create(
@@ -81,35 +95,35 @@ def create_order(request):
         for item in items:
             # Create a snapshot of the product
             product_snapshot = OrderProductSnapshot.objects.create(
-                name=item['product'].name,
-                price=item['product'].price,
-                description=item['product'].description,
-                image=item['product'].image,
-                category=item['product'].category_id.name
+                name=item["product"].name,
+                price=item["product"].price,
+                description=item["product"].description,
+                image=item["product"].image,
+                category=item["product"].category_id.name,
             )
 
             # Create the OrderItem with the snapshot
             OrderItem.objects.create(
                 order=order,
                 product=product_snapshot,
-                quantity=item['quantity'],
-                item_total=item['subtotal']
+                quantity=item["quantity"],
+                item_total=item["subtotal"],
             )
 
             # Remove the product quantity from database
-            item['product'].quantity -= item['quantity']
-            item['product'].save()
+            item["product"].quantity -= item["quantity"]
+            item["product"].save()
 
     # Clear the shopping cart session
-    del request.session['shopping_cart']
+    del request.session["shopping_cart"]
     request.session.modified = True
 
     print("------------------------------------------")
     # Redirect to an order confirmation page or dashboard
-    return redirect('orders:confirmation')  # Redirect to order confirmation
+    return redirect("orders:confirmation")  # Redirect to order confirmation
 
 
-@role_required('BUY')
+@role_required("BUY")
 def confirm_order(request):
     """
     Displays the order confirmation page with the user's orders.
@@ -125,10 +139,10 @@ def confirm_order(request):
     """
     messages.success(request, "Your orders have been successfully created!")
 
-    return redirect('users:dashboard')
+    return redirect("users:dashboard")
 
 
-@role_required('BUY')
+@role_required("BUY")
 def order_detail(request, order_id):
     """
     Displays the details of a specific order.
@@ -144,15 +158,12 @@ def order_detail(request, order_id):
     order_items = OrderItem.objects.filter(order=order)
     return render(
         request,
-        'orders/order-detail.html',
-        {
-            'order': order,
-            'order_items': order_items
-        }
+        "orders/order-detail.html",
+        {"order": order, "order_items": order_items},
     )
 
 
-@role_required('SUP')
+@role_required("SUP")
 def supplier_order_detail(request, order_id):
     """
     Allows a supplier to view and update the status of a specific order.
@@ -169,7 +180,9 @@ def supplier_order_detail(request, order_id):
     """
     order = Order.objects.get(
         # Ensures that only the Supplier sees their orders
-        id=order_id, seller=request.user)
+        id=order_id,
+        seller=request.user,
+    )
     order_items = OrderItem.objects.filter(order=order)
 
     if request.method == "POST":
@@ -181,13 +194,14 @@ def supplier_order_detail(request, order_id):
         else:
             messages.error(request, "Invalid status selected.")
 
-    return render(request, 'orders/supplier-order-detail.html', {
-        'order': order,
-        'order_items': order_items
-    })
+    return render(
+        request,
+        "orders/supplier-order-detail.html",
+        {"order": order, "order_items": order_items},
+    )
 
 
-@role_required('SUP')
+@role_required("SUP")
 def update_order(request, order_id, order_status):
     """
     Allows a supplier to update the status of an order.
@@ -206,7 +220,7 @@ def update_order(request, order_id, order_status):
     order.status = order_status
     order.save()
     messages.success(request, "Order status updated!")
-    return redirect('users:dashboard')
+    return redirect("users:dashboard")
 
 
 @login_required
@@ -222,19 +236,23 @@ def chart_data(request, user_role):
         JsonResponse: Labels (months) and data (totals).
     """
     if user_role == "buyer":
-        queryset = (Order.objects.filter(buyer=request.user)
-                    .annotate(month=F('ordered_on__month'))
-                    .values('month')
-                    .annotate(total_spent=Sum('total_price'))
-                    .order_by('month'))
-        data = [entry['total_spent'] for entry in queryset]
+        queryset = (
+            Order.objects.filter(buyer=request.user)
+            .annotate(month=F("ordered_on__month"))
+            .values("month")
+            .annotate(total_spent=Sum("total_price"))
+            .order_by("month")
+        )
+        data = [entry["total_spent"] for entry in queryset]
     elif user_role == "supplier":
-        queryset = (Order.objects.filter(seller=request.user)
-                    .annotate(month=F('ordered_on__month'))
-                    .values('month')
-                    .annotate(total_earned=Sum('total_price'))
-                    .order_by('month'))
-        data = [entry['total_earned'] for entry in queryset]
+        queryset = (
+            Order.objects.filter(seller=request.user)
+            .annotate(month=F("ordered_on__month"))
+            .values("month")
+            .annotate(total_earned=Sum("total_price"))
+            .order_by("month")
+        )
+        data = [entry["total_earned"] for entry in queryset]
     else:
         return JsonResponse({"error": "Invalid user role"}, status=400)
 
@@ -248,10 +266,10 @@ def transaction_status_data(request):
     Provide data for total transactions grouped by status.
     """
     # Obtener el rol del usuario autenticado
-    print('>>>>>>>', request.user.role)
+    print(">>>>>>>", request.user.role)
     user_role = request.user.role
 
-    print('>>>>>>>', user_role)
+    print(">>>>>>>", user_role)
 
     if user_role == "BUY":
         orders = request.user.orders_as_buyer.all()
@@ -261,12 +279,15 @@ def transaction_status_data(request):
         return JsonResponse({"error": "Invalid user role"}, status=400)
 
     # Anota la cantidad de órdenes por estado
-    status_data = orders.values('status').annotate(count=Count('id'))
+    status_data = orders.values("status").annotate(count=Count("id"))
 
     # Incluye estados con valor cero para los estados que no tienen órdenes
     all_statuses = dict(Order.STATUS_CHOICES)
     labels = [all_statuses[status] for status in all_statuses]
-    data = [next((entry['count'] for entry in status_data if entry['status']
-                 == status), 0) for status in all_statuses]
+    data = [
+        next((entry["count"]
+             for entry in status_data if entry["status"] == status), 0)
+        for status in all_statuses
+    ]
 
     return JsonResponse({"labels": labels, "data": data})

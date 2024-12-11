@@ -18,25 +18,33 @@ class Order(models.Model):
         ship_address (ForeignKey): Recorded address for the shipment.
         status (str): The current status of the order.
     """
+
     buyer = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name="orders_as_buyer")
+        User, on_delete=models.PROTECT, related_name="orders_as_buyer"
+    )
     seller = models.ForeignKey(
-        User, on_delete=models.PROTECT, related_name="orders_as_seller")
+        User, on_delete=models.PROTECT, related_name="orders_as_seller"
+    )
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
     ship_address = models.ForeignKey(
-        "ShipAddr", on_delete=models.CASCADE, related_name="buyer_addr", blank=True, null=True)
+        "ShipAddr",
+        on_delete=models.CASCADE,
+        related_name="buyer_addr",
+        blank=True,
+        null=True,
+    )
     ordered_on = models.DateTimeField(default=timezone.now)
 
     STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('completed', 'Completed'),
-        ('cancelled', 'Cancelled'),
-        ('processing', 'Processing'),
-        ('delivered', 'Delivered'),
-        ('shipped', 'Shipped'),
+        ("pending", "Pending"),
+        ("completed", "Completed"),
+        ("cancelled", "Cancelled"),
+        ("processing", "Processing"),
+        ("delivered", "Delivered"),
+        ("shipped", "Shipped"),
     ]
     status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default='pending')
+        max_length=10, choices=STATUS_CHOICES, default="pending")
 
     def __str__(self):
         return f"Order #{self.id} | Buyer: {self.buyer.username} | Seller: {self.seller.username} | Status: {self.status} | Total: £{self.total_price}"
@@ -56,8 +64,10 @@ class ShipAddr(models.Model):
         postal_code (str): The postal code of the shipping address.
         phone_number (str): The contact number for the recipient.
     """
+
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name="buyers_address")
+        Order, on_delete=models.CASCADE, related_name="buyers_address"
+    )
     username = models.CharField(max_length=255)
     full_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
@@ -81,6 +91,7 @@ class OrderItem(models.Model):
         quantity (Integer): Quantity of the product in the order.
         item_total (Decimal): Total price for this specific item, calculated by quantity * product price.
     """
+
     order = models.ForeignKey(
         Order, on_delete=models.CASCADE, related_name="items")
     product = models.ForeignKey(OrderProductSnapshot, on_delete=models.CASCADE)

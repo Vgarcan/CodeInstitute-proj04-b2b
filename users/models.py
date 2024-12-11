@@ -31,9 +31,9 @@ class CustomUser(AbstractUser):
 
     role = models.CharField(max_length=5, choices=ROLES.items())
 
-    groups = models.ManyToManyField(Group, related_name='user_set_group')
+    groups = models.ManyToManyField(Group, related_name="user_set_group")
     user_permissions = models.ManyToManyField(
-        Permission, related_name='user_set_permissions'
+        Permission, related_name="user_set_permissions"
     )
 
     def save(self, *args, **kwargs):
@@ -41,11 +41,11 @@ class CustomUser(AbstractUser):
         Overriding the save method to automatically set the username to lowercase.
         """
         self.username = self.username.lower()
-        print(self.is_superuser, '----', self.is_staff)
-        #! NOT WORKING
+        print(self.is_superuser, "----", self.is_staff)
+
         if self.is_superuser or self.is_staff:
             self.role = self.STAFF
-        #!############
+
         super().save(*args, **kwargs)
 
     def __str__(self):
@@ -60,7 +60,7 @@ class CustomUser(AbstractUser):
         Returns:
         str: A string in the format 'username, role'.
         """
-        return f'{self.username}'
+        return f"{self.username}"
 
 
 class Profile(models.Model):
@@ -87,6 +87,7 @@ class Profile(models.Model):
     Methods:
     - `__str__`: Returns a string representation of the Profile object, showing the username and role associated with the user.
     """
+
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
     full_name = models.CharField(
@@ -99,9 +100,11 @@ class Profile(models.Model):
     postal_code = models.CharField(
         max_length=10, blank=True, null=True, default="")
     phone_number = models.IntegerField(
-        validators=[MinValueValidator(10000)], blank=True, null=True)
+        validators=[MinValueValidator(10000)], blank=True, null=True
+    )
     profile_picture = models.ImageField(
-        upload_to='profile_pictures/', blank=True, null=True)
+        upload_to="profile_pictures/", blank=True, null=True
+    )
     bio = models.TextField(blank=True, null=True, default="")
     website = models.URLField(blank=True, null=True, default="")
     facebook_url = models.URLField(blank=True, null=True, default="")
@@ -117,4 +120,4 @@ class Profile(models.Model):
         """
         Returns a string representation of the Profile object.
         """
-        return f'{self.user.username} - {self.user.role}'
+        return f"{self.user.username} - {self.user.role}"
