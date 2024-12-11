@@ -265,7 +265,7 @@ def transaction_status_data(request):
     """
     Provide data for total transactions grouped by status.
     """
-    # Obtener el rol del usuario autenticado
+    # Obtain the role of tje user
     print(">>>>>>>", request.user.role)
     user_role = request.user.role
 
@@ -278,10 +278,10 @@ def transaction_status_data(request):
     else:
         return JsonResponse({"error": "Invalid user role"}, status=400)
 
-    # Anota la cantidad de órdenes por estado
+    # Annotate the quantity of orders
     status_data = orders.values("status").annotate(count=Count("id"))
 
-    # Incluye estados con valor cero para los estados que no tienen órdenes
+    # Include states with a value of zero for states that have no orders
     all_statuses = dict(Order.STATUS_CHOICES)
     labels = [all_statuses[status] for status in all_statuses]
     data = [

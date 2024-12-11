@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const formData = new FormData(activeForm);
+        //! Test
         console.log([...formData]);
         console.log('Billing Name:', document.getElementById(nameId).value);
         console.log('Billing Email:', document.getElementById(emailId).value);
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Billing City:', document.getElementById(cityId).value);
         console.log('Billing Country:', document.getElementById(countryId).value);
         console.log('Billing Postal Code:', document.getElementById(postalCodeId).value);
+        //! Test
 
         // Disable the submit button to prevent multiple submissions
         const submitButton = document.getElementById('submit-button');
