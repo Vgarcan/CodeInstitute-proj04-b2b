@@ -148,7 +148,7 @@
                                 <th>Buyer</th>
                                 <th>Status</th>
                                 <th>Total</th>
-                                <th>Action</th>
+                                <th>Status</th>
                                 <th>Review</th>
                             </tr>
                         </thead>
@@ -161,7 +161,8 @@
                                 <td>{{ order.status }}</td>
                                 <td>${{ order.total_price }}</td>
                                 <td>
-                                    <select name="status-update-for-{{ order.id }}" id="actions-status-for-{{ order.id }}" onchange="updateStatusURL({{ order.id }})" {% if order.status == "completed" or order.status == "cancelled" %}disabled{% endif %}>
+                                    
+                                    <select name="status-update-for-{{ order.id }}" id="actions-status-for-{{ order.id }}" onchange="updateStatusURL({{ order.id }})" {% if order.status == "completed" or order.status == "cancelled" %}disabled{% endif %} aria-label="Update status">
                                         <option value="pending" {% if order.status == "pending" %}selected{% endif %}>Pending</option>
                                         <option value="processing" {% if order.status == "processing" %}selected{% endif %}>Processing</option>
                                         <option value="shipped" {% if order.status == "shipped" %}selected{% endif %}>Shipped</option>
@@ -170,10 +171,10 @@
                                         <option value="completed" {% if order.status == "completed" %}selected{% endif %}>Completed</option>
                                     </select>
                                     {% if order.status != "completed" and order.status != "cancelled" %}
-                                        <a href="#" data-url="{% url 'orders:update_order' order.id 'NEWSTATUS' %}" id="update-button-{{ order.id }}" class="btn btn-success btn-sm update-status">Update Status</a>
+                                        <a href="#" data-url="{% url 'orders:update_order' order.id 'NEWSTATUS' %}" id="update-button-{{ order.id }}" class="btn btn-success btn-sm update-status">Update</a>
                                     {% endif %}
                                 </td>
-                                <td><a href="{% url 'orders:sup_order_details' order.id %}" class="btn btn-info btn-sm">View</a></td>
+                                <td><a href="{% url 'orders:sup_order_details' order.id %}" class="btn btn-info btn-sm d-block h-100">View</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>

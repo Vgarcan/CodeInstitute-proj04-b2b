@@ -28,7 +28,7 @@
                         </span>
                         {% endif %}
                     </a>
-                    {% else %}
+                    {% elif user.role == 'SUP'%}
                     <!-- Add Item Button -->
                     <a href="{% url 'products:create' %}" class="position-relative nav-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Add an Item" aria-label="Add item">
                         <i class="bi bi-plus-square fs-3"></i>
@@ -55,9 +55,11 @@
                     </li>
                     {# Logged in user Links to display #}
                     {% if user.is_authenticated %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
-                        </li>
+                        {% if  user.role != 'STAFF' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'users:dashboard' %}">Dashboard</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'users:user_profile' %}">Profile</a>
                         </li>
@@ -72,9 +74,6 @@
                     {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'main:about' %}">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'main:contact' %}">Contact</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'main:terms' %}">Terms & Conditions</a>
