@@ -364,7 +364,6 @@ thead {
 #intro-section h1,
 #intro-section p {
     color: var(--colour-accent-dark);
-    /* background-color: rgba(249, 249, 249, 0.5); */
     border-radius: 20px;
     text-shadow: rgba(0, 0, 0, 0.756) 1px 0 10px;
     text-shadow: 1px 1px 2px var(--colour-secondary), 0 0 1em var(--colour-primary-dark), 0 0 0.2em var(--colour-background);

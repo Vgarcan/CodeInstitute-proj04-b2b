@@ -392,16 +392,16 @@ def remove_product(request, prd_id, quantity):
             del shopping_cart[prd_id]
             messages.success(
                 request,
-                f'Removed {current_quantity} of',
-                f'{Product.objects.get(id=prd_id).name} from the cart.'
+                f'Removed {current_quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.'
             )
         else:
             # Otherwise, reduce the quantity
             shopping_cart[prd_id] -= quantity
             messages.success(
                 request,
-                f'Removed {quantity} of',
-                f'{Product.objects.get(id=prd_id).name} from the cart.'
+                f'Removed {quantity} of {Product.objects.get(
+                    id=prd_id).name} from the cart.'
             )
 
     # Update the shopping cart in the session
